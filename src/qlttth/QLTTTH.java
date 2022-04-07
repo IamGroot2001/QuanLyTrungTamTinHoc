@@ -5,7 +5,6 @@ public class QLTTTH {
         DangNhapForm dangNhapForm = new DangNhapForm();
         dangNhapForm.setLocationRelativeTo(null);
         dangNhapForm.setVisible(true);
-        System.out.println("qlttth.QLTTTH.main()");
     }
     
 }
