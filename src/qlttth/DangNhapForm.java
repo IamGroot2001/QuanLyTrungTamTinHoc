@@ -44,7 +44,7 @@ public class DangNhapForm extends javax.swing.JFrame {
 
         lnlPassword.setText("Password:");
 
-        txtAccount.setText("administrator");
+        txtAccount.setText("hodangdung");
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
