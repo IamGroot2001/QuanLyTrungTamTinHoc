@@ -4,12 +4,16 @@
  */
 package qlttth;
 
+import java.security.MessageDigest;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author daoho
  */
 public class MainForm extends javax.swing.JFrame {
     private ProfilePanel profilePanel;
+    private RegisterStudentPanel registerStudentPanel;
     /**
      * Creates new form MainForm
      */
@@ -27,17 +31,26 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         tplCuaSoChinh = new javax.swing.JTabbedPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         menuViewProfile = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuLogOut = new javax.swing.JMenuItem();
+        menuExit = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuRegisterStudent = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Welcome To Informatic Centre");
 
         jMenu3.setText("Account");
 
@@ -49,18 +62,36 @@ public class MainForm extends javax.swing.JFrame {
         });
         jMenu3.add(menuViewProfile);
 
-        jMenuItem2.setText("Log Out");
-        jMenu3.add(jMenuItem2);
+        menuLogOut.setText("Log Out");
+        menuLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLogOutActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuLogOut);
 
-        jMenuItem3.setText("Exit");
-        jMenu3.add(jMenuItem3);
+        menuExit.setText("Exit");
+        menuExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExitActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuExit);
 
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Student");
 
-        jMenuItem4.setText("Register Student");
-        jMenu1.add(jMenuItem4);
+        menuRegisterStudent.setText("Register Student");
+        menuRegisterStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRegisterStudentActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuRegisterStudent);
+
+        jMenuItem3.setText("Manage Student");
+        jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -71,6 +102,16 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu4.setText("Course");
+
+        jMenuItem1.setText("Add New Course");
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem2.setText("Manage Course");
+        jMenu4.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -78,24 +119,68 @@ public class MainForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(tplCuaSoChinh, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(186, 186, 186))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addComponent(tplCuaSoChinh, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(tplCuaSoChinh, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewProfileActionPerformed
-        if(profilePanel == null){
-            profilePanel = new ProfilePanel();
-            tplCuaSoChinh.addTab("Profile", profilePanel);
-        }
+        tplCuaSoChinh.removeAll();
+        profilePanel = new ProfilePanel();
+        tplCuaSoChinh.addTab("Profile", profilePanel);
     }//GEN-LAST:event_menuViewProfileActionPerformed
+
+    private void menuLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogOutActionPerformed
+        
+        int response = JOptionPane.showConfirmDialog (this, "Do you want to log out?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) { 
+           this.setVisible(false);
+           DangNhapForm dangNhapForm = new DangNhapForm();
+           dangNhapForm.setLocationRelativeTo(null);
+           dangNhapForm.setVisible(true);
+            
+        }
+        else if (response == JOptionPane.NO_OPTION){
+            
+        }
+        else if (response == JOptionPane.CLOSED_OPTION){
+            
+        }
+            
+    }//GEN-LAST:event_menuLogOutActionPerformed
+
+    private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
+        int response = JOptionPane.showConfirmDialog (this, "Do you want to exit?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) { 
+           this.dispose();
+        }
+        else if (response == JOptionPane.NO_OPTION){
+            
+        }
+        else if (response == JOptionPane.CLOSED_OPTION){
+            
+        }
+    }//GEN-LAST:event_menuExitActionPerformed
+
+    private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
+        tplCuaSoChinh.removeAll();
+        registerStudentPanel = new RegisterStudentPanel();
+        tplCuaSoChinh.addTab("Register Student", registerStudentPanel);
+    }//GEN-LAST:event_menuRegisterStudentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,20 +212,25 @@ public class MainForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainForm().setVisible(true);
+              new MainForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem menuExit;
+    private javax.swing.JMenuItem menuLogOut;
+    private javax.swing.JMenuItem menuRegisterStudent;
     private javax.swing.JMenuItem menuViewProfile;
     private javax.swing.JTabbedPane tplCuaSoChinh;
     // End of variables declaration//GEN-END:variables
