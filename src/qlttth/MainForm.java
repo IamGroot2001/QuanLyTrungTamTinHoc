@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class MainForm extends javax.swing.JFrame {
     private ProfilePanel profilePanel;
     private RegisterStudentPanel registerStudentPanel;
+    //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
      */
@@ -33,10 +34,10 @@ public class MainForm extends javax.swing.JFrame {
         tplCuaSoChinh = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton9 = new javax.swing.JButton();
+        btnWeb = new javax.swing.JButton();
         btnDatabase = new javax.swing.JButton();
         btnNetwork = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnSoftware = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -55,6 +56,9 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        tplCuaSoChinh.setBackground(new java.awt.Color(137, 196, 244));
+
+        jPanel3.setBackground(new java.awt.Color(103, 128, 159));
         jPanel3.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jPanel3AncestorAdded(evt);
@@ -65,13 +69,26 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("Web developer");
+        btnWeb.setBackground(new java.awt.Color(218, 231, 230));
+        btnWeb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnWeb.setText("Web developer");
 
+        btnDatabase.setBackground(new java.awt.Color(218, 231, 230));
+        btnDatabase.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDatabase.setText("Database Administrator");
 
+        btnNetwork.setBackground(new java.awt.Color(218, 231, 230));
+        btnNetwork.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNetwork.setText("Network Administraor");
 
-        jButton12.setText("Software developer");
+        btnSoftware.setBackground(new java.awt.Color(218, 231, 230));
+        btnSoftware.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSoftware.setText("Software developer");
+        btnSoftware.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoftwareActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -81,9 +98,9 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(114, 114, 114)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
@@ -93,15 +110,15 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(120, 120, 120)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -112,15 +129,15 @@ public class MainForm extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tplCuaSoChinh.addTab("Course", jPanel1);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Welcome To Informatic Centre");
 
         jMenuBar1.setForeground(new java.awt.Color(37, 41, 88));
@@ -195,59 +212,27 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(186, 186, 186))
+                .addGap(176, 176, 176))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(tplCuaSoChinh, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tplCuaSoChinh))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewProfileActionPerformed
-        tplCuaSoChinh.removeAll();
-        profilePanel = new ProfilePanel();
-        tplCuaSoChinh.addTab("Profile", profilePanel);
-    }//GEN-LAST:event_menuViewProfileActionPerformed
+    private void jPanel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel3AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3AncestorAdded
 
-    private void menuLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogOutActionPerformed
-        
-        int response = JOptionPane.showConfirmDialog (this, "Do you want to log out?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (response == JOptionPane.YES_OPTION) { 
-           this.setVisible(false);
-           DangNhapForm dangNhapForm = new DangNhapForm();
-           dangNhapForm.setLocationRelativeTo(null);
-           dangNhapForm.setVisible(true);
-            
-        }
-        else if (response == JOptionPane.NO_OPTION){
-            
-        }
-        else if (response == JOptionPane.CLOSED_OPTION){
-            
-        }
-            
-    }//GEN-LAST:event_menuLogOutActionPerformed
-
-    private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
-        int response = JOptionPane.showConfirmDialog (this, "Do you want to exit?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (response == JOptionPane.YES_OPTION) { 
-           this.dispose();
-        }
-        else if (response == JOptionPane.NO_OPTION){
-            
-        }
-        else if (response == JOptionPane.CLOSED_OPTION){
-            
-        }
-    }//GEN-LAST:event_menuExitActionPerformed
+    private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSoftwareActionPerformed
 
     private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
         tplCuaSoChinh.removeAll();
@@ -255,9 +240,45 @@ public class MainForm extends javax.swing.JFrame {
         tplCuaSoChinh.addTab("Register Student", registerStudentPanel);
     }//GEN-LAST:event_menuRegisterStudentActionPerformed
 
-    private void jPanel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel3AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3AncestorAdded
+    private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
+        int response = JOptionPane.showConfirmDialog (this, "Do you want to exit?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+        else if (response == JOptionPane.NO_OPTION){
+
+        }
+        else if (response == JOptionPane.CLOSED_OPTION){
+
+        }
+    }//GEN-LAST:event_menuExitActionPerformed
+
+    private void menuLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogOutActionPerformed
+
+        int response = JOptionPane.showConfirmDialog (this, "Do you want to log out?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            DangNhapForm dangNhapForm = new DangNhapForm();
+            dangNhapForm.setLocationRelativeTo(null);
+            dangNhapForm.setVisible(true);
+
+        }
+        else if (response == JOptionPane.NO_OPTION){
+
+        }
+        else if (response == JOptionPane.CLOSED_OPTION){
+
+        }
+
+    }//GEN-LAST:event_menuLogOutActionPerformed
+
+    private void menuViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewProfileActionPerformed
+        tplCuaSoChinh.removeAll();
+        profilePanel = new ProfilePanel();
+        tplCuaSoChinh.addTab("Profile", profilePanel);
+    }//GEN-LAST:event_menuViewProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,8 +318,8 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatabase;
     private javax.swing.JButton btnNetwork;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnSoftware;
+    private javax.swing.JButton btnWeb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
