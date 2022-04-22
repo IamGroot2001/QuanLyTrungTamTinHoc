@@ -16,6 +16,7 @@ public class QLTTTH {
         ds.setUser(user);
         ds.setPassword(password);
         ds.setDatabaseName(db);
+        ds.setServerName(server);
         ds.setPortNumber(port);
         
         try (Connection conn = ds.getConnection())
