@@ -6,5 +6,4 @@ public class QLTTTH {
         dangNhapForm.setLocationRelativeTo(null);
         dangNhapForm.setVisible(true);
     }
-    
 }
