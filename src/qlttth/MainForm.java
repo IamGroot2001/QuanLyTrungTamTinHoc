@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 public class MainForm extends javax.swing.JFrame {
     private ProfilePanel profilePanel;
     private RegisterStudentPanel registerStudentPanel;
+    private NewCodePanel newCodePanel;
+    private RegisterTeacherPanel registerTeacherPanel;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
@@ -188,6 +190,11 @@ public class MainForm extends javax.swing.JFrame {
         jMenu2.setText("Teacher");
 
         jMenuItem5.setText("Register Teacher");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -195,6 +202,11 @@ public class MainForm extends javax.swing.JFrame {
         jMenu4.setText("Course");
 
         jMenuItem1.setText("Add New Course");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem1);
 
         jMenuItem2.setText("Manage Course");
@@ -232,6 +244,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnSoftwareActionPerformed
 
     private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
@@ -279,6 +292,20 @@ public class MainForm extends javax.swing.JFrame {
         profilePanel = new ProfilePanel();
         tplCuaSoChinh.addTab("Profile", profilePanel);
     }//GEN-LAST:event_menuViewProfileActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        tplCuaSoChinh.removeAll();
+        newCodePanel = new NewCodePanel();
+        tplCuaSoChinh.addTab("NewCode", newCodePanel);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        tplCuaSoChinh.removeAll();
+        registerTeacherPanel = new RegisterTeacherPanel();
+        tplCuaSoChinh.addTab("Register Teacher", registerTeacherPanel);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
