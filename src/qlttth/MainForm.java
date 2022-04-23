@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 public class MainForm extends javax.swing.JFrame {
     private ProfilePanel profilePanel;
     private RegisterStudentPanel registerStudentPanel;
+    private NewCourse newCourse;
+    private ManageStudent manageStudent;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
@@ -34,10 +36,6 @@ public class MainForm extends javax.swing.JFrame {
         tplCuaSoChinh = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        btnWeb = new javax.swing.JButton();
-        btnDatabase = new javax.swing.JButton();
-        btnNetwork = new javax.swing.JButton();
-        btnSoftware = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -46,12 +44,16 @@ public class MainForm extends javax.swing.JFrame {
         menuExit = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         menuRegisterStudent = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuManageStudent = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        menuManageTeacher = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuAddNewCourse = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -69,56 +71,15 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        btnWeb.setBackground(new java.awt.Color(218, 231, 230));
-        btnWeb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnWeb.setText("Web developer");
-
-        btnDatabase.setBackground(new java.awt.Color(218, 231, 230));
-        btnDatabase.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDatabase.setText("Database Administrator");
-
-        btnNetwork.setBackground(new java.awt.Color(218, 231, 230));
-        btnNetwork.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNetwork.setText("Network Administraor");
-
-        btnSoftware.setBackground(new java.awt.Color(218, 231, 230));
-        btnSoftware.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSoftware.setText("Software developer");
-        btnSoftware.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSoftwareActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(btnNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(120, Short.MAX_VALUE))
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSoftware, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDatabase, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
+            .addGap(0, 411, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -134,7 +95,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tplCuaSoChinh.addTab("Course", jPanel1);
+        tplCuaSoChinh.addTab("", jPanel1);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -180,8 +141,13 @@ public class MainForm extends javax.swing.JFrame {
         });
         jMenu1.add(menuRegisterStudent);
 
-        jMenuItem3.setText("Manage Student");
-        jMenu1.add(jMenuItem3);
+        menuManageStudent.setText("Manage Student");
+        menuManageStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManageStudentActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuManageStudent);
 
         jMenuBar1.add(jMenu1);
 
@@ -190,17 +156,35 @@ public class MainForm extends javax.swing.JFrame {
         jMenuItem5.setText("Register Teacher");
         jMenu2.add(jMenuItem5);
 
+        menuManageTeacher.setText("Manage Teacher");
+        jMenu2.add(menuManageTeacher);
+
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("Course");
 
-        jMenuItem1.setText("Add New Course");
-        jMenu4.add(jMenuItem1);
+        menuAddNewCourse.setText("Add New Course");
+        menuAddNewCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddNewCourseActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuAddNewCourse);
 
         jMenuItem2.setText("Manage Course");
         jMenu4.add(jMenuItem2);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu9.setText("Class");
+
+        jMenuItem1.setText("Add New Class");
+        jMenu9.add(jMenuItem1);
+
+        jMenuItem4.setText("Manage Class");
+        jMenu9.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
 
@@ -225,14 +209,6 @@ public class MainForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jPanel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel3AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel3AncestorAdded
-
-    private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSoftwareActionPerformed
 
     private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
         tplCuaSoChinh.removeAll();
@@ -280,6 +256,22 @@ public class MainForm extends javax.swing.JFrame {
         tplCuaSoChinh.addTab("Profile", profilePanel);
     }//GEN-LAST:event_menuViewProfileActionPerformed
 
+    private void jPanel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel3AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3AncestorAdded
+
+    private void menuAddNewCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddNewCourseActionPerformed
+        tplCuaSoChinh.removeAll();
+        newCourse = new NewCourse();
+        tplCuaSoChinh.addTab("New Course", newCourse);
+    }//GEN-LAST:event_menuAddNewCourseActionPerformed
+
+    private void menuManageStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageStudentActionPerformed
+        tplCuaSoChinh.removeAll();
+        manageStudent = new ManageStudent();
+        tplCuaSoChinh.addTab("Manage Student", manageStudent);
+    }//GEN-LAST:event_menuManageStudentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,24 +308,24 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDatabase;
-    private javax.swing.JButton btnNetwork;
-    private javax.swing.JButton btnSoftware;
-    private javax.swing.JButton btnWeb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JMenuItem menuAddNewCourse;
     private javax.swing.JMenuItem menuExit;
     private javax.swing.JMenuItem menuLogOut;
+    private javax.swing.JMenuItem menuManageStudent;
+    private javax.swing.JMenu menuManageTeacher;
     private javax.swing.JMenuItem menuRegisterStudent;
     private javax.swing.JMenuItem menuViewProfile;
     private javax.swing.JTabbedPane tplCuaSoChinh;
