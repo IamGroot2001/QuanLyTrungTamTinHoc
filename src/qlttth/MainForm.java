@@ -14,10 +14,14 @@ import javax.swing.JOptionPane;
 public class MainForm extends javax.swing.JFrame {
     private ProfilePanel profilePanel;
     private RegisterStudentPanel registerStudentPanel;
-    private NewCourse newCourse;
+    private AddNewCourse newCourse;
     private ManageStudent manageStudent;
+    private ManageCourse manageCourse;
     private RegisterTeacher registerTeacher;
-    private ManegerTeacher manegerTeacher;
+    private ManageTeacher manageTeacher;
+    private AddNewClass addNewClass;
+    private ManageClass manageClass;
+    private Bill bill;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
@@ -48,14 +52,16 @@ public class MainForm extends javax.swing.JFrame {
         menuRegisterStudent = new javax.swing.JMenuItem();
         menuManageStudent = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuRegisterTeacher = new javax.swing.JMenuItem();
+        menuManageTeacher = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         menuAddNewCourse = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuManageCourse = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuAddNewClass = new javax.swing.JMenuItem();
+        menuManageClass = new javax.swing.JMenuItem();
+        menuBill = new javax.swing.JMenu();
+        menuViewBill = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -155,21 +161,21 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenu2.setText("Teacher");
 
-        jMenuItem5.setText("Register Teacher");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuRegisterTeacher.setText("Register Teacher");
+        menuRegisterTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuRegisterTeacherActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jMenu2.add(menuRegisterTeacher);
 
-        jMenuItem3.setText("Maneger Teacher");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        menuManageTeacher.setText("Manage Teacher");
+        menuManageTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                menuManageTeacherActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu2.add(menuManageTeacher);
 
         jMenuBar1.add(jMenu2);
 
@@ -183,20 +189,47 @@ public class MainForm extends javax.swing.JFrame {
         });
         jMenu4.add(menuAddNewCourse);
 
-        jMenuItem2.setText("Manage Course");
-        jMenu4.add(jMenuItem2);
+        menuManageCourse.setText("Manage Course");
+        menuManageCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManageCourseActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuManageCourse);
 
         jMenuBar1.add(jMenu4);
 
         jMenu9.setText("Class");
 
-        jMenuItem1.setText("Add New Class");
-        jMenu9.add(jMenuItem1);
+        menuAddNewClass.setText("Add New Class");
+        menuAddNewClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddNewClassActionPerformed(evt);
+            }
+        });
+        jMenu9.add(menuAddNewClass);
 
-        jMenuItem4.setText("Manage Class");
-        jMenu9.add(jMenuItem4);
+        menuManageClass.setText("Manage Class");
+        menuManageClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManageClassActionPerformed(evt);
+            }
+        });
+        jMenu9.add(menuManageClass);
 
         jMenuBar1.add(jMenu9);
+
+        menuBill.setText("Bill");
+
+        menuViewBill.setText("View Bill");
+        menuViewBill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuViewBillActionPerformed(evt);
+            }
+        });
+        menuBill.add(menuViewBill);
+
+        jMenuBar1.add(menuBill);
 
         setJMenuBar(jMenuBar1);
 
@@ -274,7 +307,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void menuAddNewCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddNewCourseActionPerformed
         tplCuaSoChinh.removeAll();
-        newCourse = new NewCourse();
+        newCourse = new AddNewCourse();
         tplCuaSoChinh.addTab("New Course", newCourse);
     }//GEN-LAST:event_menuAddNewCourseActionPerformed
 
@@ -284,19 +317,41 @@ public class MainForm extends javax.swing.JFrame {
         tplCuaSoChinh.addTab("Manage Student", manageStudent);
     }//GEN-LAST:event_menuManageStudentActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+    private void menuManageCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageCourseActionPerformed
+        tplCuaSoChinh.removeAll();
+        manageCourse = new ManageCourse();
+        tplCuaSoChinh.addTab("Manage Course", manageCourse);
+    }//GEN-LAST:event_menuManageCourseActionPerformed
+
+    private void menuRegisterTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterTeacherActionPerformed
         tplCuaSoChinh.removeAll();
         registerTeacher = new RegisterTeacher();
-        tplCuaSoChinh.addTab("Register Teacher", registerTeacher);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        tplCuaSoChinh.addTab("Register Teacher",registerTeacher);
+    }//GEN-LAST:event_menuRegisterTeacherActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+    private void menuManageTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageTeacherActionPerformed
         tplCuaSoChinh.removeAll();
-        manegerTeacher = new ManegerTeacher();
-        tplCuaSoChinh.addTab("Maneger Teacher", manegerTeacher);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+        manageTeacher = new ManageTeacher();
+        tplCuaSoChinh.addTab("Manage Teahcer",manageTeacher);
+    }//GEN-LAST:event_menuManageTeacherActionPerformed
+
+    private void menuAddNewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddNewClassActionPerformed
+        tplCuaSoChinh.removeAll();
+        addNewClass = new AddNewClass();
+        tplCuaSoChinh.addTab("Add New Class", addNewClass);
+    }//GEN-LAST:event_menuAddNewClassActionPerformed
+
+    private void menuManageClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageClassActionPerformed
+        tplCuaSoChinh.removeAll();
+        manageClass = new ManageClass();
+        tplCuaSoChinh.addTab("Manage Class",manageClass);
+    }//GEN-LAST:event_menuManageClassActionPerformed
+
+    private void menuViewBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewBillActionPerformed
+        tplCuaSoChinh.removeAll();
+        bill = new Bill();
+        tplCuaSoChinh.addTab("View Bill", bill);
+    }//GEN-LAST:event_menuViewBillActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,18 +396,20 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JMenuItem menuAddNewClass;
     private javax.swing.JMenuItem menuAddNewCourse;
+    private javax.swing.JMenu menuBill;
     private javax.swing.JMenuItem menuExit;
     private javax.swing.JMenuItem menuLogOut;
+    private javax.swing.JMenuItem menuManageClass;
+    private javax.swing.JMenuItem menuManageCourse;
     private javax.swing.JMenuItem menuManageStudent;
+    private javax.swing.JMenuItem menuManageTeacher;
     private javax.swing.JMenuItem menuRegisterStudent;
+    private javax.swing.JMenuItem menuRegisterTeacher;
+    private javax.swing.JMenuItem menuViewBill;
     private javax.swing.JMenuItem menuViewProfile;
     private javax.swing.JTabbedPane tplCuaSoChinh;
     // End of variables declaration//GEN-END:variables
