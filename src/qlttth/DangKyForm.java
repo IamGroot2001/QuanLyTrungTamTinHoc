@@ -4,12 +4,18 @@
  */
 package qlttth;
 
+import com.sun.tools.jconsole.JConsoleContext;
+import java.sql.CallableStatement;
+import java.util.concurrent.Callable;
+import javax.swing.JOptionPane;
+import java.util.regex.*;
+
 /**
  *
  * @author daoho
  */
 public class DangKyForm extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form DangKyForm
      */
@@ -45,6 +51,11 @@ public class DangKyForm extends javax.swing.JFrame {
         btnReAccount = new javax.swing.JTextField();
         btnRePassword = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        pLab = new javax.swing.JLabel();
+        aLab = new javax.swing.JLabel();
+        fnameLab = new javax.swing.JLabel();
+        lnameLab = new javax.swing.JLabel();
+        mailLab = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -86,6 +97,11 @@ public class DangKyForm extends javax.swing.JFrame {
 
         btnConfirm.setBackground(new java.awt.Color(205, 209, 228));
         btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
 
         btnClose.setBackground(new java.awt.Color(205, 209, 228));
         btnClose.setForeground(new java.awt.Color(255, 0, 0));
@@ -95,6 +111,51 @@ public class DangKyForm extends javax.swing.JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
+
+        btnReFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnReFirstNameKeyReleased(evt);
+            }
+        });
+
+        btnReLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnReLastNameKeyReleased(evt);
+            }
+        });
+
+        btnReAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnReAgeKeyReleased(evt);
+            }
+        });
+
+        btnRePhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnRePhoneNumberKeyReleased(evt);
+            }
+        });
+
+        btnReAccount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnReAccountKeyReleased(evt);
+            }
+        });
+
+        pLab.setForeground(new java.awt.Color(255, 255, 0));
+        pLab.setText("jLabel9");
+
+        aLab.setForeground(new java.awt.Color(153, 255, 0));
+        aLab.setText("jLabel9");
+
+        fnameLab.setForeground(new java.awt.Color(102, 255, 0));
+        fnameLab.setText("jLabel9");
+
+        lnameLab.setForeground(new java.awt.Color(204, 255, 0));
+        lnameLab.setText("jLabel10");
+
+        mailLab.setForeground(new java.awt.Color(255, 255, 0));
+        mailLab.setText("jLabel9");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,32 +175,43 @@ public class DangKyForm extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnReLastName)
-                            .addComponent(btnReFirstName)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnRePhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnReAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                                    .addComponent(btnReLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnReFirstName, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fnameLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lnameLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnReAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnRePhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnReAge, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnReAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 8, Short.MAX_VALUE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnReAge, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnReAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mailLab, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(btnConfirm)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnClose)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(btnConfirm)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnClose))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,17 +220,22 @@ public class DangKyForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnReFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnReFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fnameLab)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(btnReLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lnameLab))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(btnReAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnReAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(aLab)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -166,11 +243,13 @@ public class DangKyForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(btnRePhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRePhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pLab))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(btnReAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mailLab))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -202,6 +281,98 @@ public class DangKyForm extends javax.swing.JFrame {
         dangNhapForm.setLocationRelativeTo(null);
         dangNhapForm.setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        // TODO add your handling code here:
+        if(btnReFirstName.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Fist Name is empty!");
+        }
+        if(btnReLastName.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Last Name is empty!");
+        }
+        if(btnReAge.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Last Name is empty!");
+        }
+        if(btnRePhoneNumber.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Phone Number is empty!");
+        }
+        if(btnReAddress.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Address is empty!");
+        }
+        if(btnReAccount.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Account is empty!");
+        }
+        if(btnRePassword.getText().isEmpty()){
+            JOptionPane.showConfirmDialog(null, "Password is empty!");
+        }
+//        String str = "CALL insertAccount('"+firstName+"',"+lastName+",'"
+//                    +age+"', '"+address+"','"+phoneNumber+"','"+account+"','"+password+"');";
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnRePhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRePhoneNumberKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[0-9]{0,10}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnRePhoneNumber.getText());
+        if(!match.matches()){
+            pLab.setText("incorrect");
+        }
+        else{
+            pLab.setText(null);
+        }
+    }//GEN-LAST:event_btnRePhoneNumberKeyReleased
+
+    private void btnReAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAgeKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[0-9]{0,2}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReAge.getText());
+        if(!match.matches()){
+            aLab.setText("incorrect");
+        }
+        else{
+            aLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReAgeKeyReleased
+
+    private void btnReFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReFirstNameKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[a-zA-Z]{0,30}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReFirstName.getText());
+        if(!match.matches()){
+            fnameLab.setText("incorrect");
+        }
+        else{
+           fnameLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReFirstNameKeyReleased
+
+    private void btnReLastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReLastNameKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[a-zA-Z]{0,30}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReLastName.getText());
+        if(!match.matches()){
+            lnameLab.setText("incorrect");
+        }
+        else{
+           lnameLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReLastNameKeyReleased
+
+    private void btnReAccountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAccountKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[a-zA-Z0-9]{0,30}[@][a-zA-Z0-9]{0,10}[.][a-zA-Z0-9]{0,10}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReAccount.getText());
+        if(!match.matches()){
+            mailLab.setText("incorrect");
+        }
+        else{
+           mailLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReAccountKeyReleased
 
     /**
      * @param args the command line arguments
@@ -239,6 +410,7 @@ public class DangKyForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aLab;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JTextField btnReAccount;
@@ -248,6 +420,7 @@ public class DangKyForm extends javax.swing.JFrame {
     private javax.swing.JTextField btnReLastName;
     private javax.swing.JTextField btnRePassword;
     private javax.swing.JTextField btnRePhoneNumber;
+    private javax.swing.JLabel fnameLab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -258,5 +431,8 @@ public class DangKyForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lnameLab;
+    private javax.swing.JLabel mailLab;
+    private javax.swing.JLabel pLab;
     // End of variables declaration//GEN-END:variables
 }
