@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package qlttth;
+package qlttth.Form;
 
 import com.sun.tools.jconsole.JConsoleContext;
 import java.sql.CallableStatement;
@@ -14,12 +14,12 @@ import java.util.regex.*;
  *
  * @author daoho
  */
-public class DangKyForm extends javax.swing.JFrame {
+public class formDangKy extends javax.swing.JFrame {
     
     /**
      * Creates new form DangKyForm
      */
-    public DangKyForm() {
+    public formDangKy() {
         initComponents();
     }
 
@@ -277,7 +277,7 @@ public class DangKyForm extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
-        DangNhapForm dangNhapForm = new DangNhapForm();
+        formDangNhap dangNhapForm = new formDangNhap();
         dangNhapForm.setLocationRelativeTo(null);
         dangNhapForm.setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
@@ -391,20 +391,21 @@ public class DangKyForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangKyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangKyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangKyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangKyForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangKyForm().setVisible(true);
+                new formDangKy().setVisible(true);
             }
         });
     }

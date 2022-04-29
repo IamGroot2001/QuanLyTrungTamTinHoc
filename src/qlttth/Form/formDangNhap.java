@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package qlttth;
+package qlttth.Form;
 
 import javax.swing.JOptionPane;
 
@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author daoho
  */
-public class DangNhapForm extends javax.swing.JFrame {
+public class formDangNhap extends javax.swing.JFrame {
 
     /**
      * Creates new form DangNhapForm
      */
-    public DangNhapForm() {
+    public formDangNhap() {
         initComponents();
     }
 
@@ -147,7 +147,7 @@ public class DangNhapForm extends javax.swing.JFrame {
         if("administrator".equals(txtAccount.getText())){
             JOptionPane.showMessageDialog(null, "Log in successfully!!");
             this.setVisible(false);
-            MainForm mainForm = new MainForm();
+            formMain mainForm = new formMain();
             mainForm.setLocationRelativeTo(null);
             mainForm.setVisible(true);
         }
@@ -158,7 +158,7 @@ public class DangNhapForm extends javax.swing.JFrame {
 
     private void btnRegisterAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAccountActionPerformed
         this.setVisible(false);
-        DangKyForm dangKyForm = new DangKyForm();
+        formDangKy dangKyForm = new formDangKy();
         dangKyForm.setLocationRelativeTo(null);
         dangKyForm.setVisible(true);
     }//GEN-LAST:event_btnRegisterAccountActionPerformed
@@ -180,20 +180,21 @@ public class DangNhapForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhapForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhapForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhapForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangNhapForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangNhapForm().setVisible(true);
+                new formDangNhap().setVisible(true);
                 
             }
         });

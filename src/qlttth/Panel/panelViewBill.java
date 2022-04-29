@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package qlttth;
+package qlttth.Panel;
 
 /**
  *
  * @author daoho
  */
-public class Bill extends javax.swing.JPanel {
+public class panelViewBill extends javax.swing.JPanel {
 
     /**
      * Creates new form Bill
      */
-    public Bill() {
+    public panelViewBill() {
         initComponents();
     }
 

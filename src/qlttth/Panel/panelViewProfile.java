@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package qlttth;
+package qlttth.Panel;
 
 /**
  *
  * @author daoho
  */
-public class ProfilePanel extends javax.swing.JPanel {
+public class panelViewProfile extends javax.swing.JPanel {
 
     /**
      * Creates new form ProfilePanel
      */
-    public ProfilePanel() {
+    public panelViewProfile() {
         initComponents();
     }
 

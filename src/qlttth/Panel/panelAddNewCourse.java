@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package qlttth;
+package qlttth.Panel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author daoho
  */
-public class AddNewCourse extends javax.swing.JPanel {
+public class panelAddNewCourse extends javax.swing.JPanel {
 
     /**
      * Creates new form NewCourse
      */
-    public AddNewCourse() {
+    public panelAddNewCourse() {
         initComponents();
     }
 

@@ -2,8 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package qlttth;
+package qlttth.Form;
 
+import qlttth.Panel.panelAddNewClass;
+import qlttth.Panel.panelAddNewCourse;
+import qlttth.Panel.panelManageTeacher;
+import qlttth.Panel.panelManageCourse;
+import qlttth.Panel.panelAddNewTeacher;
+import qlttth.Panel.panelManageClass;
+import qlttth.Panel.panelViewProfile;
+import qlttth.Panel.panelViewBill;
+import qlttth.Panel.panelManageStudent;
+import qlttth.Panel.panelAddNewStudent;
 import java.security.MessageDigest;
 import javax.swing.JOptionPane;
 
@@ -11,22 +21,22 @@ import javax.swing.JOptionPane;
  *
  * @author daoho
  */
-public class MainForm extends javax.swing.JFrame {
-    private ProfilePanel profilePanel;
-    private RegisterStudentPanel registerStudentPanel;
-    private AddNewCourse newCourse;
-    private ManageStudent manageStudent;
-    private ManageCourse manageCourse;
-    private RegisterTeacher registerTeacher;
-    private ManageTeacher manageTeacher;
-    private AddNewClass addNewClass;
-    private ManageClass manageClass;
-    private Bill bill;
+public class formMain extends javax.swing.JFrame {
+    private panelViewProfile profilePanel;
+    private panelAddNewStudent registerStudentPanel;
+    private panelAddNewCourse newCourse;
+    private panelManageStudent manageStudent;
+    private panelManageCourse manageCourse;
+    private panelAddNewTeacher registerTeacher;
+    private panelManageTeacher manageTeacher;
+    private panelAddNewClass addNewClass;
+    private panelManageClass manageClass;
+    private panelViewBill bill;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
      */
-    public MainForm() {
+    public formMain() {
         initComponents();
     }
 
@@ -257,7 +267,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
         tplCuaSoChinh.removeAll();
-        registerStudentPanel = new RegisterStudentPanel();
+        registerStudentPanel = new panelAddNewStudent();
         tplCuaSoChinh.addTab("Register Student", registerStudentPanel);
     }//GEN-LAST:event_menuRegisterStudentActionPerformed
 
@@ -281,7 +291,7 @@ public class MainForm extends javax.swing.JFrame {
 
         if (response == JOptionPane.YES_OPTION) {
             this.setVisible(false);
-            DangNhapForm dangNhapForm = new DangNhapForm();
+            formDangNhap dangNhapForm = new formDangNhap();
             dangNhapForm.setLocationRelativeTo(null);
             dangNhapForm.setVisible(true);
 
@@ -297,7 +307,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void menuViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewProfileActionPerformed
         tplCuaSoChinh.removeAll();
-        profilePanel = new ProfilePanel();
+        profilePanel = new panelViewProfile();
         tplCuaSoChinh.addTab("Profile", profilePanel);
     }//GEN-LAST:event_menuViewProfileActionPerformed
 
@@ -307,49 +317,49 @@ public class MainForm extends javax.swing.JFrame {
 
     private void menuAddNewCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddNewCourseActionPerformed
         tplCuaSoChinh.removeAll();
-        newCourse = new AddNewCourse();
+        newCourse = new panelAddNewCourse();
         tplCuaSoChinh.addTab("New Course", newCourse);
     }//GEN-LAST:event_menuAddNewCourseActionPerformed
 
     private void menuManageStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageStudentActionPerformed
         tplCuaSoChinh.removeAll();
-        manageStudent = new ManageStudent();
+        manageStudent = new panelManageStudent();
         tplCuaSoChinh.addTab("Manage Student", manageStudent);
     }//GEN-LAST:event_menuManageStudentActionPerformed
 
     private void menuManageCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageCourseActionPerformed
         tplCuaSoChinh.removeAll();
-        manageCourse = new ManageCourse();
+        manageCourse = new panelManageCourse();
         tplCuaSoChinh.addTab("Manage Course", manageCourse);
     }//GEN-LAST:event_menuManageCourseActionPerformed
 
     private void menuRegisterTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterTeacherActionPerformed
         tplCuaSoChinh.removeAll();
-        registerTeacher = new RegisterTeacher();
+        registerTeacher = new panelAddNewTeacher();
         tplCuaSoChinh.addTab("Register Teacher",registerTeacher);
     }//GEN-LAST:event_menuRegisterTeacherActionPerformed
 
     private void menuManageTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageTeacherActionPerformed
         tplCuaSoChinh.removeAll();
-        manageTeacher = new ManageTeacher();
+        manageTeacher = new panelManageTeacher();
         tplCuaSoChinh.addTab("Manage Teahcer",manageTeacher);
     }//GEN-LAST:event_menuManageTeacherActionPerformed
 
     private void menuAddNewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddNewClassActionPerformed
         tplCuaSoChinh.removeAll();
-        addNewClass = new AddNewClass();
+        addNewClass = new panelAddNewClass();
         tplCuaSoChinh.addTab("Add New Class", addNewClass);
     }//GEN-LAST:event_menuAddNewClassActionPerformed
 
     private void menuManageClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManageClassActionPerformed
         tplCuaSoChinh.removeAll();
-        manageClass = new ManageClass();
+        manageClass = new panelManageClass();
         tplCuaSoChinh.addTab("Manage Class",manageClass);
     }//GEN-LAST:event_menuManageClassActionPerformed
 
     private void menuViewBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewBillActionPerformed
         tplCuaSoChinh.removeAll();
-        bill = new Bill();
+        bill = new panelViewBill();
         tplCuaSoChinh.addTab("View Bill", bill);
     }//GEN-LAST:event_menuViewBillActionPerformed
 
@@ -370,20 +380,21 @@ public class MainForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(formMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              new MainForm().setVisible(true);
+              new formMain().setVisible(true);
             }
         });
     }

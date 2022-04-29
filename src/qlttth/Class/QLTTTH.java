@@ -1,7 +1,8 @@
-package qlttth;
+package qlttth.Class;
 
 import com.microsoft.sqlserver.jdbc.SQLServerXADataSource;
 import java.sql.*;
+import qlttth.Form.formDangNhap;
 
 public class QLTTTH {
     public static void main(String[] args) {
@@ -29,7 +30,7 @@ public class QLTTTH {
             ex.printStackTrace();
         }
         
-        DangNhapForm dangNhapForm = new DangNhapForm();
+        formDangNhap dangNhapForm = new formDangNhap();
         dangNhapForm.setLocationRelativeTo(null);
         dangNhapForm.setVisible(true);
     }
