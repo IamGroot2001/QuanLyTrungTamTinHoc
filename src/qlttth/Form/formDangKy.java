@@ -284,27 +284,41 @@ public class formDangKy extends javax.swing.JFrame {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-        if(btnReFirstName.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Fist Name is empty!");
+        try
+        {
+            if(btnReFirstName.getText().isEmpty() || btnReLastName.getText().isEmpty()
+                    || btnReAge.getText().isEmpty() || btnRePhoneNumber.getText().isEmpty()
+                    || btnReAddress.getText().isEmpty() || btnReAccount.getText().isEmpty()
+                    || btnRePassword.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+            }
         }
-        if(btnReLastName.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Last Name is empty!");
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
         }
-        if(btnReAge.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Last Name is empty!");
-        }
-        if(btnRePhoneNumber.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Phone Number is empty!");
-        }
-        if(btnReAddress.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Address is empty!");
-        }
-        if(btnReAccount.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Account is empty!");
-        }
-        if(btnRePassword.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Password is empty!");
-        }
+//        if(btnReFirstName.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Fist Name is empty!");
+//        }
+//        if(btnReLastName.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Last Name is empty!");
+//        }
+//        if(btnReAge.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Last Name is empty!");
+//        }
+//        if(btnRePhoneNumber.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Phone Number is empty!");
+//        }
+//        if(btnReAddress.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Address is empty!");
+//        }
+//        if(btnReAccount.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Account is empty!");
+//        }
+//        if(btnRePassword.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Password is empty!");
+//        }
 //        String str = "CALL insertAccount('"+firstName+"',"+lastName+",'"
 //                    +age+"', '"+address+"','"+phoneNumber+"','"+account+"','"+password+"');";
     }//GEN-LAST:event_btnConfirmActionPerformed

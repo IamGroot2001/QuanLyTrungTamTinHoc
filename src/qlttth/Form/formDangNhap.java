@@ -5,6 +5,7 @@
 package qlttth.Form;
 
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -64,8 +65,6 @@ public class formDangNhap extends javax.swing.JFrame {
 
         lnlPassword.setForeground(new java.awt.Color(255, 255, 255));
         lnlPassword.setText("Password:");
-
-        txtAccount.setText("administrator");
 
         btnLogin.setBackground(new java.awt.Color(205, 209, 228));
         btnLogin.setText("Login");
@@ -144,16 +143,52 @@ public class formDangNhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if("administrator".equals(txtAccount.getText())){
-            JOptionPane.showMessageDialog(null, "Log in successfully!!");
-            this.setVisible(false);
-            formMain mainForm = new formMain();
-            mainForm.setLocationRelativeTo(null);
-            mainForm.setVisible(true);
+
+        String user = txtAccount.getText();
+        String password = txtPassword.getText();
+        
+        try
+        {
+            if(user.equals("") && password.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Please enter your account and password!!");
+            }
+            else if (user.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Please enter your account!!");
+            }
+            else if (password.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Please enter your password!!");
+            }
+            else
+            {
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                String sql = "SELECT * FROM TaiKhoan WHERE TaiKhoan=? AND MatKhau=?";
+                PreparedStatement stm = conn.prepareStatement(sql);
+                stm.setString(1, user);
+                stm.setString(2, password);
+                ResultSet rs = stm.executeQuery();
+                if(rs.next())
+                {
+                    JOptionPane.showMessageDialog(null, "Log in successfully!!");
+                    this.setVisible(false);
+                    formMain mainForm = new formMain();
+                    mainForm.setLocationRelativeTo(null);
+                    mainForm.setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Log in failed!!");
+                }
+            }
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Please fill in the blanks");
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
         }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAccountActionPerformed
