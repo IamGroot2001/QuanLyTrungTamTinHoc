@@ -30,6 +30,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -121,8 +122,10 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
         pLab.setText("jLabel13");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Male");
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Female");
 
         jLabel9.setText("Gender:");
@@ -316,6 +319,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDLab;
     private javax.swing.JLabel aLab;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel fnameLab;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;

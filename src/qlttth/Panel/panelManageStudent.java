@@ -26,6 +26,7 @@ public class panelManageStudent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -96,8 +97,10 @@ public class panelManageStudent extends javax.swing.JPanel {
 
         jLabel10.setText("Gender:");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Male");
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Female");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -240,6 +243,7 @@ public class panelManageStudent extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
