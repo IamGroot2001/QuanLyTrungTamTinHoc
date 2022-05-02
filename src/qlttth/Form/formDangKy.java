@@ -6,6 +6,8 @@ package qlttth.Form;
 
 import com.sun.tools.jconsole.JConsoleContext;
 import java.sql.CallableStatement;
+import java.sql.*;
+import java.sql.DriverManager;
 import java.util.concurrent.Callable;
 import javax.swing.JOptionPane;
 import java.util.regex.*;
@@ -58,8 +60,8 @@ public class formDangKy extends javax.swing.JFrame {
         lnameLab = new javax.swing.JLabel();
         mailLab = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rabtnMale = new javax.swing.JRadioButton();
+        rabtnFemale = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -164,11 +166,11 @@ public class formDangKy extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Gender:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Male");
+        buttonGroup1.add(rabtnMale);
+        rabtnMale.setText("Male");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Female");
+        buttonGroup1.add(rabtnFemale);
+        rabtnFemale.setText("Female");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,17 +204,20 @@ public class formDangKy extends javax.swing.JFrame {
                                     .addComponent(fnameLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lnameLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnReAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mailLab, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnReAge, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnReAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mailLab, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))))
+                                        .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addComponent(rabtnFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(jLabel1))
@@ -228,11 +233,9 @@ public class formDangKy extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rabtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,10 +261,11 @@ public class formDangKy extends javax.swing.JFrame {
                         .addComponent(btnReAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(aLab)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rabtnFemale)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(rabtnMale)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -310,6 +314,7 @@ public class formDangKy extends javax.swing.JFrame {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
+        String gender;
         try
         {
             if(btnReFirstName.getText().isEmpty() || btnReLastName.getText().isEmpty()
@@ -319,10 +324,61 @@ public class formDangKy extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
             }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                String query = "INSERT INTO TaiKhoan(Ten, Ho, Tuoi, GioiTinh, DiaChi, SoDienThoai, TaiKhoan, MatKhau)VALUES(?,?,?,?,?,?,?,?) ";
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                // insert du lieu vao database o day
+                pst.setString(1, btnReFirstName.getText());
+                pst.setString(2, btnReLastName.getText());
+                pst.setString(3, btnReAge.getText());
+                
+                if(rabtnMale.isSelected())
+                {
+                    gender = "Male";
+                    pst.setString(4, gender);
+                }
+                else if (rabtnFemale.isSelected())
+                {
+                    gender = "Female";
+                    pst.setString(4, gender);
+                }
+                
+                pst.setString(5, btnReAddress.getText());
+                pst.setString(6, btnRePhoneNumber.getText());
+                pst.setString(7, btnReAccount.getText());
+                pst.setString(8, btnRePassword.getText());
+                
+                // o day can co code so sanh xem tai khoan dang nhap co trung voi trong database hay k
+                // neu trung thi bat nhap 1 tai khoan khac
+                String acc = btnReAccount.getText();
+                String pass = btnRePassword.getText();
+                
+                String selectQuery = "SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '"+acc+"'";
+                Statement stat = conn.createStatement();
+                ResultSet rs = stat.executeQuery(selectQuery);
+                
+                System.out.println(rs.next());
+                
+                if(rs.next()==true)
+                {
+                    JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
+                }
+                else
+                {
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Inserted successfully!!");
+                }
+            }
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
+            //ex.printStackTrace();
         }
 //        if(btnReFirstName.getText().isEmpty()){
 //            JOptionPane.showMessageDialog(null, "Fist Name is empty!");
@@ -473,11 +529,11 @@ public class formDangKy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lnameLab;
     private javax.swing.JLabel mailLab;
     private javax.swing.JLabel pLab;
+    private javax.swing.JRadioButton rabtnFemale;
+    private javax.swing.JRadioButton rabtnMale;
     // End of variables declaration//GEN-END:variables
 }
