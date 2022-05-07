@@ -66,6 +66,10 @@ public class formDangNhap extends javax.swing.JFrame {
         lnlPassword.setForeground(new java.awt.Color(255, 255, 255));
         lnlPassword.setText("Password:");
 
+        txtAccount.setText("tk01");
+
+        txtPassword.setText("123456a@");
+
         btnLogin.setBackground(new java.awt.Color(205, 209, 228));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
