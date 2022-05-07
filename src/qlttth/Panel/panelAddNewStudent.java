@@ -4,9 +4,17 @@
  */
 package qlttth.Panel;
 
+
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
+import com.sun.tools.jconsole.JConsoleContext;
+import java.util.concurrent.Callable;
+import java.sql.*;
 
 /**
  *
@@ -31,6 +39,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         fnameLab = new javax.swing.JLabel();
@@ -59,6 +68,8 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         IDLab = new javax.swing.JLabel();
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         fnameLab.setText("jLabel11");
 
@@ -90,8 +101,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         jLabel6.setText("Phone Number:");
 
         jLabel7.setText("Choose Class:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -141,7 +150,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
+                .addGap(193, 193, 193)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -150,10 +159,9 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField5)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,27 +278,49 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //khoi tao ban dau cho tung dong text
-        
-        
-        //Truong hop confirm co o trong thi xuat thong bao 
-        if(jTextField1.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Student ID is empty!");
+        try
+        {
+            //check index null
+            if(jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty()
+               || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty()
+               | jTextField5.getText().isEmpty()|| jTextField6.getText().isEmpty()|| jTextField7.getText().isEmpty() )
+            {
+                JOptionPane.showConfirmDialog(null,"Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                //Connection conn = (Connection) DriverManager.getConnection(url);
+                java.sql.Connection conn = DriverManager.getConnection(url);
+                String query = "INSERT INTO [dbo].[HocVien]([MaHV],[TenGV],[HoGV],[TuoiGV],[GioiTinhGV],[DiaChiGV],[SDTGV],[MaLH])values(?,?,?,?,?,?,?,?)";
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                String gender;
+                //insert du lieu
+                pst.setString(1, jTextField1.getText());
+                pst.setString(2, jTextField2.getText());
+                pst.setString(3, jTextField3.getText());
+                pst.setString(4, jTextField4.getText());
+                if(jButton1.isSelected())
+                {
+                    gender = "Male";
+                    pst.setString(5, gender);
+                }
+                else
+                {
+                    gender = "Female";
+                    pst.setString(5, gender);
+                }
+                pst.setString(6, jTextField5.getText());
+                pst.setString(7, jTextField6.getText());
+                
+            }
+            
         }
-        if(jTextField2.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "First name is empty!");
-        }
-        if(jTextField3.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Last name is empty!");
-        }
-        if(jTextField4.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Age is empty!");
-        }
-        if(jTextField5.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Address is empty!");
-        }
-        if(jTextField6.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Phone number is empty!");
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "The ID is existed!! Please try another!!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -367,6 +397,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
     private javax.swing.JLabel fnameLab;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

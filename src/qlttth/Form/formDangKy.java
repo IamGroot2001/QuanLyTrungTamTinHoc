@@ -332,6 +332,7 @@ public class formDangKy extends javax.swing.JFrame {
                 String query = "INSERT INTO TaiKhoan(Ten, Ho, Tuoi, GioiTinh, DiaChi, SoDienThoai, TaiKhoan, MatKhau)VALUES(?,?,?,?,?,?,?,?) ";
                 PreparedStatement pst = conn.prepareStatement(query);
                 
+                
                 // insert du lieu vao database o day
                 pst.setString(1, btnReFirstName.getText());
                 pst.setString(2, btnReLastName.getText());
