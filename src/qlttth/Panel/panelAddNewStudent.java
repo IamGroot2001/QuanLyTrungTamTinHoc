@@ -50,13 +50,13 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rdoMale = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdoFemale = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbChooseClass = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -88,13 +88,13 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Male");
+        buttonGroup1.add(rdoMale);
+        rdoMale.setText("Male");
 
         jLabel4.setText("Age:");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Female");
+        buttonGroup1.add(rdoFemale);
+        rdoFemale.setText("Female");
 
         jLabel5.setText("Address:");
 
@@ -161,7 +161,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbChooseClass, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,9 +189,9 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jRadioButton1)
+                                                    .addComponent(rdoMale)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(jRadioButton2)))
+                                                    .addComponent(rdoFemale)))
                                             .addGap(16, 16, 16)))
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -231,8 +231,8 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2))
+                        .addComponent(rdoMale)
+                        .addComponent(rdoFemale))
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,7 +246,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbChooseClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,7 +283,8 @@ public class panelAddNewStudent extends javax.swing.JPanel {
             //check index null
             if(jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty()
                || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty()
-               | jTextField5.getText().isEmpty()|| jTextField6.getText().isEmpty()|| jTextField7.getText().isEmpty() )
+               || jTextField5.getText().isEmpty()|| jTextField6.getText().isEmpty()|| jTextField7.getText().isEmpty()
+               ||cmbChooseClass.getSelectedIndex() == -1 )
             {
                 JOptionPane.showConfirmDialog(null,"Please fill in the blanks!!");
             }
@@ -293,8 +294,11 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
                 //Connection conn = (Connection) DriverManager.getConnection(url);
                 java.sql.Connection conn = DriverManager.getConnection(url);
-                String query = "INSERT INTO [dbo].[HocVien]([MaHV],[TenGV],[HoGV],[TuoiGV],[GioiTinhGV],[DiaChiGV],[SDTGV],[MaLH])values(?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO [dbo].[HocVien]([MaHV],[TenHV],[HoHV],[TuoiHV],[GioiTinhHV],[DiaChiHV],[SDTV],[MaLH])values(?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = conn.prepareStatement(query);
+                
+                //set lua chon gioi tinh luc dau luon luon hien thi la male
+                
                 
                 String gender;
                 //insert du lieu
@@ -302,7 +306,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 pst.setString(2, jTextField2.getText());
                 pst.setString(3, jTextField3.getText());
                 pst.setString(4, jTextField4.getText());
-                if(jButton1.isSelected())
+                if(rdoMale.isSelected())
                 {
                     gender = "Male";
                     pst.setString(5, gender);
@@ -394,9 +398,9 @@ public class panelAddNewStudent extends javax.swing.JPanel {
     private javax.swing.JLabel IDLab;
     private javax.swing.JLabel aLab;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbChooseClass;
     private javax.swing.JLabel fnameLab;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -409,8 +413,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -421,5 +423,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lnameLab;
     private javax.swing.JLabel pLab;
+    private javax.swing.JRadioButton rdoFemale;
+    private javax.swing.JRadioButton rdoMale;
     // End of variables declaration//GEN-END:variables
 }

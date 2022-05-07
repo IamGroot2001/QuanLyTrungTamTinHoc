@@ -25,4 +25,70 @@ public class Student {
         this.TuoiHV = TuoiHV;
         this.SDTHV = SDTHV;
     }
+
+    public String getMaHV() {
+        return MaHV;
+    }
+
+    public void setMaHV(String MaHV) {
+        this.MaHV = MaHV;
+    }
+
+    public String getTenHV() {
+        return TenHV;
+    }
+
+    public void setTenHV(String TenHV) {
+        this.TenHV = TenHV;
+    }
+
+    public String getHoHV() {
+        return HoHV;
+    }
+
+    public void setHoHV(String HoHV) {
+        this.HoHV = HoHV;
+    }
+
+    public String getGioiTinhHV() {
+        return GioiTinhHV;
+    }
+
+    public void setGioiTinhHV(String GioiTinhHV) {
+        this.GioiTinhHV = GioiTinhHV;
+    }
+
+    public String getDiaChiHV() {
+        return DiaChiHV;
+    }
+
+    public void setDiaChiHV(String DiaChiHV) {
+        this.DiaChiHV = DiaChiHV;
+    }
+
+    public String getMaLH() {
+        return MaLH;
+    }
+
+    public void setMaLH(String MaLH) {
+        this.MaLH = MaLH;
+    }
+
+    public int getTuoiHV() {
+        return TuoiHV;
+    }
+
+    public void setTuoiHV(int TuoiHV) {
+        this.TuoiHV = TuoiHV;
+    }
+
+    public int getSDTHV() {
+        return SDTHV;
+    }
+
+    public void setSDTHV(int SDTHV) {
+        this.SDTHV = SDTHV;
+    }
+    
+    
 }
