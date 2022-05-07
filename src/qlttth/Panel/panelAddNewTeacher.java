@@ -4,16 +4,22 @@
  */
 package qlttth.Panel;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.*;
 import javax.swing.JOptionPane;
+import com.sun.tools.jconsole.JConsoleContext;
+import java.util.concurrent.Callable;
+import javax.swing.JOptionPane;
+import java.util.regex.*;
 
 /**
  *
  * @author daoho
  */
 public class panelAddNewTeacher extends javax.swing.JPanel {
-
     /**
      * Creates new form RegisterTeacher
      */
@@ -253,29 +259,66 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jTextField1.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Student ID is empty!");
+        String gender;
+        try {
+            if(jTextField1.getText().isEmpty()||jTextField2.getText().isEmpty()
+                ||jTextField3.getText().isEmpty()||jTextField4.getText().isEmpty()
+                ||jTextField5.getText().isEmpty()||jTextField6.getText().isEmpty()){
+             JOptionPane.showConfirmDialog(null, "Please fill in the blanks!!");
         }
-        if(jTextField2.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "First name is empty!");
-        }
-        if(jTextField3.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Last name is empty!");
-        }
-        if(jTextField4.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Age is empty!");
-        }
-        if(jTextField5.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Address is empty!");
-        }
-        if(jTextField6.getText().isEmpty()){
-             JOptionPane.showConfirmDialog(null, "Phone number is empty!");
+        else{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            Connection conn = DriverManager.getConnection(url);
+            String query = "INSERT INTO [dbo].[GiangVien]([MaGV],[TenGV],[HoGV],[TuoiGV],[GioiTinhGV],[DiaChiGV],[SDTGV])values(?,?,?,?,?,?,?)";
+            PreparedStatement pst = conn.prepareStatement(query);
+            
+            // insert du lieu vao database o day
+            pst.setString(1, jTextField1.getText());
+            pst.setString(2, jTextField2.getText());
+            pst.setString(3, jTextField3.getText());
+            pst.setString(4, jTextField4.getText());
+             if(jRadioButton1.isSelected())
+                {
+                    gender = "Male";
+                    pst.setString(5, gender);
+                }
+                else if (jRadioButton2.isSelected())
+                {
+                    gender = "Female";
+                    pst.setString(5, gender);
+                }
+            pst.setString(6, jTextField5.getText());
+            pst.setString(7, jTextField6.getText());
+            
+             // o day can co code so sanh xem tai khoan dang nhap co trung voi trong database hay k
+            // neu trung thi bat nhap 1 tai khoan khac
+            String TeacherID = jTextField1.getText();
+
+            String selectQuery = "SELECT COUNT(*) FROM GiangVien WHERE MaGV = '"+TeacherID+"'";
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(selectQuery);
+
+            System.out.println(rs.next());
+
+            if(rs.next()==true)
+            {
+                JOptionPane.showMessageDialog(null, "The ID is existed!!");
+            }
+            else
+            {
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Inserted successfully!!");
+            }
+        }           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "The ID is existed!! Please try another!!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         // TODO add your handling code here:
-         String PATTERN = "^[0-9]{0,10}$";
+         String PATTERN = "^[A-Z]{0,9}[0-9]{0,10}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(jTextField1.getText());
         if(!match.matches()){
@@ -368,4 +411,8 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
     private javax.swing.JLabel lnameLab;
     private javax.swing.JLabel pLab;
     // End of variables declaration//GEN-END:variables
+
+    private Object connected() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -270,6 +270,10 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //khoi tao ban dau cho tung dong text
+        
+        
+        //Truong hop confirm co o trong thi xuat thong bao 
         if(jTextField1.getText().isEmpty()){
              JOptionPane.showConfirmDialog(null, "Student ID is empty!");
         }

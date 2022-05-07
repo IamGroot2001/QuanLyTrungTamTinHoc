@@ -366,7 +366,7 @@ public class formDangKy extends javax.swing.JFrame {
                 
                 if(rs.next()==true)
                 {
-                    JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
+                    JOptionPane.showMessageDialog(null, "The account is existed!!");
                 }
                 else
                 {
