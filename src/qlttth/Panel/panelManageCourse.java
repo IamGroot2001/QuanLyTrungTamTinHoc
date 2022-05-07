@@ -59,10 +59,7 @@ public class panelManageCourse extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Course ID", "Course Name", "Date Start", "Date End", "Date Study", "Time", "Price"
