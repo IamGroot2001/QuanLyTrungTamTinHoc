@@ -27,6 +27,34 @@ public class panelAddNewStudent extends javax.swing.JPanel {
      */
     public panelAddNewStudent() {
         initComponents();
+        //set lua chon gioi tinh luc dau luon luon hien thi la male
+        rdoMale.setSelected(true);
+        initComboBoxClass();
+    }
+    
+    public void initComboBoxClass(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT TenLH FROM LopHoc";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbChooseClass.removeAllItems();
+            while (rs.next())
+            {
+                  cmbChooseClass.addItem(rs.getString("TenLH"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -278,6 +306,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         try
         {
             //check index null
@@ -296,8 +325,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 java.sql.Connection conn = DriverManager.getConnection(url);
                 String query = "INSERT INTO [dbo].[HocVien]([MaHV],[TenHV],[HoHV],[TuoiHV],[GioiTinhHV],[DiaChiHV],[SDTV],[MaLH])values(?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = conn.prepareStatement(query);
-                
-                //set lua chon gioi tinh luc dau luon luon hien thi la male
                 
                 
                 String gender;

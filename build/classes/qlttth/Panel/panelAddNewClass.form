@@ -71,7 +71,7 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="cmbChooseClass" max="32767" attributes="0"/>
+                                              <Component id="cmbChooseTeacher" max="32767" attributes="0"/>
                                               <Component id="cmbChooseCourse" min="-2" pref="129" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -111,7 +111,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbChooseClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbChooseTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -171,7 +171,7 @@
                 <Property name="text" type="java.lang.String" value="Choose Teacher:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cmbChooseClass">
+            <Component class="javax.swing.JComboBox" name="cmbChooseTeacher">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">

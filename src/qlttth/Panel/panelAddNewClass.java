@@ -6,6 +6,7 @@ package qlttth.Panel;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
 
@@ -20,7 +21,62 @@ public class panelAddNewClass extends javax.swing.JPanel {
      */
     public panelAddNewClass() {
         initComponents();
+        initComboTeacher();
+        initComboCourse();
     }
+    
+    public void initComboCourse()
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaKhoaHoc FROM KhoaHoc";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbChooseCourse.removeAllItems();
+            while (rs.next())
+            {
+                cmbChooseCourse.addItem(rs.getString("MaKhoaHoc"));
+            }
+            rs.close();
+            conn.close();
+            pst.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void initComboTeacher()
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaGV FROM GiangVien";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbChooseTeacher.removeAllItems();
+            while (rs.next())
+            {
+                cmbChooseTeacher.addItem(rs.getString("MaGV"));
+            }
+            rs.close();
+            conn.close();
+            pst.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +97,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cmbChooseClass = new javax.swing.JComboBox<>();
+        cmbChooseTeacher = new javax.swing.JComboBox<>();
         nLab = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -64,7 +120,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
         jLabel9.setText("Choose Teacher:");
 
-        cmbChooseClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbChooseTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         nLab.setText("jLabel4");
 
@@ -103,7 +159,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
                                         .addComponent(jLabel7))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cmbChooseClass, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbChooseTeacher, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(cmbChooseCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(183, 183, 183))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -131,7 +187,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(cmbChooseClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbChooseTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(144, Short.MAX_VALUE))
@@ -172,11 +228,12 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         try
         {
             //check nhap du lieu trong
             if(jTextField1.getText().isEmpty()|| jTextField2.getText().isEmpty()
-              ||cmbChooseCourse.getSelectedIndex() == -1|| cmbChooseClass.getSelectedIndex() == -1)
+              ||cmbChooseCourse.getSelectedIndex() == -1|| cmbChooseTeacher.getSelectedIndex() == -1)
             {
                 JOptionPane.showConfirmDialog(null,"Please fill in the blanks!!");
             }
@@ -202,8 +259,8 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbChooseClass;
     private javax.swing.JComboBox<String> cmbChooseCourse;
+    private javax.swing.JComboBox<String> cmbChooseTeacher;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
