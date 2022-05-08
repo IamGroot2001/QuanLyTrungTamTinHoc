@@ -4,6 +4,15 @@
  */
 package qlttth.Panel;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import qlttth.model.Student;
+
 /**
  *
  * @author daoho
@@ -15,8 +24,57 @@ public class panelManageStudent extends javax.swing.JPanel {
      */
     public panelManageStudent() {
         initComponents();
+        showStudent();
+        boolean enabled = jRadioButton1.isEnabled();
     }
 
+    public ArrayList<Student> StudentList()
+    {
+        ArrayList<Student> studentList = new ArrayList<>();
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT * FROM HocVien";
+            Statement st = (Statement) conn.createStatement();
+            ResultSet rs = (ResultSet) st.executeQuery(query);
+            Student student;
+            while (rs.next())
+            {
+                student = new Student(rs.getString("MaHV"), rs.getString("TenHV"), rs.getString("HoHV"), 
+                        rs.getString("GioiTinhHV"), rs.getString("DiaChiHV"), rs.getString("MaLH"), 
+                        rs.getInt("TuoiHV"), rs.getInt("SDTHV"));
+                studentList.add(student);
+            }    
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.print(ex);
+            ex.printStackTrace();
+        }
+        return studentList;
+    }
+    
+    public void showStudent()
+    {
+        ArrayList<Student> list = StudentList();
+        DefaultTableModel model = (DefaultTableModel)tblStudent.getModel();
+        Object[] row = new Object[8];
+        for(int i = 0; i < list.size(); i++)
+        {
+            row[0] = list.get(i).getMaHV();
+            row[1] = list.get(i).getTenHV();
+            row[2] = list.get(i).getHoHV();
+            row[3] = list.get(i).getTuoiHV();
+            row[4] = list.get(i).getGioiTinhHV();
+            row[5] = list.get(i).getDiaChiHV();
+            row[6] = list.get(i).getSDTHV();
+            row[7] = list.get(i).getMaLH();
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,7 +91,7 @@ public class panelManageStudent extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblStudent = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -59,18 +117,15 @@ public class panelManageStudent extends javax.swing.JPanel {
 
         jButton1.setText("Reset");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Student ID", "First Name", "Last Name", "Age", "Gender", "Address", "Phone Number", "Class"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblStudent);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Student Information");
@@ -86,8 +141,6 @@ public class panelManageStudent extends javax.swing.JPanel {
         jLabel3.setText("Last Name:");
 
         jLabel6.setText("Phone Number:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setText("Class:");
 
@@ -263,7 +316,6 @@ public class panelManageStudent extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -271,5 +323,6 @@ public class panelManageStudent extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable tblStudent;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,14 @@
  */
 package qlttth.Panel;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import qlttth.model.Bill;
 /**
  *
  * @author daoho
@@ -15,8 +23,51 @@ public class panelViewBill extends javax.swing.JPanel {
      */
     public panelViewBill() {
         initComponents();
+        showCourse();
     }
 
+    public ArrayList<Bill> BillList()
+    {
+        ArrayList<Bill> billList = new ArrayList<>();
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT * FROM HoaDon";
+            Statement st = (Statement) conn.createStatement();
+            ResultSet rs = (ResultSet) st.executeQuery(query);
+            Bill bill;
+            while (rs.next())
+            {
+                bill = new Bill(rs.getInt("MaHD"), rs.getInt("Tong"), rs.getDate("NgayLapHD"), rs.getString("TaiKhoan"), rs.getString("MaLH"));
+                billList.add(bill);
+            }    
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex);
+            System.out.print(ex);
+            ex.printStackTrace();
+        }
+        return billList;
+    }
+    
+    public void showCourse()
+    {
+        ArrayList<Bill> list = BillList();
+        DefaultTableModel model = (DefaultTableModel)tblBill.getModel();
+        Object[] row = new Object[5];
+        for(int i = 0; i < list.size(); i++)
+        {
+            row[0] = list.get(i).getMaHD();
+            row[1] = list.get(i).getNgayLapHoaDon();
+            row[2] = list.get(i).getTaiKhoan();
+            row[3] = list.get(i).getMaLH();
+            row[4] = list.get(i).getTong();
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,20 +80,17 @@ public class panelViewBill extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblBill = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBill.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Bill ID", "Date", "Account", "Class", "Total"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblBill);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,6 +134,6 @@ public class panelViewBill extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblBill;
     // End of variables declaration//GEN-END:variables
 }
