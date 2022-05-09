@@ -337,6 +337,7 @@ public class formDangKy extends javax.swing.JFrame {
                 String query = "INSERT INTO TaiKhoan(Ten, Ho, Tuoi, GioiTinh, DiaChi, SoDienThoai, TaiKhoan, MatKhau)VALUES(?,?,?,?,?,?,?,?) ";
                 PreparedStatement pst = conn.prepareStatement(query);
                 
+                
                 // insert du lieu vao database o day
                 pst.setString(1, btnReFirstName.getText());
                 pst.setString(2, btnReLastName.getText());
@@ -361,7 +362,7 @@ public class formDangKy extends javax.swing.JFrame {
                 // o day can co code so sanh xem tai khoan dang nhap co trung voi trong database hay k
                 // neu trung thi bat nhap 1 tai khoan khac
                 String acc = btnReAccount.getText();
-                String pass = btnRePassword.getText();
+                //String pass = btnRePassword.getText();
                 
                 String selectQuery = "SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '"+acc+"'";
                 Statement stat = conn.createStatement();
