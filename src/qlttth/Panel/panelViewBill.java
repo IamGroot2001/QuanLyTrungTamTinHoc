@@ -40,7 +40,7 @@ public class panelViewBill extends javax.swing.JPanel {
             Bill bill;
             while (rs.next())
             {
-                bill = new Bill(rs.getInt("MaHD"), rs.getInt("Tong"), rs.getDate("NgayLapHD"), rs.getString("TaiKhoan"), rs.getString("MaLH"));
+                bill = new Bill(rs.getInt("MaHD"), rs.getInt("Tong"), rs.getDate("NgayLapHD"), rs.getString("TaiKhoan"), rs.getString("MaLH"), rs.getString("MaHV"));
                 billList.add(bill);
             }    
         }
@@ -57,14 +57,15 @@ public class panelViewBill extends javax.swing.JPanel {
     {
         ArrayList<Bill> list = BillList();
         DefaultTableModel model = (DefaultTableModel)tblBill.getModel();
-        Object[] row = new Object[5];
+        Object[] row = new Object[6];
         for(int i = 0; i < list.size(); i++)
         {
             row[0] = list.get(i).getMaHD();
             row[1] = list.get(i).getNgayLapHoaDon();
             row[2] = list.get(i).getTaiKhoan();
             row[3] = list.get(i).getMaLH();
-            row[4] = list.get(i).getTong();
+            row[4] = list.get(i).getMaHV();
+            row[5] = list.get(i).getTong();
             model.addRow(row);
         }
     }
@@ -87,7 +88,7 @@ public class panelViewBill extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Bill ID", "Date", "Account", "Class", "Total"
+                "Bill ID", "Date", "Account", "Class", "MaHV", "Total"
             }
         ));
         jScrollPane2.setViewportView(tblBill);
