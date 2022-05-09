@@ -13,17 +13,18 @@ import java.util.Date;
 public class Bill {
     int MaHD, Tong;
     Date NgayLapHoaDon;
-    String TaiKhoan, MaLH;
+    String TaiKhoan, MaLH, MaHV;
 
     public Bill() {
     }
 
-    public Bill(int MaHD, int Tong, Date NgayLapHoaDon, String TaiKhoan, String MaLH) {
+    public Bill(int MaHD, int Tong, Date NgayLapHoaDon, String TaiKhoan, String MaLH, String MaHV) {
         this.MaHD = MaHD;
         this.Tong = Tong;
         this.NgayLapHoaDon = NgayLapHoaDon;
         this.TaiKhoan = TaiKhoan;
         this.MaLH = MaLH;
+        this.MaHV = MaHV;
     }
 
     //get
@@ -47,6 +48,10 @@ public class Bill {
         return MaLH;
     }
     
+    public String getMaHV() {
+        return MaHV;
+    }
+    
     //set
     public void setMaHD(int MaHD) {
         this.MaHD = MaHD;
@@ -66,6 +71,10 @@ public class Bill {
 
     public void setMaLH(String MaLH) {
         this.MaLH = MaLH;
+    }
+    
+    public void setMaHV(String MaHV) {
+        this.MaHV = MaHV;
     }
     
     

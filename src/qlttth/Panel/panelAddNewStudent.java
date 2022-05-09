@@ -27,6 +27,34 @@ public class panelAddNewStudent extends javax.swing.JPanel {
      */
     public panelAddNewStudent() {
         initComponents();
+        //set lua chon gioi tinh luc dau luon luon hien thi la male
+        rdoMale.setSelected(true);
+        initComboBoxClass();
+    }
+    
+    public void initComboBoxClass(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaLH FROM LopHoc";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbChooseClass.removeAllItems();
+            while (rs.next())
+            {
+                  cmbChooseClass.addItem(rs.getString("MaLH"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -50,23 +78,23 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rdoMale = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdoFemale = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        cmbChooseClass = new javax.swing.JComboBox<>();
+        txtFirstName = new javax.swing.JTextField();
+        txtLastName = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+        txtPhoneNumber = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtStudentID = new javax.swing.JTextField();
         IDLab = new javax.swing.JLabel();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -88,13 +116,13 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Male");
+        buttonGroup1.add(rdoMale);
+        rdoMale.setText("Male");
 
         jLabel4.setText("Age:");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Female");
+        buttonGroup1.add(rdoFemale);
+        rdoFemale.setText("Female");
 
         jLabel5.setText("Address:");
 
@@ -102,27 +130,27 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jLabel7.setText("Choose Class:");
 
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtFirstName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField2KeyReleased(evt);
+                txtFirstNameKeyReleased(evt);
             }
         });
 
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField3KeyReleased(evt);
+                txtLastNameKeyReleased(evt);
             }
         });
 
-        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField4KeyReleased(evt);
+                txtAgeKeyReleased(evt);
             }
         });
 
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField6KeyReleased(evt);
+                txtPhoneNumberKeyReleased(evt);
             }
         });
 
@@ -137,9 +165,9 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jLabel9.setText("Student ID:");
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtStudentID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                txtStudentIDKeyReleased(evt);
             }
         });
 
@@ -159,13 +187,13 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(cmbChooseClass, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1))
                         .addComponent(pLab, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -180,20 +208,20 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField2)
-                                        .addComponent(jTextField3)
+                                        .addComponent(txtFirstName)
+                                        .addComponent(txtLastName)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jRadioButton1)
+                                                    .addComponent(rdoMale)
                                                     .addGap(18, 18, 18)
-                                                    .addComponent(jRadioButton2)))
+                                                    .addComponent(rdoFemale)))
                                             .addGap(16, 16, 16)))
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(30, 30, 30)))
@@ -211,45 +239,45 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IDLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fnameLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lnameLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2))
+                        .addComponent(rdoMale)
+                        .addComponent(rdoFemale))
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbChooseClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
@@ -278,14 +306,16 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         try
         {
             //check index null
-            if(jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty()
-               || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty()
-               | jTextField5.getText().isEmpty()|| jTextField6.getText().isEmpty()|| jTextField7.getText().isEmpty() )
+            if(txtStudentID.getText().isEmpty() || txtFirstName.getText().isEmpty()
+               || txtLastName.getText().isEmpty() || txtAge.getText().isEmpty()
+               || txtAddress.getText().isEmpty()|| txtPhoneNumber.getText().isEmpty()|| txtTotal.getText().isEmpty()
+               ||cmbChooseClass.getSelectedIndex() == -1 )
             {
-                JOptionPane.showConfirmDialog(null,"Please fill in the blanks!!");
+                JOptionPane.showMessageDialog(null,"Please fill in the blanks!!");
             }
             else
             {
@@ -293,16 +323,17 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
                 //Connection conn = (Connection) DriverManager.getConnection(url);
                 java.sql.Connection conn = DriverManager.getConnection(url);
-                String query = "INSERT INTO [dbo].[HocVien]([MaHV],[TenGV],[HoGV],[TuoiGV],[GioiTinhGV],[DiaChiGV],[SDTGV],[MaLH])values(?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO HocVien(MaHV,TenHV,HoHV,TuoiHV,GioiTinhHV,DiaChiHV,SDTHV,MaLH)values(?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = conn.prepareStatement(query);
+                
                 
                 String gender;
                 //insert du lieu
-                pst.setString(1, jTextField1.getText());
-                pst.setString(2, jTextField2.getText());
-                pst.setString(3, jTextField3.getText());
-                pst.setString(4, jTextField4.getText());
-                if(jButton1.isSelected())
+                pst.setString(1, txtStudentID.getText());
+                pst.setString(2, txtFirstName.getText());
+                pst.setString(3, txtLastName.getText());
+                pst.setString(4, txtAge.getText());
+                if(rdoMale.isSelected())
                 {
                     gender = "Male";
                     pst.setString(5, gender);
@@ -312,91 +343,110 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                     gender = "Female";
                     pst.setString(5, gender);
                 }
-                pst.setString(6, jTextField5.getText());
-                pst.setString(7, jTextField6.getText());
+                pst.setString(6, txtAddress.getText());
+                pst.setString(7, txtPhoneNumber.getText());
+                pst.setObject(8, cmbChooseClass.getSelectedItem());
                 
+                String maHV = txtStudentID.getText();
+                System.out.println(maHV);
+                String selectQuery = "SELECT COUNT(*) FROM HocVien WHERE MaHV = '"+maHV+"'";
+                Statement stat = conn.createStatement();
+                ResultSet rs = stat.executeQuery(selectQuery);
+                
+                System.out.println(rs.next());
+                
+                if(rs.next()==true)
+                {
+                    JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another");
+                }
+                else
+                {
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Inserted successfully!!");
+                }
             }
             
         }
         catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, "The ID is existed!! Please try another!!");
+            JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another!!");
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+    private void txtStudentIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStudentIDKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[0-9]{0,10}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField1.getText());
+        Matcher match = patt.matcher(txtStudentID.getText());
         if(!match.matches()){
             IDLab.setText("incorrect!");
         }
         else{
            IDLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField1KeyReleased
+    }//GEN-LAST:event_txtStudentIDKeyReleased
 
-    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+    private void txtFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[a-zA-Z]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField2.getText());
+        Matcher match = patt.matcher(txtFirstName.getText());
         if(!match.matches()){
             fnameLab.setText("incorrect!");
         }
         else{
            fnameLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField2KeyReleased
+    }//GEN-LAST:event_txtFirstNameKeyReleased
 
-    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+    private void txtLastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[a-zA-Z]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField3.getText());
+        Matcher match = patt.matcher(txtLastName.getText());
         if(!match.matches()){
             lnameLab.setText("incorrect!");
         }
         else{
            lnameLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField3KeyReleased
+    }//GEN-LAST:event_txtLastNameKeyReleased
 
-    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[0-9]{0,2}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField4.getText());
+        Matcher match = patt.matcher(txtAge.getText());
         if(!match.matches()){
             aLab.setText("incorrect!");
         }
         else{
            aLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField4KeyReleased
+    }//GEN-LAST:event_txtAgeKeyReleased
 
-    private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
+    private void txtPhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[0-9]{0,10}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField6.getText());
+        Matcher match = patt.matcher(txtPhoneNumber.getText());
         if(!match.matches()){
             pLab.setText("incorrect!");
         }
         else{
            pLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField6KeyReleased
+    }//GEN-LAST:event_txtPhoneNumberKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDLab;
     private javax.swing.JLabel aLab;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbChooseClass;
     private javax.swing.JLabel fnameLab;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -409,17 +459,17 @@ public class panelAddNewStudent extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lnameLab;
     private javax.swing.JLabel pLab;
+    private javax.swing.JRadioButton rdoFemale;
+    private javax.swing.JRadioButton rdoMale;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtStudentID;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
