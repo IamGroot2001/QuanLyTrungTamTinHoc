@@ -4,6 +4,9 @@
  */
 package qlttth.Panel;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
 
@@ -18,7 +21,62 @@ public class panelAddNewClass extends javax.swing.JPanel {
      */
     public panelAddNewClass() {
         initComponents();
+        initComboTeacher();
+        initComboCourse();
     }
+    
+    public void initComboCourse()
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaKhoaHoc FROM KhoaHoc";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbChooseCourse.removeAllItems();
+            while (rs.next())
+            {
+                cmbChooseCourse.addItem(rs.getString("MaKhoaHoc"));
+            }
+            rs.close();
+            conn.close();
+            pst.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void initComboTeacher()
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaGV FROM GiangVien";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbChooseTeacher.removeAllItems();
+            while (rs.next())
+            {
+                cmbChooseTeacher.addItem(rs.getString("MaGV"));
+            }
+            rs.close();
+            conn.close();
+            pst.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,20 +90,20 @@ public class panelAddNewClass extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbChooseCourse = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbChooseTeacher = new javax.swing.JComboBox<>();
         nLab = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         jLabel7.setText("Choose Course:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbChooseCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -62,7 +120,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
         jLabel9.setText("Choose Teacher:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbChooseTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         nLab.setText("jLabel4");
 
@@ -101,8 +159,8 @@ public class panelAddNewClass extends javax.swing.JPanel {
                                         .addComponent(jLabel7))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(cmbChooseTeacher, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbChooseCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(183, 183, 183))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -125,11 +183,11 @@ public class panelAddNewClass extends javax.swing.JPanel {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbChooseCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbChooseTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(144, Short.MAX_VALUE))
@@ -170,19 +228,40 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(jTextField1.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Class ID is empty");
+        
+        try
+        {
+            //check nhap du lieu trong
+            if(jTextField1.getText().isEmpty()|| jTextField2.getText().isEmpty()
+              ||cmbChooseCourse.getSelectedIndex() == -1|| cmbChooseTeacher.getSelectedIndex() == -1)
+            {
+                JOptionPane.showConfirmDialog(null,"Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                //Connection conn = (Connection) DriverManager.getConnection(url);
+                java.sql.Connection conn = DriverManager.getConnection(url);
+                String query = "INSERT INTO [dbo].[LopHoc]([MaLH],[TenLH],[MaKhoaHoc],[MaGV])values(?,?,?,?)";
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                //insert du lieu
+                pst.setString(1, jTextField1.getText());
+                pst.setString(2, jTextField2.getText());
+            }
         }
-        if(jTextField2.getText().isEmpty()){
-            JOptionPane.showConfirmDialog(null, "Class name is empty");
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, "The Class is existed!! Please try another!!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbChooseCourse;
+    private javax.swing.JComboBox<String> cmbChooseTeacher;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
