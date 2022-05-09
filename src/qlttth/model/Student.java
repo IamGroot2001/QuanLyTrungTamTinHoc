@@ -9,12 +9,5 @@ package qlttth.model;
  * @author lengo
  */
 public class Student {
-    privateMaHV
-           ,TenHV
-           ,HoHV
-           ,TuoiHV
-           ,GioiTinhHV
-           ,DiaChiHV
-           ,SDTHV
-           ,MaLH)
+    
 }

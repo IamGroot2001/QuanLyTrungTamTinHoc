@@ -3,20 +3,61 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package qlttth.Panel;
-
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import qlttth.model.GiangVien;
 /**
  *
  * @author daoho
  */
-public class panelManageTeacher extends javax.swing.JPanel {
-
+public final class panelManageTeacher extends javax.swing.JPanel {
+    public panelManageTeacher() {
+        show_giangVien();
+        initComponents();
+    }
+    public ArrayList<GiangVien> giangVienList(){
+        ArrayList<GiangVien> giangViens = new ArrayList<>();
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            Connection con = DriverManager.getConnection(url);
+            String query1 = "SELECT * FROM GiangVien";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query1);
+            GiangVien giangVien;
+            while (rs.next()) {
+                giangVien = new GiangVien(rs.getString("MaGV"), rs.getString("TenGV"), rs.getString("HoGV"), rs.getInt("TuoiGV"), rs.getString("GioiTinhGV"), rs.getString("DiaChiGV"), rs.getInt("SDTGV"));
+                giangViens.add(giangVien);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return giangViens;
+    }
+    public void show_giangVien(){
+        ArrayList<GiangVien> list = giangVienList();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        Object[] row = new Object[7];
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getMaGV();
+            row[1] = list.get(i).getTenGV();
+            row[2] = list.get(i).getHoGV();
+            row[3] = list.get(i).getTuoiGV();
+            row[4] = list.get(i).getGioiTinhGV();
+            row[5] = list.get(i).getDiaChiGV();
+            row[6] = list.get(i).getSDTGV();
+            model.addRow(row);
+        }
+    }
     /**
      * Creates new form ManageTeacher
      */
-    public panelManageTeacher() {
-        initComponents();
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -252,4 +293,5 @@ public class panelManageTeacher extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
 }
