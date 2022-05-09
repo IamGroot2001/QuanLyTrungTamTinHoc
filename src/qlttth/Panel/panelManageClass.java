@@ -59,7 +59,7 @@ public class panelManageClass extends javax.swing.JPanel {
     {
         ArrayList<Classes> list = ClassesList();
         DefaultTableModel model = (DefaultTableModel)tblClass.getModel();
-        Object[] row = new Object[7];
+        Object[] row = new Object[4];
         for(int i = 0; i < list.size(); i++)
         {
             row[0] = list.get(i).getMaLH();

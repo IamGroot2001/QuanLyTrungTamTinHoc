@@ -6,6 +6,7 @@ package qlttth.Panel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -27,6 +28,32 @@ public class panelManageStudent extends javax.swing.JPanel {
         initComponents();
         showStudent();
         boolean enabled = rdoMale.isEnabled();
+        initComboBoxClass();
+    }
+    
+    public void initComboBoxClass(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaLH FROM HocVien";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbClass.removeAllItems();
+            while (rs.next())
+            {
+                  cmbClass.addItem(rs.getString("MaLH"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<Student> StudentList()
@@ -319,6 +346,7 @@ public class panelManageStudent extends javax.swing.JPanel {
             }
         txtAddress.setText(model.getValueAt(i,5).toString());
         txtPhoneNumber.setText(model.getValueAt(i,6).toString());
+        cmbClass.setSelectedItem(model.getValueAt(i,7).toString());
     }//GEN-LAST:event_tblStudentMouseClicked
 
 

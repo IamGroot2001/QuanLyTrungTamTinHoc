@@ -26,6 +26,8 @@ public class Student {
         this.SDTHV = SDTHV;
     }
     
+    // get
+
     public String getMaHV() {
         return MaHV;
     }
@@ -57,7 +59,8 @@ public class Student {
     public int getSDTHV() {
         return SDTHV;
     }
-
+    
+    // set
     public void setMaHV(String MaHV) {
         this.MaHV = MaHV;
     }
@@ -89,6 +92,5 @@ public class Student {
     public void setSDTHV(int SDTHV) {
         this.SDTHV = SDTHV;
     }
-    
     
 }
