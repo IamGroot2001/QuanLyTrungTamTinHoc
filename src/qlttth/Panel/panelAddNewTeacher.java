@@ -280,12 +280,12 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
             pst.setString(4, jTextField4.getText());
              if(jRadioButton1.isSelected())
                 {
-                    gender = "Male";
+                    gender = "Nam";
                     pst.setString(5, gender);
                 }
                 else if (jRadioButton2.isSelected())
                 {
-                    gender = "Female";
+                    gender = "Nữ";
                     pst.setString(5, gender);
                 }
             pst.setString(6, jTextField5.getText());
@@ -331,14 +331,17 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField2.getText());
-        if(!match.matches()){
-            fnameLab.setText("incorrect!");
-        }
-        else{
-           fnameLab.setText(null);
+        try {
+            String PATTERN = "^[a-z A-Z]{0,30}$";
+            Pattern patt = Pattern.compile(PATTERN);
+            Matcher match = patt.matcher(jTextField2.getText());
+            if(!match.matches()){
+               fnameLab.setText("incorrect!");
+            }
+            else{
+               fnameLab.setText(null);
+            }
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_jTextField2KeyReleased
 

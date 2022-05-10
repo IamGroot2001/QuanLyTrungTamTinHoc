@@ -335,12 +335,12 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 pst.setString(4, txtAge.getText());
                 if(rdoMale.isSelected())
                 {
-                    gender = "Male";
+                    gender = "Nam";
                     pst.setString(5, gender);
                 }
                 else
                 {
-                    gender = "Female";
+                    gender = "Nữ";
                     pst.setString(5, gender);
                 }
                 pst.setString(6, txtAddress.getText());
