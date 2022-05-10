@@ -332,7 +332,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         // TODO add your handling code here:
         try {
-            String PATTERN = "^[a-z A-Z]{0,30}$";
+            String PATTERN = "^[a-zA-Z]{0,30}$";
             Pattern patt = Pattern.compile(PATTERN);
             Matcher match = patt.matcher(jTextField2.getText());
             if(!match.matches()){
