@@ -14,6 +14,10 @@ import javax.swing.table.TableModel;
 import qlttth.model.Teacher;
 import javax.swing.table.DefaultTableModel;
 import qlttth.model.GiangVien;
+import java.sql.PreparedStatement;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+import org.apache.commons.dbutils.DbUtils;
 
 /**
  *
@@ -125,6 +129,12 @@ public class panelManageTeacher extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         radioMale = new javax.swing.JRadioButton();
         radioFemale = new javax.swing.JRadioButton();
+
+        txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFindKeyPressed(evt);
+            }
+        });
 
         jButton1.setText("Reset");
 
@@ -370,6 +380,14 @@ public class panelManageTeacher extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tblTeacher.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
+    }//GEN-LAST:event_txtFindKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
