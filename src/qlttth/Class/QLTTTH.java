@@ -7,7 +7,7 @@ import qlttth.Form.formDangNhap;
 public class QLTTTH {
     public static void main(String[] args) {
         
-        var server = "DESKTOP-0EV3HR0\\SQLEXPRESS";
+        var server = "DESKTOP-Q5LC6LT\\SQLEXPRESS";
         var user = "sa";
         var password = "123456";
         var db = "test";

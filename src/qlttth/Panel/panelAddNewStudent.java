@@ -346,7 +346,25 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 pst.setString(6, jTextField5.getText());
                 pst.setString(7, jTextField6.getText());
                 
-            }
+                //check hoc sinh da ton tai, canh bao de nhap lai
+                String StudentID = jTextField1.getText();
+
+                String selectQuery = "SELECT COUNT(*) FROM HocVien WHERE MaHV = '"+StudentID+"'";
+                Statement stat = conn.createStatement();
+                ResultSet rs = stat.executeQuery(selectQuery);
+
+                System.out.println(rs.next());
+
+                if(rs.next()==true)
+                {
+                    JOptionPane.showMessageDialog(null, "The ID is existed!!");
+                }
+                else
+                {
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Inserted successfully!!");
+                }
+            }   
             
         }
         catch (Exception e) 

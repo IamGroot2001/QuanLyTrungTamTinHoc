@@ -132,8 +132,18 @@ public class panelManageClass extends javax.swing.JPanel {
         jLabel7.setText("Total:");
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDel.setText("Delete");
+        btnDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,6 +264,14 @@ public class panelManageClass extends javax.swing.JPanel {
         txtCourseID.setText(model.getValueAt(i,2).toString());
         txtTeacherID.setText(model.getValueAt(i,3).toString());
     }//GEN-LAST:event_tblClassMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
