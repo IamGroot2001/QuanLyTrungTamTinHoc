@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lengo/OneDrive/Documents/NetBeansProjects/QuanLyTrungTamTinHoc/src/qlttth/Panel/panelAddNewClass.java</file>
             <file>file:/C:/Users/lengo/OneDrive/Documents/NetBeansProjects/QuanLyTrungTamTinHoc/src/qlttth/Panel/panelManageClass.java</file>
-            <file>file:/C:/Users/lengo/OneDrive/Documents/NetBeansProjects/QuanLyTrungTamTinHoc/src/qlttth/Form/formDangKy.java</file>
+            <file>file:/C:/Users/lengo/OneDrive/Documents/NetBeansProjects/QuanLyTrungTamTinHoc/src/qlttth/Panel/panelManageStudent.java</file>
+            <file>file:/C:/Users/lengo/OneDrive/Documents/NetBeansProjects/QuanLyTrungTamTinHoc/src/qlttth/Panel/panelAddNewStudent.java</file>
+            <file>file:/C:/Users/lengo/OneDrive/Documents/NetBeansProjects/QuanLyTrungTamTinHoc/src/qlttth/Panel/panelManageTeacher.java</file>
         </group>
     </open-files>
 </project-private>
