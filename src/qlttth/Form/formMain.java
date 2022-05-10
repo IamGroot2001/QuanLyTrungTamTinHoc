@@ -16,6 +16,7 @@ import qlttth.Panel.panelManageStudent;
 import qlttth.Panel.panelAddNewStudent;
 import java.security.MessageDigest;
 import javax.swing.JOptionPane;
+import qlttth.model.Account;
 
 /**
  *
@@ -32,11 +33,13 @@ public class formMain extends javax.swing.JFrame {
     private panelAddNewClass addNewClass;
     private panelManageClass manageClass;
     private panelViewBill bill;
+    static String account;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
      */
-    public formMain() {
+    public formMain(String _account) {
+        account =_account;
         initComponents();
     }
 
@@ -307,8 +310,9 @@ public class formMain extends javax.swing.JFrame {
 
     private void menuViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewProfileActionPerformed
         tplCuaSoChinh.removeAll();
-        profilePanel = new panelViewProfile();
+        profilePanel = new panelViewProfile(account);
         tplCuaSoChinh.addTab("Profile", profilePanel);
+        //System.out.println(account);
     }//GEN-LAST:event_menuViewProfileActionPerformed
 
     private void jPanel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel3AncestorAdded
@@ -394,7 +398,7 @@ public class formMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              new formMain().setVisible(true);
+              new formMain(account).setVisible(true);
             }
         });
     }
