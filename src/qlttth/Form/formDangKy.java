@@ -345,12 +345,12 @@ public class formDangKy extends javax.swing.JFrame {
                 
                 if(rabtnMale.isSelected())
                 {
-                    gender = "Male";
+                    gender = "Nam";
                     pst.setString(4, gender);
                 }
                 else if (rabtnFemale.isSelected())
                 {
-                    gender = "Female";
+                    gender = "Nữ";
                     pst.setString(4, gender);
                 }
                 
