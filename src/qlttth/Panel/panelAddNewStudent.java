@@ -421,7 +421,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         }
         catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, "The Student ID isádadsadsada existed!! Please try another!!");
+            JOptionPane.showMessageDialog(null, "The Student ID existed!! Please try another!!");
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
