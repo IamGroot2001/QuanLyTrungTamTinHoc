@@ -15,18 +15,23 @@ import javax.swing.JOptionPane;
 import com.sun.tools.jconsole.JConsoleContext;
 import java.util.concurrent.Callable;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author daoho
  */
 public class panelAddNewStudent extends javax.swing.JPanel {
+    static String taiKhoan;
 
     /**
      * Creates new form RegisterStudentPanel
      */
-    public panelAddNewStudent() {
+    public panelAddNewStudent(String _taiKhoan) {
+        
         initComponents();
+        taiKhoan = _taiKhoan;
         //set lua chon gioi tinh luc dau luon luon hien thi la male
         rdoMale.setSelected(true);
         initComboBoxClass();
@@ -325,7 +330,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-        
         try
         {
             //check index null
@@ -342,6 +346,8 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
                 //Connection conn = (Connection) DriverManager.getConnection(url);
                 java.sql.Connection conn = DriverManager.getConnection(url);
+                
+                // add du lieu vao HocVien
                 String query1 = "INSERT INTO HocVien(MaHV,TenHV,HoHV,TuoiHV,GioiTinhHV,DiaChiHV,SDTHV,MaLH)values(?,?,?,?,?,?,?,?)";
                 PreparedStatement pst1 = conn.prepareStatement(query1);
                 
@@ -383,12 +389,39 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                     pst1.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Inserted successfully!!");
                 }
+                
+                // add du lieu vao hoa don
+                String query2 = "INSERT INTO HoaDon(NgayLapHD,TaiKhoan,MaLH,Tong,MaHV)values(?,?,?,?,?)";
+                PreparedStatement pst2 = conn.prepareStatement(query2);
+                
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+                LocalDateTime now = LocalDateTime.now();  
+                System.out.println(dtf.format(now));
+                
+                pst2.setString(1, dtf.format(now));
+                pst2.setString(2, taiKhoan);
+                pst2.setObject(3, cmbChooseClass.getSelectedItem());
+                pst2.setString(4, txtTotal.getText());
+                pst2.setString(5, txtStudentID.getText());
+                
+//                ResultSet rs2 = stat.executeQuery(query2);
+//                if(rs2.next()==true)
+//                {
+//                    JOptionPane.showMessageDialog(null, "Can not insert data into bill");
+//                }
+//                else
+//                {
+                    pst2.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Inserted data into bill successfully!!");
+//                }
+                  
+                
             }
             
         }
         catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another!!");
+            JOptionPane.showMessageDialog(null, "The Student ID isádadsadsada existed!! Please try another!!");
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnConfirmActionPerformed

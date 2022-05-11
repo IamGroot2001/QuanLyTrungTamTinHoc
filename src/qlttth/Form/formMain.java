@@ -270,7 +270,7 @@ public class formMain extends javax.swing.JFrame {
 
     private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
         tplCuaSoChinh.removeAll();
-        registerStudentPanel = new panelAddNewStudent();
+        registerStudentPanel = new panelAddNewStudent(account);
         tplCuaSoChinh.addTab("Register Student", registerStudentPanel);
     }//GEN-LAST:event_menuRegisterStudentActionPerformed
 
