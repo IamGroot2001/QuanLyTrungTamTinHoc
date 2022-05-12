@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -39,29 +40,29 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtPrice = new javax.swing.JTextField();
+        txtCourseName = new javax.swing.JTextField();
         cnameLab = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JButton();
         txtCourseID = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtCourseName = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtDateStudy = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtTimeStudy = new javax.swing.JTextField();
-        txtDateStart = new javax.swing.JTextField();
-        txtDateEnd = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        txtDateStart = new com.toedter.calendar.JDateChooser();
+        txtDateEnd = new com.toedter.calendar.JDateChooser();
 
         jLabel6.setText("Time Study:");
 
         jLabel5.setText("Date  Study:");
 
-        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCourseName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPriceKeyPressed(evt);
+                txtCourseNameKeyPressed(evt);
             }
         });
 
@@ -87,6 +88,10 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Course Information");
 
+        txtDateStart.setDateFormatString("yyyy-MM-dd");
+
+        txtDateEnd.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,16 +111,16 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtDateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cnameLab))
                                     .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTimeStudy, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDateStudy, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtDateStudy, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtDateEnd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtDateStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtCourseName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                                        .addGap(92, 92, 92)
+                                        .addComponent(cnameLab))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,7 +128,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(84, 84, 84)
                                         .addComponent(btnConfirm))
-                                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(45, 45, 45)))
                         .addGap(136, 136, 136))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -143,13 +148,13 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cnameLab)
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtDateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtDateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(txtDateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -163,7 +168,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfirm)
                 .addContainerGap(204, Short.MAX_VALUE))
@@ -193,12 +198,16 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         // TODO add your handling code here:
         try
         {
-            if(txtCourseID.getText().isEmpty() || txtCourseName.getText().isEmpty()
-                    || txtDateStart.getText().isEmpty() || txtDateEnd.getText().isEmpty()
+            String dateStartCheck = txtDateStart.getDate().toString();
+            String dateEndCheck = txtDateEnd.getDate().toString();
+            
+            if(txtCourseID.getText().isEmpty() || txtPrice.getText().isEmpty()
+                    || dateStartCheck == null || dateEndCheck == null 
                     || txtDateStudy.getText().isEmpty() || txtTimeStudy.getText().isEmpty()
-                    || txtPrice.getText().isEmpty())
+                    || txtCourseName.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+                System.err.println(dateStartCheck);
             }
             else
             {
@@ -210,11 +219,17 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 
                 pst.setString(1, txtCourseID.getText());
                 pst.setString(2, txtCourseName.getText());
-                pst.setString(3, txtDateStart.getText());
-                pst.setString(4, txtDateEnd.getText());
-                pst.setString(5, txtDateStudy.getText());
+                pst.setString(3, txtDateStart.toString());
+                
+                //String dateStart = tx.getText();
+                //String dateEnd = jTextField2.getText();
+                //pst.setString(4, jTextField1.getText());
+                //pst.setString(5, jTextField2.getText());
                 pst.setString(6, txtTimeStudy.getText());
                 pst.setString(7, txtPrice.getText());
+                
+                //System.out.println(dateStart);
+                //System.out.println(dateEnd);
                 
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Inserted successfully!!");
@@ -224,23 +239,24 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
+            //JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
             ex.printStackTrace();
+            
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
-    private void txtPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyPressed
+    private void txtCourseNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCourseNameKeyPressed
         // TODO add your handling code here:
         String PATTERN = "^[a-zA-Z]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(txtPrice.getText());
+        Matcher match = patt.matcher(txtCourseName.getText());
         if(!match.matches()){
             cnameLab.setText("incorrect");
         }
         else{
             cnameLab.setText(null);
         }
-    }//GEN-LAST:event_txtPriceKeyPressed
+    }//GEN-LAST:event_txtCourseNameKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -258,8 +274,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCourseID;
     private javax.swing.JTextField txtCourseName;
-    private javax.swing.JTextField txtDateEnd;
-    private javax.swing.JTextField txtDateStart;
+    private com.toedter.calendar.JDateChooser txtDateEnd;
+    private com.toedter.calendar.JDateChooser txtDateStart;
     private javax.swing.JTextField txtDateStudy;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtTimeStudy;
