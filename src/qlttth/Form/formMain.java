@@ -32,11 +32,13 @@ public class formMain extends javax.swing.JFrame {
     private panelAddNewClass addNewClass;
     private panelManageClass manageClass;
     private panelViewBill bill;
+    static String account;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
      */
-    public formMain() {
+    public formMain(String _account) {
+        account = _account;
         initComponents();
     }
 
@@ -267,8 +269,9 @@ public class formMain extends javax.swing.JFrame {
 
     private void menuRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegisterStudentActionPerformed
         tplCuaSoChinh.removeAll();
-        registerStudentPanel = new panelAddNewStudent();
+        registerStudentPanel = new panelAddNewStudent(account);
         tplCuaSoChinh.addTab("Register Student", registerStudentPanel);
+        System.out.println(account);
     }//GEN-LAST:event_menuRegisterStudentActionPerformed
 
     private void menuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitActionPerformed
@@ -307,7 +310,7 @@ public class formMain extends javax.swing.JFrame {
 
     private void menuViewProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewProfileActionPerformed
         tplCuaSoChinh.removeAll();
-        profilePanel = new panelViewProfile();
+        profilePanel = new panelViewProfile(account);
         tplCuaSoChinh.addTab("Profile", profilePanel);
     }//GEN-LAST:event_menuViewProfileActionPerformed
 
@@ -394,7 +397,7 @@ public class formMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              new formMain().setVisible(true);
+              new formMain(account).setVisible(true);
             }
         });
     }

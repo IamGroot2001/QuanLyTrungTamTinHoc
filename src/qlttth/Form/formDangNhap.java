@@ -178,7 +178,7 @@ public class formDangNhap extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(null, "Log in successfully!!");
                     this.setVisible(false);
-                    formMain mainForm = new formMain();
+                    formMain mainForm = new formMain(user);
                     mainForm.setLocationRelativeTo(null);
                     mainForm.setVisible(true);
                 }
