@@ -32,6 +32,7 @@ public class formMain extends javax.swing.JFrame {
     private panelAddNewClass addNewClass;
     private panelManageClass manageClass;
     private panelViewBill bill;
+    static String account;
     //private RegisterTeacherPanel registerTeacherPanel;
     /**
      * Creates new form MainForm
