@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -198,8 +199,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         // TODO add your handling code here:
         try
         {
-            String dateStartCheck = txtDateStart.getDate().toString();
-            String dateEndCheck = txtDateEnd.getDate().toString();
+            Date dateStartCheck = txtDateStart.getDate();
+            Date dateEndCheck = txtDateEnd.getDate();
             
             if(txtCourseID.getText().isEmpty() || txtPrice.getText().isEmpty()
                     || dateStartCheck == null || dateEndCheck == null 
@@ -207,7 +208,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                     || txtCourseName.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
-                System.err.println(dateStartCheck);
+                System.out.println(dateStartCheck);
             }
             else
             {
@@ -219,16 +220,17 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 
                 pst.setString(1, txtCourseID.getText());
                 pst.setString(2, txtCourseName.getText());
-                pst.setString(3, txtDateStart.toString());
+                pst.setString(3, ((JTextField)txtDateStart.getDateEditor().getUiComponent()).getText());
                 
-                //String dateStart = tx.getText();
+                String dateStart = ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText();
                 //String dateEnd = jTextField2.getText();
-                //pst.setString(4, jTextField1.getText());
-                //pst.setString(5, jTextField2.getText());
+                //pst.setString(4, ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText()));
+                pst.setString(4, ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText());
+                pst.setString(5, txtDateStudy.getText());
                 pst.setString(6, txtTimeStudy.getText());
                 pst.setString(7, txtPrice.getText());
                 
-                //System.out.println(dateStart);
+                System.out.println(dateStart);
                 //System.out.println(dateEnd);
                 
                 pst.executeUpdate();
