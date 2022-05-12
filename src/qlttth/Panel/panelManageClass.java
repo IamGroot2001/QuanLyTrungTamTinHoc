@@ -10,8 +10,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import qlttth.model.Classes;
 
 /**
@@ -98,6 +100,12 @@ public class panelManageClass extends javax.swing.JPanel {
         txtTotal = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
+
+        txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFindKeyPressed(evt);
+            }
+        });
 
         jLabel1.setText("Find:");
 
@@ -267,11 +275,55 @@ public class panelManageClass extends javax.swing.JPanel {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel tblModel  = (DefaultTableModel)tblClass.getModel();
+        if(tblClass.getSelectedRowCount() == 1){
+            String ID = txtClassID.getText();
+            String Name = txtClassName.getText();
+            String coureID = txtCourseID.getText();
+            String teacherID = txtTeacherID.getText();
+//            String Adress = txtAddress.getText();
+//            String Phone = txtPhone.getText();
+            
+            //set upadte value ont table row
+            tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
+            tblModel.setValueAt(Name, tblClass.getSelectedRow(), 1);
+            tblModel.setValueAt(coureID, tblClass.getSelectedRow(), 2);
+            tblModel.setValueAt(teacherID, tblClass.getSelectedRow(), 3);
+//            tblModel.setValueAt(Adress, tblClass.getSelectedRow(), 5);
+//            tblModel.setValueAt(Phone, tblClass.getSelectedRow(), 6);
+            //tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
+            JOptionPane.showMessageDialog(this, "Update Successfully");
+        }else{
+            if(tblClass.getRowCount()==0){
+                JOptionPane.showMessageDialog(this, "Table is Empty...");
+            }else{
+                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+            }
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
+        //delete row
+        if(tblClass.getSelectedRowCount() == 1){
+            model.removeRow(tblClass.getSelectedRow());
+        }else{
+            if(tblClass.getRowCount() == 0){
+                JOptionPane.showMessageDialog(this, "Table is Empty");
+            }else{
+                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+            }
+        }
     }//GEN-LAST:event_btnDelActionPerformed
+
+    private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(model);
+        tblClass.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
+    }//GEN-LAST:event_txtFindKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
