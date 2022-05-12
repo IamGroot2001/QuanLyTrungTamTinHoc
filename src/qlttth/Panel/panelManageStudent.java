@@ -180,6 +180,11 @@ public class panelManageStudent extends javax.swing.JPanel {
         btnDelete.setText("Delete");
 
         btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Gender:");
 
@@ -348,6 +353,10 @@ public class panelManageStudent extends javax.swing.JPanel {
         txtPhoneNumber.setText(model.getValueAt(i,6).toString());
         cmbClass.setSelectedItem(model.getValueAt(i,7).toString());
     }//GEN-LAST:event_tblStudentMouseClicked
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
