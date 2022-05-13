@@ -222,7 +222,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 pst.setString(2, txtCourseName.getText());
                 pst.setString(3, ((JTextField)txtDateStart.getDateEditor().getUiComponent()).getText());
                 
-                String dateStart = ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText();
+                //String dateStart = ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText();
                 //String dateEnd = jTextField2.getText();
                 //pst.setString(4, ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText()));
                 pst.setString(4, ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText());
@@ -230,7 +230,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 pst.setString(6, txtTimeStudy.getText());
                 pst.setString(7, txtPrice.getText());
                 
-                System.out.println(dateStart);
+                //System.out.println(dateStart);
                 //System.out.println(dateEnd);
                 
                 pst.executeUpdate();

@@ -33,6 +33,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
         initComponents();
         showTeacher();
         radioMale.setSelected(true);
+        txtID.setEditable(false);
     }
 
     public ArrayList<Teacher> TeacherList()
@@ -125,7 +126,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
         txtFirstName = new javax.swing.JTextField();
         txtLastName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnConfirm = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         radioMale = new javax.swing.JRadioButton();
@@ -171,10 +172,10 @@ public class panelManageTeacher extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name:");
 
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -245,7 +246,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnConfirm)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnDelete)
                         .addGap(267, 267, 267))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -295,7 +296,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirm)
-                    .addComponent(jButton3))
+                    .addComponent(btnDelete))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -319,7 +320,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
         //delete row
@@ -333,7 +334,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
             }
         }
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTeacherMouseClicked
         // TODO add your handling code here:
@@ -446,9 +447,9 @@ public class panelManageTeacher extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton btnDelete;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
