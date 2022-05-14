@@ -28,7 +28,9 @@ public class panelManageStudent extends javax.swing.JPanel {
         initComponents();
         showStudent();
         boolean enabled = rdoMale.isEnabled();
+        txtStudentID.setEditable(false);
         initComboBoxClass();
+       
     }
     
     public void initComboBoxClass(){
@@ -37,7 +39,7 @@ public class panelManageStudent extends javax.swing.JPanel {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
             java.sql.Connection conn = DriverManager.getConnection(url);
-            String query = "SELECT MaLH FROM HocVien";
+            String query = "SELECT MaLH FROM LopHoc";
             PreparedStatement pst = conn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             cmbClass.removeAllItems();
@@ -356,6 +358,61 @@ public class panelManageStudent extends javax.swing.JPanel {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
+        try
+        {
+            if(txtStudentID.getText().isEmpty() || txtFirstName.getText().isEmpty()
+                    || txtLastName.getText().isEmpty() || txtAge.getText().isEmpty() || txtAddress.getText().isEmpty()
+                    || txtPhoneNumber.getText().isEmpty() || cmbClass.getItemCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                
+                String studentID = txtStudentID.getText();
+                
+                String query = "UPDATE HocVien SET TenHV=?, HoHV=?, TuoiHV=?, GioiTinhHV=?, DiaChiHV=?, SDTHV=?, MaLH=? WHERE MaHV = '"+studentID+"'"; 
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                pst.setString(1, txtFirstName.getText());
+                pst.setString(2, txtLastName.getText());
+                pst.setString(3, txtAge.getText());
+                
+                String gender;
+                if(rdoMale.isSelected())
+                {
+                    gender = "Nam";
+                    pst.setString(4, gender);
+                }
+                else if (rdoFemale.isSelected())
+                {
+                    gender = "Nữ";
+                    pst.setString(4, gender);
+                }
+                
+                pst.setString(5, txtAddress.getText());
+                pst.setString(6, txtPhoneNumber.getText());
+                pst.setObject(7, cmbClass.getSelectedItem());
+                
+                pst.executeUpdate();
+                //updateTable();
+                
+                // code này là de update lai table khi cap nhat
+                DefaultTableModel model = (DefaultTableModel)tblStudent.getModel();
+                model.setRowCount(0);
+                showStudent();
+                
+                JOptionPane.showMessageDialog(null, "Inserted successfully!!");
+            }
+
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
 
