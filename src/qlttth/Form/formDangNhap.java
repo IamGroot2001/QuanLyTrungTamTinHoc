@@ -42,36 +42,46 @@ public class formDangNhap extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        btnRegisterAccount.setBackground(new java.awt.Color(205, 209, 228));
+        btnRegisterAccount.setBackground(new java.awt.Color(108, 122, 137));
         btnRegisterAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnRegisterAccount.setForeground(new java.awt.Color(255, 0, 0));
+        btnRegisterAccount.setForeground(new java.awt.Color(255, 255, 255));
         btnRegisterAccount.setText("Register");
+        btnRegisterAccount.setMaximumSize(new java.awt.Dimension(97, 31));
+        btnRegisterAccount.setMinimumSize(new java.awt.Dimension(97, 31));
+        btnRegisterAccount.setPreferredSize(new java.awt.Dimension(97, 31));
         btnRegisterAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterAccountActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Do not have account?");
 
         jPanel2.setBackground(new java.awt.Color(52, 45, 113));
 
         lblAdminLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAdminLogin.setForeground(new java.awt.Color(255, 255, 255));
-        lblAdminLogin.setText(" Login");
+        lblAdminLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-log-in-100.png"))); // NOI18N
 
         lblAccount.setForeground(new java.awt.Color(255, 255, 255));
-        lblAccount.setText("Account:");
+        lblAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-account-40.png"))); // NOI18N
 
         lnlPassword.setForeground(new java.awt.Color(255, 255, 255));
-        lnlPassword.setText("Password:");
+        lnlPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-password-40.png"))); // NOI18N
 
         txtAccount.setText("tk01");
 
         txtPassword.setText("123456a@");
 
-        btnLogin.setBackground(new java.awt.Color(205, 209, 228));
-        btnLogin.setText("Login");
+        btnLogin.setBackground(new java.awt.Color(210, 215, 211));
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 0, 51));
+        btnLogin.setText("Log in");
+        btnLogin.setMaximumSize(new java.awt.Dimension(97, 31));
+        btnLogin.setMinimumSize(new java.awt.Dimension(97, 31));
+        btnLogin.setPreferredSize(new java.awt.Dimension(97, 31));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -83,41 +93,43 @@ public class formDangNhap extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAccount)
+                    .addComponent(lnlPassword))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAccount)
-                            .addComponent(lnlPassword)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(lblAdminLogin))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(btnLogin)))
+                    .addComponent(txtAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(lblAdminLogin)
+                .addGap(112, 112, 112))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblAdminLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccount)
-                    .addComponent(txtAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lnlPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnLogin)
-                .addGap(37, 37, 37))
+                .addGap(22, 22, 22)
+                .addComponent(lblAdminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblAccount)
+                        .addGap(31, 31, 31)
+                        .addComponent(lnlPassword)
+                        .addGap(104, 104, 104))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -128,7 +140,7 @@ public class formDangNhap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRegisterAccount)
+                .addComponent(btnRegisterAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -136,9 +148,9 @@ public class formDangNhap extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegisterAccount)
+                    .addComponent(btnRegisterAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(26, 26, 26))
         );

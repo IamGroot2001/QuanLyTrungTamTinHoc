@@ -109,6 +109,8 @@ public class panelViewProfile extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("PROFILE");
 
+        jButton1.setBackground(new java.awt.Color(210, 215, 211));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
         jButton1.setText("Update");
 
         jLabel7.setText("Gender:");
@@ -221,7 +223,7 @@ public class panelViewProfile extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

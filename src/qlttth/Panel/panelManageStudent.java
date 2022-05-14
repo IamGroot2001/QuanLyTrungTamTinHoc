@@ -160,7 +160,9 @@ public class panelManageStudent extends javax.swing.JPanel {
         rdoMale = new javax.swing.JRadioButton();
         rdoFemale = new javax.swing.JRadioButton();
 
-        jLabel1.setText("Find:");
+        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-find-50.png"))); // NOI18N
 
         txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -168,7 +170,8 @@ public class panelManageStudent extends javax.swing.JPanel {
             }
         });
 
-        btnReset.setText("Reset");
+        btnReset.setBackground(new java.awt.Color(210, 215, 211));
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-25_1.png"))); // NOI18N
 
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -202,6 +205,8 @@ public class panelManageStudent extends javax.swing.JPanel {
 
         jLabel7.setText("Class:");
 
+        btnDelete.setBackground(new java.awt.Color(210, 215, 211));
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-25.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +214,9 @@ public class panelManageStudent extends javax.swing.JPanel {
             }
         });
 
-        btnConfirm.setText("Confirm");
+        btnConfirm.setBackground(new java.awt.Color(210, 215, 211));
+        btnConfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
+        btnConfirm.setText("Update");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmActionPerformed(evt);

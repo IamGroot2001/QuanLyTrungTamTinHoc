@@ -55,6 +55,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         txtDateEnd = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
+
         jLabel6.setText("Time Study:");
 
         jLabel5.setText("Date  Study:");
@@ -67,6 +69,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
 
         cnameLab.setText("jLabel4");
 
+        btnConfirm.setBackground(new java.awt.Color(210, 215, 211));
+        btnConfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-done-25 .png"))); // NOI18N
         btnConfirm.setText("Confirm");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

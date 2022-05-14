@@ -106,6 +106,8 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
+
         fnameLab.setText("jLabel11");
 
         lnameLab.setText("jLabel12");
@@ -169,6 +171,8 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jLabel8.setText("Total:");
 
+        btnConfirm.setBackground(new java.awt.Color(210, 215, 211));
+        btnConfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-done-25 .png"))); // NOI18N
         btnConfirm.setText("Confirm");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,8 +245,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(16, 16, 16))
+                                        .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)

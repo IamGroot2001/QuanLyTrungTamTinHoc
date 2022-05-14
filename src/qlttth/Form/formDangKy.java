@@ -71,7 +71,7 @@ public class formDangKy extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(52, 45, 113));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Register");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-new-view-70.png"))); // NOI18N
 
         jLabel2.setBackground(new java.awt.Color(52, 45, 113));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,17 +101,23 @@ public class formDangKy extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Password:");
 
-        btnConfirm.setBackground(new java.awt.Color(205, 209, 228));
-        btnConfirm.setText("Confirm");
+        btnConfirm.setBackground(new java.awt.Color(210, 215, 211));
+        btnConfirm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-done-25 .png"))); // NOI18N
+        btnConfirm.setText("Create");
+        btnConfirm.setPreferredSize(new java.awt.Dimension(101, 31));
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmActionPerformed(evt);
             }
         });
 
-        btnClose.setBackground(new java.awt.Color(205, 209, 228));
+        btnClose.setBackground(new java.awt.Color(210, 215, 211));
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClose.setForeground(new java.awt.Color(255, 0, 0));
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-close-25.png"))); // NOI18N
         btnClose.setText("Close");
+        btnClose.setPreferredSize(new java.awt.Dimension(100, 31));
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -181,10 +187,11 @@ public class formDangKy extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5)
@@ -222,29 +229,28 @@ public class formDangKy extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(61, 61, 61)
                                         .addComponent(rabtnFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(btnConfirm)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rabtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnClose))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rabtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116))
+                .addGap(125, 125, 125)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,7 +277,7 @@ public class formDangKy extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(rabtnMale)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btnReAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,11 +295,11 @@ public class formDangKy extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(btnRePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClose)
-                    .addComponent(btnConfirm))
-                .addGap(23, 23, 23))
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,6 +316,75 @@ public class formDangKy extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnReAccountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAccountKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[a-zA-Z0-9]{0,30}[@][a-zA-Z0-9]{0,10}[.][a-zA-Z0-9]{0,10}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReAccount.getText());
+        if(!match.matches()){
+            mailLab.setText("incorrect");
+        }
+        else{
+            mailLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReAccountKeyReleased
+
+    private void btnRePhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRePhoneNumberKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[0-9]{0,10}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnRePhoneNumber.getText());
+        if(!match.matches()){
+            pLab.setText("incorrect");
+        }
+        else{
+            pLab.setText(null);
+        }
+    }//GEN-LAST:event_btnRePhoneNumberKeyReleased
+
+    private void btnRePhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRePhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRePhoneNumberActionPerformed
+
+    private void btnReAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAgeKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[0-9]{0,2}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReAge.getText());
+        if(!match.matches()){
+            aLab.setText("incorrect");
+        }
+        else{
+            aLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReAgeKeyReleased
+
+    private void btnReLastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReLastNameKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[a-zA-Z]{0,30}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReLastName.getText());
+        if(!match.matches()){
+            lnameLab.setText("incorrect");
+        }
+        else{
+            lnameLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReLastNameKeyReleased
+
+    private void btnReFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReFirstNameKeyReleased
+        // TODO add your handling code here:
+        String PATTERN = "^[a-zA-Z]{0,30}$";
+        Pattern patt = Pattern.compile(PATTERN);
+        Matcher match = patt.matcher(btnReFirstName.getText());
+        if(!match.matches()){
+            fnameLab.setText("incorrect");
+        }
+        else{
+            fnameLab.setText(null);
+        }
+    }//GEN-LAST:event_btnReFirstNameKeyReleased
+
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
         formDangNhap dangNhapForm = new formDangNhap();
@@ -323,9 +398,9 @@ public class formDangKy extends javax.swing.JFrame {
         try
         {
             if(btnReFirstName.getText().isEmpty() || btnReLastName.getText().isEmpty()
-                    || btnReAge.getText().isEmpty() || btnRePhoneNumber.getText().isEmpty()
-                    || btnReAddress.getText().isEmpty() || btnReAccount.getText().isEmpty()
-                    || btnRePassword.getText().isEmpty())
+                || btnReAge.getText().isEmpty() || btnRePhoneNumber.getText().isEmpty()
+                || btnReAddress.getText().isEmpty() || btnReAccount.getText().isEmpty()
+                || btnRePassword.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
             }
@@ -336,13 +411,12 @@ public class formDangKy extends javax.swing.JFrame {
                 Connection conn = DriverManager.getConnection(url);
                 String query = "INSERT INTO TaiKhoan(Ten, Ho, Tuoi, GioiTinh, DiaChi, SoDienThoai, TaiKhoan, MatKhau)VALUES(?,?,?,?,?,?,?,?) ";
                 PreparedStatement pst = conn.prepareStatement(query);
-                
-                
+
                 // insert du lieu vao database o day
                 pst.setString(1, btnReFirstName.getText());
                 pst.setString(2, btnReLastName.getText());
                 pst.setString(3, btnReAge.getText());
-                
+
                 if(rabtnMale.isSelected())
                 {
                     gender = "Nam";
@@ -353,23 +427,23 @@ public class formDangKy extends javax.swing.JFrame {
                     gender = "Nữ";
                     pst.setString(4, gender);
                 }
-                
+
                 pst.setString(5, btnReAddress.getText());
                 pst.setString(6, btnRePhoneNumber.getText());
                 pst.setString(7, btnReAccount.getText());
                 pst.setString(8, btnRePassword.getText());
-                
+
                 // o day can co code so sanh xem tai khoan dang nhap co trung voi trong database hay k
                 // neu trung thi bat nhap 1 tai khoan khac
                 String acc = btnReAccount.getText();
                 //String pass = btnRePassword.getText();
-                
+
                 String selectQuery = "SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '"+acc+"'";
                 Statement stat = conn.createStatement();
                 ResultSet rs = stat.executeQuery(selectQuery);
-                
+
                 System.out.println(rs.next());
-                
+
                 if(rs.next()==true)
                 {
                     JOptionPane.showMessageDialog(null, "The account is existed!!");
@@ -386,99 +460,30 @@ public class formDangKy extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
             //ex.printStackTrace();
         }
-//        if(btnReFirstName.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Fist Name is empty!");
-//        }
-//        if(btnReLastName.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Last Name is empty!");
-//        }
-//        if(btnReAge.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Last Name is empty!");
-//        }
-//        if(btnRePhoneNumber.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Phone Number is empty!");
-//        }
-//        if(btnReAddress.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Address is empty!");
-//        }
-//        if(btnReAccount.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Account is empty!");
-//        }
-//        if(btnRePassword.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(null, "Password is empty!");
-//        }
-//        String str = "CALL insertAccount('"+firstName+"',"+lastName+",'"
-//                    +age+"', '"+address+"','"+phoneNumber+"','"+account+"','"+password+"');";
+        //        if(btnReFirstName.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Fist Name is empty!");
+            //        }
+        //        if(btnReLastName.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Last Name is empty!");
+            //        }
+        //        if(btnReAge.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Last Name is empty!");
+            //        }
+        //        if(btnRePhoneNumber.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Phone Number is empty!");
+            //        }
+        //        if(btnReAddress.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Address is empty!");
+            //        }
+        //        if(btnReAccount.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Account is empty!");
+            //        }
+        //        if(btnRePassword.getText().isEmpty()){
+            //            JOptionPane.showMessageDialog(null, "Password is empty!");
+            //        }
+        //        String str = "CALL insertAccount('"+firstName+"',"+lastName+",'"
+        //                    +age+"', '"+address+"','"+phoneNumber+"','"+account+"','"+password+"');";
     }//GEN-LAST:event_btnConfirmActionPerformed
-
-    private void btnRePhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRePhoneNumberKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[0-9]{0,10}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(btnRePhoneNumber.getText());
-        if(!match.matches()){
-            pLab.setText("incorrect");
-        }
-        else{
-            pLab.setText(null);
-        }
-    }//GEN-LAST:event_btnRePhoneNumberKeyReleased
-
-    private void btnReAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAgeKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[0-9]{0,2}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(btnReAge.getText());
-        if(!match.matches()){
-            aLab.setText("incorrect");
-        }
-        else{
-            aLab.setText(null);
-        }
-    }//GEN-LAST:event_btnReAgeKeyReleased
-
-    private void btnReFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReFirstNameKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(btnReFirstName.getText());
-        if(!match.matches()){
-            fnameLab.setText("incorrect");
-        }
-        else{
-           fnameLab.setText(null);
-        }
-    }//GEN-LAST:event_btnReFirstNameKeyReleased
-
-    private void btnReLastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReLastNameKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(btnReLastName.getText());
-        if(!match.matches()){
-            lnameLab.setText("incorrect");
-        }
-        else{
-           lnameLab.setText(null);
-        }
-    }//GEN-LAST:event_btnReLastNameKeyReleased
-
-    private void btnReAccountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAccountKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z0-9]{0,30}[@][a-zA-Z0-9]{0,10}[.][a-zA-Z0-9]{0,10}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(btnReAccount.getText());
-        if(!match.matches()){
-            mailLab.setText("incorrect");
-        }
-        else{
-           mailLab.setText(null);
-        }
-    }//GEN-LAST:event_btnReAccountKeyReleased
-
-    private void btnRePhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRePhoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRePhoneNumberActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,18 +4,30 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="e4" green="d1" red="cd" type="rgb"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="58" green="29" red="25" type="rgb"/>
+          <Color blue="99" green="0" red="33" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
       </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Account"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuViewProfile">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-manage-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="View Profile"/>
               </Properties>
               <Events>
@@ -24,6 +36,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuLogOut">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-online-account-logout-with-arrow-direction-mark-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Log Out"/>
               </Properties>
               <Events>
@@ -32,6 +47,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuExit">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-shutdown-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
               <Events>
@@ -43,10 +61,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Student"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuRegisterStudent">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-new-view-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Register Student"/>
               </Properties>
               <Events>
@@ -55,6 +79,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuManageStudent">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-profile-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Manage Student"/>
               </Properties>
               <Events>
@@ -66,10 +93,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Teacher"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuRegisterTeacher">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-new-view-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Register Teacher"/>
               </Properties>
               <Events>
@@ -78,6 +111,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuManageTeacher">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-profile-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Manage Teacher"/>
               </Properties>
               <Events>
@@ -89,10 +125,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Course"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuAddNewCourse">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-create-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Add New Course"/>
               </Properties>
               <Events>
@@ -101,6 +143,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuManageCourse">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-project-setup-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Manage Course"/>
               </Properties>
               <Events>
@@ -112,10 +157,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu9">
           <Properties>
             <Property name="text" type="java.lang.String" value="Class"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuAddNewClass">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-create-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Add New Class"/>
               </Properties>
               <Events>
@@ -124,6 +175,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuManageClass">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-project-setup-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Manage Class"/>
               </Properties>
               <Events>
@@ -135,10 +189,16 @@
         <Menu class="javax.swing.JMenu" name="menuBill">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bill"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuViewBill">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/icons8-invoice-30.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="View Bill"/>
               </Properties>
               <Events>
@@ -246,7 +306,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="411" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="412" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>

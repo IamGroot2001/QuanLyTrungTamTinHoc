@@ -111,9 +111,12 @@ public class panelManageCourse extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
 
-        btnReset.setText("Reset");
+        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
 
-        jLabel1.setText("Find:");
+        btnReset.setBackground(new java.awt.Color(210, 215, 211));
+        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-25_1.png"))); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-find-50.png"))); // NOI18N
 
         tblCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,9 +141,13 @@ public class panelManageCourse extends javax.swing.JPanel {
 
         jLabel6.setText("Date Study:");
 
+        jButton3.setBackground(new java.awt.Color(210, 215, 211));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-25.png"))); // NOI18N
         jButton3.setText("Delete");
 
-        jButton2.setText("Confirm");
+        jButton2.setBackground(new java.awt.Color(210, 215, 211));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
+        jButton2.setText("Update");
 
         jLabel7.setText("Time Study:");
 
@@ -213,12 +220,14 @@ public class panelManageCourse extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnReset))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReset)))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
@@ -276,9 +285,8 @@ public class panelManageCourse extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
