@@ -15,7 +15,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 /**
  *
  * @author daoho
@@ -94,22 +96,20 @@ public class panelManageCourse extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtDateEnd = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtCourseName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtDateStart = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtDateStudy = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtTimeStudy = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        cmbClass = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
+        txtDateStart = new com.toedter.calendar.JDateChooser();
+        txtDateEnd = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBackground(new java.awt.Color(103, 128, 159));
 
@@ -126,6 +126,11 @@ public class panelManageCourse extends javax.swing.JPanel {
                 "Course ID", "Course Name", "Date Start", "Date End", "Date Study", "Time", "Price"
             }
         ));
+        tblCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCourseMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCourse);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -151,8 +156,6 @@ public class panelManageCourse extends javax.swing.JPanel {
 
         jLabel7.setText("Time Study:");
 
-        jLabel11.setText("Class:");
-
         jLabel12.setText("Price:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -175,26 +178,24 @@ public class panelManageCourse extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtCourseName)
-                                            .addComponent(txtDateStart)
-                                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                            .addComponent(txtDateStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(24, 24, 24)
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDateEnd)))
+                                        .addComponent(txtDateEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
                                 .addGap(43, 43, 43)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel11)
                                     .addComponent(jLabel12))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtDateStudy)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtTimeStudy)
-                                            .addComponent(cmbClass, 0, 115, Short.MAX_VALUE)
+                                            .addComponent(txtTimeStudy, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                                             .addComponent(txtPrice))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(30, 30, 30))
@@ -242,11 +243,11 @@ public class panelManageCourse extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(txtDateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(txtDateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -257,10 +258,6 @@ public class panelManageCourse extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTimeStudy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
@@ -291,14 +288,50 @@ public class panelManageCourse extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tblCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCourseMouseClicked
+        try
+        {
+            //Cach 1 chua dc
+            int i = tblCourse.getSelectedRow();
+            
+            DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
+            
+            java.util.Date selectin = (java.util.Date) model.getValueAt(i, 2);
+            java.util.Date selectin2 = (java.util.Date) model.getValueAt(i, 3);
+            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String strDate = dFormat.format(selectin);
+            String strDate2 = dFormat.format(selectin2);
+            
+            txtID.setText(model.getValueAt(i, 0).toString());
+            txtCourseName.setText(model.getValueAt(i, 1).toString());
+            
+            txtDateStart.setDateFormatString(strDate);
+            txtDateEnd.setDateFormatString(strDate2);
+            System.out.println(strDate);
+            
+            txtDateStudy.setText(model.getValueAt(i, 4).toString());
+            txtTimeStudy.setText(model.getValueAt(i, 5).toString());
+            txtPrice.setText(model.getValueAt(i, 6).toString());
+            
+            //Cach 2
+//            DefaultTableModel model = (DefaultTableModel)tblCourse.getModel();
+//            int index = tblCourse.getSelectedRow();
+//            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(index, 2));
+//            txtDateStart.setDate(date);
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_tblCourseMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReset;
-    private javax.swing.JComboBox<String> cmbClass;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -312,8 +345,8 @@ public class panelManageCourse extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblCourse;
     private javax.swing.JTextField txtCourseName;
-    private javax.swing.JTextField txtDateEnd;
-    private javax.swing.JTextField txtDateStart;
+    private com.toedter.calendar.JDateChooser txtDateEnd;
+    private com.toedter.calendar.JDateChooser txtDateStart;
     private javax.swing.JTextField txtDateStudy;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtID;

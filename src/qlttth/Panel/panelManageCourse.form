@@ -64,31 +64,29 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="txtCourseName" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtID" alignment="0" pref="190" max="32767" attributes="0"/>
                                                   <Component id="txtDateStart" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtID" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtDateEnd" max="32767" attributes="0"/>
+                                              <Component id="txtDateEnd" pref="189" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtDateStudy" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtTimeStudy" max="32767" attributes="0"/>
-                                                  <Component id="cmbClass" alignment="0" pref="115" max="32767" attributes="0"/>
+                                                  <Component id="txtTimeStudy" pref="126" max="32767" attributes="0"/>
                                                   <Component id="txtPrice" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -155,14 +153,14 @@
                                   <Component id="txtCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtDateStart" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDateStart" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtDateEnd" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDateEnd" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -174,11 +172,6 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtTimeStudy" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -280,6 +273,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblCourseMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -298,8 +294,6 @@
                 <Property name="text" type="java.lang.String" value="Course ID:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDateEnd">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Date End:"/>
@@ -316,8 +310,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Date Start:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtDateStart">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -355,22 +347,16 @@
                 <Property name="text" type="java.lang.String" value="Time Study:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Class:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbClass">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Price:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPrice">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="txtDateStart">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="txtDateEnd">
             </Component>
           </SubComponents>
         </Container>

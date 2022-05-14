@@ -25,6 +25,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
      */
     public panelAddNewTeacher() {
         initComponents();
+        jRadioButton1.setSelected(true);
     }
 
     /**
