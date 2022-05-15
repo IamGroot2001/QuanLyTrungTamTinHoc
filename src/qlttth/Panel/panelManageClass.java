@@ -6,6 +6,7 @@ package qlttth.Panel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -28,6 +29,59 @@ public class panelManageClass extends javax.swing.JPanel {
     public panelManageClass() {
         initComponents();
         showClasses();
+        txtCourseName.setEditable(false);
+        initCmbCourseID();
+        initCmbTeacherID();
+    }
+    
+    public void initCmbCourseID(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaKhoaHoc FROM KhoaHoc";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbCourseID.removeAllItems();
+            while (rs.next())
+            {
+                  cmbCourseID.addItem(rs.getString("MaKhoaHoc"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            //e.printStackTrace();
+        }
+    }
+    
+    public void initCmbTeacherID(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaGV FROM GiangVien";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbTeacherID.removeAllItems();
+            while (rs.next())
+            {
+                  cmbTeacherID.addItem(rs.getString("MaGV"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            //e.printStackTrace();
+        }
     }
 
     public ArrayList<Classes> ClassesList()
@@ -93,13 +147,15 @@ public class panelManageClass extends javax.swing.JPanel {
         txtClassID = new javax.swing.JTextField();
         txtClassName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtCourseID = new javax.swing.JTextField();
-        txtTeacherID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
+        txtCourseName = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        cmbCourseID = new javax.swing.JComboBox<>();
+        cmbTeacherID = new javax.swing.JComboBox<>();
 
         txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -153,6 +209,8 @@ public class panelManageClass extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setText("Course Name:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,60 +219,66 @@ public class panelManageClass extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReset)
+                        .addGap(146, 146, 146))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDel)
-                                .addGap(57, 57, 57))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtClassID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtClassID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTeacherID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(txtCourseID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(txtTotal))
-                        .addGap(114, 114, 114))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReset)
-                .addGap(146, 146, 146))
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbCourseID, 0, 143, Short.MAX_VALUE)
+                                    .addComponent(cmbTeacherID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDel)))
+                        .addGap(96, 96, 96))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(47, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnReset))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(btnReset)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,20 +291,19 @@ public class panelManageClass extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTeacherID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)
+                            .addComponent(cmbTeacherID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDel))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDel)
+                        .addComponent(btnUpdate)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -265,41 +328,85 @@ public class panelManageClass extends javax.swing.JPanel {
 
     private void tblClassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClassMouseClicked
         // TODO add your handling code here:
-        int i = tblClass.getSelectedRow();
-        TableModel model = tblClass.getModel();
-        txtClassID.setText(model.getValueAt(i,0).toString());
-        txtClassName.setText(model.getValueAt(i,1).toString());
-        txtCourseID.setText(model.getValueAt(i,2).toString());
-        txtTeacherID.setText(model.getValueAt(i,3).toString());
+        try
+        {
+            int i = tblClass.getSelectedRow();
+            TableModel model = tblClass.getModel();
+            txtClassID.setText(model.getValueAt(i,0).toString());
+            txtClassName.setText(model.getValueAt(i,1).toString());
+            cmbCourseID.setSelectedItem(model.getValueAt(i,2).toString());
+            cmbTeacherID.setSelectedItem(model.getValueAt(i,3).toString());
+        
+            String a = (String) cmbCourseID.getSelectedItem();
+            
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            
+            String query1 = "SELECT TenKhoaHoc FROM KhoaHoc WHERE MaKhoaHoc = '"+a+"'";
+            
+            Statement stat1 = conn.createStatement();
+            ResultSet rs1 = stat1.executeQuery(query1);
+            
+            if(rs1.next() == true)
+            {
+                txtCourseName.setText(rs1.getString("TenKhoaHoc"));
+            }
+            
+            String maLH = txtClassID.getText();
+            
+            String query2 = "SELECT COUNT(MaHV) FROM HocVien WHERE MaLH = '"+maLH+"'";
+            PreparedStatement pst = conn.prepareStatement(query2);
+            ResultSet rs = pst.executeQuery();
+            
+            String dem = rs.getString("COUNT(MaHV)");
+            txtTotal.setText(dem);
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
     }//GEN-LAST:event_tblClassMouseClicked
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tblModel  = (DefaultTableModel)tblClass.getModel();
-        if(tblClass.getSelectedRowCount() == 1){
-            String ID = txtClassID.getText();
-            String Name = txtClassName.getText();
-            String coureID = txtCourseID.getText();
-            String teacherID = txtTeacherID.getText();
-//            String Adress = txtAddress.getText();
-//            String Phone = txtPhone.getText();
-            
-            //set upadte value ont table row
-            tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
-            tblModel.setValueAt(Name, tblClass.getSelectedRow(), 1);
-            tblModel.setValueAt(coureID, tblClass.getSelectedRow(), 2);
-            tblModel.setValueAt(teacherID, tblClass.getSelectedRow(), 3);
-//            tblModel.setValueAt(Adress, tblClass.getSelectedRow(), 5);
-//            tblModel.setValueAt(Phone, tblClass.getSelectedRow(), 6);
-            //tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
-            JOptionPane.showMessageDialog(this, "Update Successfully");
-        }else{
-            if(tblClass.getRowCount()==0){
-                JOptionPane.showMessageDialog(this, "Table is Empty...");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+        try
+        {
+            if(txtClassID.getText().isEmpty() || txtClassName.getText().isEmpty() || txtCourseName.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
             }
         }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+//        DefaultTableModel tblModel  = (DefaultTableModel)tblClass.getModel();
+//        if(tblClass.getSelectedRowCount() == 1){
+//            String ID = txtClassID.getText();
+//            String Name = txtClassName.getText();
+//            String coureID = (String) cmbCourseID.getSelectedItem();
+//            String teacherID = (String) cmbTeacherID.getSelectedItem();
+////            String Adress = txtAddress.getText();
+////            String Phone = txtPhone.getText();
+//            
+//            //set upadte value ont table row
+//            tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
+//            tblModel.setValueAt(Name, tblClass.getSelectedRow(), 1);
+//            tblModel.setValueAt(coureID, tblClass.getSelectedRow(), 2);
+//            tblModel.setValueAt(teacherID, tblClass.getSelectedRow(), 3);
+////            tblModel.setValueAt(Adress, tblClass.getSelectedRow(), 5);
+////            tblModel.setValueAt(Phone, tblClass.getSelectedRow(), 6);
+//            //tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
+//            JOptionPane.showMessageDialog(this, "Update Successfully");
+//        }else{
+//            if(tblClass.getRowCount()==0){
+//                JOptionPane.showMessageDialog(this, "Table is Empty...");
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+//            }
+//        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
@@ -330,6 +437,8 @@ public class panelManageClass extends javax.swing.JPanel {
     private javax.swing.JButton btnDel;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cmbCourseID;
+    private javax.swing.JComboBox<String> cmbTeacherID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -337,15 +446,15 @@ public class panelManageClass extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblClass;
     private javax.swing.JTextField txtClassID;
     private javax.swing.JTextField txtClassName;
-    private javax.swing.JTextField txtCourseID;
+    private javax.swing.JTextField txtCourseName;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtTeacherID;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

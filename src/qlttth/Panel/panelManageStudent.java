@@ -11,8 +11,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import qlttth.model.Student;
 
 /**
@@ -29,6 +31,7 @@ public class panelManageStudent extends javax.swing.JPanel {
         showStudent();
         boolean enabled = rdoMale.isEnabled();
         txtStudentID.setEditable(false);
+        rdoMale.setSelected(true);
         initComboBoxClass();
        
     }
@@ -145,7 +148,18 @@ public class panelManageStudent extends javax.swing.JPanel {
 
         jLabel1.setText("Find:");
 
+        txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFindKeyPressed(evt);
+            }
+        });
+
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,8 +194,13 @@ public class panelManageStudent extends javax.swing.JPanel {
         jLabel7.setText("Class:");
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
-        btnConfirm.setText("Confirm");
+        btnConfirm.setText("Update");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmActionPerformed(evt);
@@ -414,6 +433,74 @@ public class panelManageStudent extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            DefaultTableModel model = (DefaultTableModel) tblStudent.getModel();
+            if(tblStudent.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select the row to delete!!");
+            }
+            else
+            {
+                int response = JOptionPane.showConfirmDialog (this, "Do you want to delete the student?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(response == JOptionPane.YES_OPTION)
+                {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                    Connection conn = DriverManager.getConnection(url);
+                
+                    String studentID = txtStudentID.getText();
+                
+                    String query = "DELETE FROM HocVien WHERE MaHV='"+studentID+"'";
+                    PreparedStatement pst = conn.prepareStatement(query);
+                
+                    String query2 = "DELETE FROM HoaDon WHERE MaHV='"+studentID+"'";
+                    PreparedStatement pst2 = conn.prepareStatement(query2);
+                
+                    pst2.executeUpdate();
+                    pst.executeUpdate();
+                
+                    model.setRowCount(0);
+                    showStudent();
+                
+                    JOptionPane.showMessageDialog(null, "Delete successfully!!");
+                }
+                else if (response == JOptionPane.NO_OPTION)
+                {
+                }
+                else if (response == JOptionPane.CLOSED_OPTION)
+                {
+                }
+                
+            }
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        txtStudentID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtAge.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
+        rdoMale.setSelected(true);
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tblStudent.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tblStudent.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
+    }//GEN-LAST:event_txtFindKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

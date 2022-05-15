@@ -26,8 +26,61 @@ public class panelAddNewCourse extends javax.swing.JPanel {
      */
     public panelAddNewCourse() {
         initComponents();
+        initCmbDayStudy();
+        initCmbTimeStudy();
     }
 
+    public void initCmbDayStudy()
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT DISTINCT NgayHoc FROM ThoiKhoaBieu";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbDayStudy.removeAllItems();
+            while (rs.next())
+            {
+                cmbDayStudy.addItem(rs.getString("NgayHoc"));
+            }
+            rs.close();
+            conn.close();
+            pst.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void initCmbTimeStudy()
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT DISTINCT ThoiGianHoc FROM ThoiKhoaBieu";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbTimeStudy.removeAllItems();
+            while (rs.next())
+            {
+                cmbTimeStudy.addItem(rs.getString("ThoiGianHoc"));
+            }
+            rs.close();
+            conn.close();
+            pst.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,17 +102,17 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtDateStudy = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtTimeStudy = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtDateStart = new com.toedter.calendar.JDateChooser();
         txtDateEnd = new com.toedter.calendar.JDateChooser();
+        cmbDayStudy = new javax.swing.JComboBox<>();
+        cmbTimeStudy = new javax.swing.JComboBox<>();
 
         jLabel6.setText("Time Study:");
 
-        jLabel5.setText("Date  Study:");
+        jLabel5.setText("Day Study:");
 
         txtCourseName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -112,25 +165,22 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTimeStudy, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDateStudy, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtDateEnd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtDateStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtCourseName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
-                                        .addGap(92, 92, 92)
-                                        .addComponent(cnameLab))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(cmbTimeStudy, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbDayStudy, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtDateEnd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                        .addComponent(txtDateStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCourseID))
+                                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addComponent(cnameLab))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(84, 84, 84)
-                                        .addComponent(btnConfirm))
-                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnConfirm)
+                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(131, 131, 131)))
                         .addGap(136, 136, 136))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -160,12 +210,12 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                     .addComponent(txtDateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDateStudy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(cmbDayStudy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimeStudy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(cmbTimeStudy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -204,11 +254,10 @@ public class panelAddNewCourse extends javax.swing.JPanel {
             
             if(txtCourseID.getText().isEmpty() || txtPrice.getText().isEmpty()
                     || dateStartCheck == null || dateEndCheck == null 
-                    || txtDateStudy.getText().isEmpty() || txtTimeStudy.getText().isEmpty()
                     || txtCourseName.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
-                System.out.println(dateStartCheck);
+                //System.out.println(dateStartCheck);
             }
             else
             {
@@ -226,8 +275,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
                 //String dateEnd = jTextField2.getText();
                 //pst.setString(4, ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText()));
                 pst.setString(4, ((JTextField)txtDateEnd.getDateEditor().getUiComponent()).getText());
-                pst.setString(5, txtDateStudy.getText());
-                pst.setString(6, txtTimeStudy.getText());
+                pst.setString(5, (String) cmbDayStudy.getSelectedItem());
+                pst.setString(6, (String) cmbTimeStudy.getSelectedItem());
                 pst.setString(7, txtPrice.getText());
                 
                 //System.out.println(dateStart);
@@ -263,6 +312,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirm;
+    private javax.swing.JComboBox<String> cmbDayStudy;
+    private javax.swing.JComboBox<String> cmbTimeStudy;
     private javax.swing.JLabel cnameLab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -278,8 +329,6 @@ public class panelAddNewCourse extends javax.swing.JPanel {
     private javax.swing.JTextField txtCourseName;
     private com.toedter.calendar.JDateChooser txtDateEnd;
     private com.toedter.calendar.JDateChooser txtDateStart;
-    private javax.swing.JTextField txtDateStudy;
     private javax.swing.JTextField txtPrice;
-    private javax.swing.JTextField txtTimeStudy;
     // End of variables declaration//GEN-END:variables
 }

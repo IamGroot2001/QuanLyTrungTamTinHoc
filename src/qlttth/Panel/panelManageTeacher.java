@@ -139,6 +139,11 @@ public class panelManageTeacher extends javax.swing.JPanel {
         });
 
         jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Find:");
 
@@ -179,7 +184,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
             }
         });
 
-        btnConfirm.setText("Confirm");
+        btnConfirm.setText("Update");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmActionPerformed(evt);
@@ -321,19 +326,47 @@ public class panelManageTeacher extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
-        //delete row
-        if(tblTeacher.getSelectedRowCount() == 1){
-            model.removeRow(tblTeacher.getSelectedRow());
-        }else{
-            if(tblTeacher.getRowCount() == 0){
-                JOptionPane.showMessageDialog(this, "Table is Empty");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+        try
+        {
+            DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
+            if(tblTeacher.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select the row to delete!!");
+            }
+            else
+            {
+                int response = JOptionPane.showConfirmDialog (this, "Do you want to delete the teacher?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(response == JOptionPane.YES_OPTION)
+                {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                    Connection conn = DriverManager.getConnection(url);
+                
+                    String teacherID = txtID.getText();
+                
+                    String query = "DELETE FROM GiangVien WHERE MaGV='"+teacherID+"'";
+                    PreparedStatement pst = conn.prepareStatement(query);
+                
+                    pst.executeUpdate();
+                
+                    model.setRowCount(0);
+                    showTeacher();
+                
+                    JOptionPane.showMessageDialog(null, "Delete successfully!!");
+                }
+                else if (response == JOptionPane.NO_OPTION)
+                {
+                }
+                else if (response == JOptionPane.CLOSED_OPTION)
+                {
+                }
             }
         }
-        
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "The teacher already exists in a certain class, can not delete!!");
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTeacherMouseClicked
@@ -443,6 +476,17 @@ public class panelManageTeacher extends javax.swing.JPanel {
         tblTeacher.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
     }//GEN-LAST:event_txtFindKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        txtID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtAge.setText("");
+        radioMale.setSelected(true);
+        txtAddress.setText("");
+        txtPhone.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
