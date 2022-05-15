@@ -32,6 +32,7 @@ public class panelManageClass extends javax.swing.JPanel {
         txtCourseName.setEditable(false);
         initCmbCourseID();
         initCmbTeacherID();
+        txtClassID.setEditable(false);
     }
     
     public void initCmbCourseID(){
@@ -166,6 +167,11 @@ public class panelManageClass extends javax.swing.JPanel {
         jLabel1.setText("Find:");
 
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         tblClass.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -353,14 +359,14 @@ public class panelManageClass extends javax.swing.JPanel {
                 txtCourseName.setText(rs1.getString("TenKhoaHoc"));
             }
             
-            String maLH = txtClassID.getText();
-            
-            String query2 = "SELECT COUNT(MaHV) FROM HocVien WHERE MaLH = '"+maLH+"'";
-            PreparedStatement pst = conn.prepareStatement(query2);
-            ResultSet rs = pst.executeQuery();
-            
-            String dem = rs.getString("COUNT(MaHV)");
-            txtTotal.setText(dem);
+//            String maLH = txtClassID.getText();
+//            
+//            String query2 = "SELECT COUNT(MaHV) FROM HocVien WHERE MaLH = '"+maLH+"'";
+//            PreparedStatement pst = conn.prepareStatement(query2);
+//            ResultSet rs = pst.executeQuery();
+//            
+//            String dem = rs.getString("COUNT(MaHV)");
+//            txtTotal.setText(dem);
         }
         catch(Exception ex)
         {
@@ -376,6 +382,30 @@ public class panelManageClass extends javax.swing.JPanel {
             if(txtClassID.getText().isEmpty() || txtClassName.getText().isEmpty() || txtCourseName.getText().isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                
+                String lopHocID = txtClassID.getText();
+                
+                String query = "UPDATE LopHoc SET TenLH=?, MaKhoaHoc=?, MaGV=? WHERE MaLH = '"+lopHocID+"'";
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                pst.setString(1, txtClassName.getText());
+                pst.setString(2, (String)cmbCourseID.getSelectedItem());
+                pst.setString(3, (String) cmbTeacherID.getSelectedItem());
+                
+                pst.executeUpdate();
+                
+                // code này là de update lai table khi cap nhat
+                DefaultTableModel model = (DefaultTableModel)tblClass.getModel();
+                model.setRowCount(0);
+                showClasses();
+                
+                JOptionPane.showMessageDialog(null, "Update successfully!!");
             }
         }
         catch(Exception ex)
@@ -411,17 +441,58 @@ public class panelManageClass extends javax.swing.JPanel {
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
-        //delete row
-        if(tblClass.getSelectedRowCount() == 1){
-            model.removeRow(tblClass.getSelectedRow());
-        }else{
-            if(tblClass.getRowCount() == 0){
-                JOptionPane.showMessageDialog(this, "Table is Empty");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+        try
+        {
+            DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
+            if(tblClass.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select the row to delete!!");
+            }
+            else
+            {
+                int response = JOptionPane.showConfirmDialog (this, "Do you want to delete the class?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(response == JOptionPane.YES_OPTION)
+                {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                    Connection conn = DriverManager.getConnection(url);
+                
+                    String classID = txtClassID.getText();
+                
+                    String query = "DELETE FROM LopHoc WHERE MaLH='"+classID+"'";
+                    PreparedStatement pst = conn.prepareStatement(query);
+                
+                    pst.executeUpdate();
+                
+                    model.setRowCount(0);
+                    showClasses();
+                
+                    JOptionPane.showMessageDialog(null, "Delete successfully!!");
+                }
+                else if (response == JOptionPane.NO_OPTION)
+                {
+                }
+                else if (response == JOptionPane.CLOSED_OPTION)
+                {
+                }
             }
         }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "The class contains students!! Can not delete!!");
+            ex.printStackTrace();
+        }
+//        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
+//        //delete row
+//        if(tblClass.getSelectedRowCount() == 1){
+//            model.removeRow(tblClass.getSelectedRow());
+//        }else{
+//            if(tblClass.getRowCount() == 0){
+//                JOptionPane.showMessageDialog(this, "Table is Empty");
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+//            }
+//        }
     }//GEN-LAST:event_btnDelActionPerformed
 
     private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
@@ -431,6 +502,15 @@ public class panelManageClass extends javax.swing.JPanel {
         tblClass.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
     }//GEN-LAST:event_txtFindKeyPressed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        txtClassID.setText("");
+        txtClassName.setText("");
+        txtCourseName.setText("");
+        txtTotal.setText("");
+        txtFind.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

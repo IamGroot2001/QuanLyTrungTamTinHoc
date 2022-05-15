@@ -486,6 +486,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
         radioMale.setSelected(true);
         txtAddress.setText("");
         txtPhone.setText("");
+        txtFind.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

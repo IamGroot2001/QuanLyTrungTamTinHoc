@@ -492,6 +492,7 @@ public class panelManageStudent extends javax.swing.JPanel {
         txtAddress.setText("");
         txtPhoneNumber.setText("");
         rdoMale.setSelected(true);
+        txtFind.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
