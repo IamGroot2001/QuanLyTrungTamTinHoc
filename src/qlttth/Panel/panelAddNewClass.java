@@ -101,6 +101,8 @@ public class panelAddNewClass extends javax.swing.JPanel {
         nLab = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
+
         jLabel7.setText("Choose Course:");
 
         txtClassName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -120,6 +122,8 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
         nLab.setText("jLabel4");
 
+        jButton1.setBackground(new java.awt.Color(210, 215, 211));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-done-25 .png"))); // NOI18N
         jButton1.setText("Confirm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

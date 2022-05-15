@@ -99,7 +99,7 @@ public class formMain extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGap(0, 412, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -121,10 +121,14 @@ public class formMain extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Welcome To Informatic Centre");
 
-        jMenuBar1.setForeground(new java.awt.Color(37, 41, 88));
+        jMenuBar1.setBackground(new java.awt.Color(205, 209, 228));
+        jMenuBar1.setForeground(new java.awt.Color(51, 0, 153));
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jMenu3.setText("Account");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        menuViewProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-manage-30.png"))); // NOI18N
         menuViewProfile.setText("View Profile");
         menuViewProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +137,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu3.add(menuViewProfile);
 
+        menuLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-online-account-logout-with-arrow-direction-mark-30.png"))); // NOI18N
         menuLogOut.setText("Log Out");
         menuLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +146,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu3.add(menuLogOut);
 
+        menuExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-shutdown-30.png"))); // NOI18N
         menuExit.setText("Exit");
         menuExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +158,9 @@ public class formMain extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Student");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        menuRegisterStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-new-view-30.png"))); // NOI18N
         menuRegisterStudent.setText("Register Student");
         menuRegisterStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +169,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu1.add(menuRegisterStudent);
 
+        menuManageStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-profile-30.png"))); // NOI18N
         menuManageStudent.setText("Manage Student");
         menuManageStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +181,9 @@ public class formMain extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Teacher");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        menuRegisterTeacher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-new-view-30.png"))); // NOI18N
         menuRegisterTeacher.setText("Register Teacher");
         menuRegisterTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +192,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu2.add(menuRegisterTeacher);
 
+        menuManageTeacher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-profile-30.png"))); // NOI18N
         menuManageTeacher.setText("Manage Teacher");
         menuManageTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +204,9 @@ public class formMain extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu4.setText("Course");
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        menuAddNewCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-create-30.png"))); // NOI18N
         menuAddNewCourse.setText("Add New Course");
         menuAddNewCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +215,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu4.add(menuAddNewCourse);
 
+        menuManageCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-project-setup-30.png"))); // NOI18N
         menuManageCourse.setText("Manage Course");
         menuManageCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +227,9 @@ public class formMain extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu9.setText("Class");
+        jMenu9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        menuAddNewClass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-create-30.png"))); // NOI18N
         menuAddNewClass.setText("Add New Class");
         menuAddNewClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +238,7 @@ public class formMain extends javax.swing.JFrame {
         });
         jMenu9.add(menuAddNewClass);
 
+        menuManageClass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-project-setup-30.png"))); // NOI18N
         menuManageClass.setText("Manage Class");
         menuManageClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +250,9 @@ public class formMain extends javax.swing.JFrame {
         jMenuBar1.add(jMenu9);
 
         menuBill.setText("Bill");
+        menuBill.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        menuViewBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-invoice-30.png"))); // NOI18N
         menuViewBill.setText("View Bill");
         menuViewBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

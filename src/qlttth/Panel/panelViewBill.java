@@ -83,6 +83,8 @@ public class panelViewBill extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblBill = new javax.swing.JTable();
 
+        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
+
         tblBill.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
