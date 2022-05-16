@@ -359,14 +359,32 @@ public class panelManageClass extends javax.swing.JPanel {
                 txtCourseName.setText(rs1.getString("TenKhoaHoc"));
             }
             
-//            String maLH = txtClassID.getText();
-//            
-//            String query2 = "SELECT COUNT(MaHV) FROM HocVien WHERE MaLH = '"+maLH+"'";
-//            PreparedStatement pst = conn.prepareStatement(query2);
-//            ResultSet rs = pst.executeQuery();
-//            
-//            String dem = rs.getString("COUNT(MaHV)");
-//            txtTotal.setText(dem);
+            String maLH = txtClassID.getText();
+            
+            //String query2 = "SELECT COUNT(MaHV) AS \"dem\" FROM HocVien WHERE MaLH = '"+maLH+"' GROUP BY MaHV";
+            Statement st = conn.createStatement();
+            int count = 0;
+            
+            ResultSet rs = st.executeQuery("SELECT COUNT(MaHV) FROM HocVien WHERE MaLH = '"+maLH+"'");
+            
+            while(rs.next())
+            {
+                count = rs.getInt(1);
+                System.out.println(count);
+                String dem = Integer.toString(count);
+                txtTotal.setText(dem);
+            }
+            
+//            int dem = (int)st.executeUpdate(query2);
+//            System.out.println(st);
+            //PreparedStatement pst = conn.prepareStatement(query2);
+            //ResultSet rs = pst.executeQuery(query2);
+            
+            
+            
+//            String dem = rs.getString("\"dem\"");
+            //System.out.println(rs);
+            //txtTotal.setText();
         }
         catch(Exception ex)
         {
@@ -480,7 +498,7 @@ public class panelManageClass extends javax.swing.JPanel {
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, "The class contains students!! Can not delete!!");
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
 //        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
 //        //delete row
