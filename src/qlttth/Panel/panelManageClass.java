@@ -113,6 +113,11 @@ public class panelManageClass extends javax.swing.JPanel {
 
         btnReset.setBackground(new java.awt.Color(210, 215, 211));
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-25_1.png"))); // NOI18N
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         tblClass.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -335,6 +340,10 @@ public class panelManageClass extends javax.swing.JPanel {
         tblClass.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
     }//GEN-LAST:event_txtFindKeyPressed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

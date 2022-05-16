@@ -108,13 +108,18 @@ public class panelManageCourse extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
-        txtDateStart = new com.toedter.calendar.JDateChooser();
-        txtDateEnd = new com.toedter.calendar.JDateChooser();
+        txtDateStart = new org.netbeans.modules.form.InvalidComponent();
+        txtDateEnd = new org.netbeans.modules.form.InvalidComponent();
 
         jPanel1.setBackground(new java.awt.Color(103, 128, 159));
 
         btnReset.setBackground(new java.awt.Color(210, 215, 211));
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-25_1.png"))); // NOI18N
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-find-50.png"))); // NOI18N
 
@@ -293,38 +298,43 @@ public class panelManageCourse extends javax.swing.JPanel {
         {
             //Cach 1 chua dc
             int i = tblCourse.getSelectedRow();
-            
+
             DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
-            
+
             java.util.Date selectin = (java.util.Date) model.getValueAt(i, 2);
             java.util.Date selectin2 = (java.util.Date) model.getValueAt(i, 3);
             SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
             String strDate = dFormat.format(selectin);
             String strDate2 = dFormat.format(selectin2);
-            
+
             txtID.setText(model.getValueAt(i, 0).toString());
             txtCourseName.setText(model.getValueAt(i, 1).toString());
-            
+
             txtDateStart.setDateFormatString(strDate);
             txtDateEnd.setDateFormatString(strDate2);
             System.out.println(strDate);
-            
+
             txtDateStudy.setText(model.getValueAt(i, 4).toString());
             txtTimeStudy.setText(model.getValueAt(i, 5).toString());
             txtPrice.setText(model.getValueAt(i, 6).toString());
-            
+
             //Cach 2
-//            DefaultTableModel model = (DefaultTableModel)tblCourse.getModel();
-//            int index = tblCourse.getSelectedRow();
-//            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(index, 2));
-//            txtDateStart.setDate(date);
+            //            DefaultTableModel model = (DefaultTableModel)tblCourse.getModel();
+            //            int index = tblCourse.getSelectedRow();
+            //            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(index, 2));
+            //            txtDateStart.setDate(date);
         }
         catch(Exception ex)
         {
             ex.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_tblCourseMouseClicked
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -345,8 +355,8 @@ public class panelManageCourse extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblCourse;
     private javax.swing.JTextField txtCourseName;
-    private com.toedter.calendar.JDateChooser txtDateEnd;
-    private com.toedter.calendar.JDateChooser txtDateStart;
+    private org.netbeans.modules.form.InvalidComponent txtDateEnd;
+    private org.netbeans.modules.form.InvalidComponent txtDateStart;
     private javax.swing.JTextField txtDateStudy;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtID;
