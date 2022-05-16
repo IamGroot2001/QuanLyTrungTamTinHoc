@@ -6,6 +6,7 @@ package qlttth.Panel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -28,6 +29,60 @@ public class panelManageClass extends javax.swing.JPanel {
     public panelManageClass() {
         initComponents();
         showClasses();
+        txtCourseName.setEditable(false);
+        initCmbCourseID();
+        initCmbTeacherID();
+        txtClassID.setEditable(false);
+    }
+    
+    public void initCmbCourseID(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaKhoaHoc FROM KhoaHoc";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbCourseID.removeAllItems();
+            while (rs.next())
+            {
+                  cmbCourseID.addItem(rs.getString("MaKhoaHoc"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            //e.printStackTrace();
+        }
+    }
+    
+    public void initCmbTeacherID(){
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT MaGV FROM GiangVien";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            cmbTeacherID.removeAllItems();
+            while (rs.next())
+            {
+                  cmbTeacherID.addItem(rs.getString("MaGV"));      
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            //e.printStackTrace();
+        }
     }
 
     public ArrayList<Classes> ClassesList()
@@ -93,15 +148,15 @@ public class panelManageClass extends javax.swing.JPanel {
         txtClassID = new javax.swing.JTextField();
         txtClassName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtCourseID = new javax.swing.JTextField();
-        txtTeacherID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
-
-        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
+        txtCourseName = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        cmbCourseID = new javax.swing.JComboBox<>();
+        cmbTeacherID = new javax.swing.JComboBox<>();
 
         txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -109,10 +164,9 @@ public class panelManageClass extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-find-50.png"))); // NOI18N
+        jLabel1.setText("Find:");
 
-        btnReset.setBackground(new java.awt.Color(210, 215, 211));
-        btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-25_1.png"))); // NOI18N
+        btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -147,29 +201,21 @@ public class panelManageClass extends javax.swing.JPanel {
 
         jLabel7.setText("Total:");
 
-        btnUpdate.setBackground(new java.awt.Color(210, 215, 211));
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
         btnUpdate.setText("Update");
-        btnUpdate.setMaximumSize(new java.awt.Dimension(97, 34));
-        btnUpdate.setMinimumSize(new java.awt.Dimension(97, 34));
-        btnUpdate.setPreferredSize(new java.awt.Dimension(97, 34));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
 
-        btnDel.setBackground(new java.awt.Color(210, 215, 211));
-        btnDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-25.png"))); // NOI18N
         btnDel.setText("Delete");
-        btnDel.setMaximumSize(new java.awt.Dimension(97, 34));
-        btnDel.setMinimumSize(new java.awt.Dimension(97, 34));
-        btnDel.setPreferredSize(new java.awt.Dimension(97, 34));
         btnDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelActionPerformed(evt);
             }
         });
+
+        jLabel8.setText("Course Name:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,62 +225,66 @@ public class panelManageClass extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(161, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtClassID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTeacherID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(txtCourseID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(txtTotal))
-                        .addGap(114, 114, 114))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReset)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnReset)
+                        .addGap(146, 146, 146))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtClassID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbCourseID, 0, 143, Short.MAX_VALUE)
+                                    .addComponent(cmbTeacherID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDel)))
+                        .addGap(96, 96, 96))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(47, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReset)))
-                    .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(btnReset)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(21, 21, 21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -247,20 +297,19 @@ public class panelManageClass extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTeacherID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
+                            .addComponent(jLabel6)
+                            .addComponent(cmbTeacherID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDel)
+                        .addComponent(btnUpdate)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -269,68 +318,199 @@ public class panelManageClass extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblClassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClassMouseClicked
         // TODO add your handling code here:
-        int i = tblClass.getSelectedRow();
-        TableModel model = tblClass.getModel();
-        txtClassID.setText(model.getValueAt(i,0).toString());
-        txtClassName.setText(model.getValueAt(i,1).toString());
-        txtCourseID.setText(model.getValueAt(i,2).toString());
-        txtTeacherID.setText(model.getValueAt(i,3).toString());
+        try
+        {
+            int i = tblClass.getSelectedRow();
+            TableModel model = tblClass.getModel();
+            txtClassID.setText(model.getValueAt(i,0).toString());
+            txtClassName.setText(model.getValueAt(i,1).toString());
+            cmbCourseID.setSelectedItem(model.getValueAt(i,2).toString());
+            cmbTeacherID.setSelectedItem(model.getValueAt(i,3).toString());
+        
+            String a = (String) cmbCourseID.getSelectedItem();
+            
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            
+            String query1 = "SELECT TenKhoaHoc FROM KhoaHoc WHERE MaKhoaHoc = '"+a+"'";
+            
+            Statement stat1 = conn.createStatement();
+            ResultSet rs1 = stat1.executeQuery(query1);
+            
+            if(rs1.next() == true)
+            {
+                txtCourseName.setText(rs1.getString("TenKhoaHoc"));
+            }
+            
+            String maLH = txtClassID.getText();
+            
+            //String query2 = "SELECT COUNT(MaHV) AS \"dem\" FROM HocVien WHERE MaLH = '"+maLH+"' GROUP BY MaHV";
+            Statement st = conn.createStatement();
+            int count = 0;
+            
+            ResultSet rs = st.executeQuery("SELECT COUNT(MaHV) FROM HocVien WHERE MaLH = '"+maLH+"'");
+            
+            while(rs.next())
+            {
+                count = rs.getInt(1);
+                System.out.println(count);
+                String dem = Integer.toString(count);
+                txtTotal.setText(dem);
+            }
+            
+//            int dem = (int)st.executeUpdate(query2);
+//            System.out.println(st);
+            //PreparedStatement pst = conn.prepareStatement(query2);
+            //ResultSet rs = pst.executeQuery(query2);
+            
+            
+            
+//            String dem = rs.getString("\"dem\"");
+            //System.out.println(rs);
+            //txtTotal.setText();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
     }//GEN-LAST:event_tblClassMouseClicked
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tblModel  = (DefaultTableModel)tblClass.getModel();
-        if(tblClass.getSelectedRowCount() == 1){
-            String ID = txtClassID.getText();
-            String Name = txtClassName.getText();
-            String coureID = txtCourseID.getText();
-            String teacherID = txtTeacherID.getText();
-//            String Adress = txtAddress.getText();
-//            String Phone = txtPhone.getText();
-            
-            //set upadte value ont table row
-            tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
-            tblModel.setValueAt(Name, tblClass.getSelectedRow(), 1);
-            tblModel.setValueAt(coureID, tblClass.getSelectedRow(), 2);
-            tblModel.setValueAt(teacherID, tblClass.getSelectedRow(), 3);
-//            tblModel.setValueAt(Adress, tblClass.getSelectedRow(), 5);
-//            tblModel.setValueAt(Phone, tblClass.getSelectedRow(), 6);
-            //tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
-            JOptionPane.showMessageDialog(this, "Update Successfully");
-        }else{
-            if(tblClass.getRowCount()==0){
-                JOptionPane.showMessageDialog(this, "Table is Empty...");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+        try
+        {
+            if(txtClassID.getText().isEmpty() || txtClassName.getText().isEmpty() || txtCourseName.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                
+                String lopHocID = txtClassID.getText();
+                
+                String query = "UPDATE LopHoc SET TenLH=?, MaKhoaHoc=?, MaGV=? WHERE MaLH = '"+lopHocID+"'";
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                pst.setString(1, txtClassName.getText());
+                pst.setString(2, (String)cmbCourseID.getSelectedItem());
+                pst.setString(3, (String) cmbTeacherID.getSelectedItem());
+                
+                pst.executeUpdate();
+                
+                // code này là de update lai table khi cap nhat
+                DefaultTableModel model = (DefaultTableModel)tblClass.getModel();
+                model.setRowCount(0);
+                showClasses();
+                
+                JOptionPane.showMessageDialog(null, "Update successfully!!");
             }
         }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+//        DefaultTableModel tblModel  = (DefaultTableModel)tblClass.getModel();
+//        if(tblClass.getSelectedRowCount() == 1){
+//            String ID = txtClassID.getText();
+//            String Name = txtClassName.getText();
+//            String coureID = (String) cmbCourseID.getSelectedItem();
+//            String teacherID = (String) cmbTeacherID.getSelectedItem();
+////            String Adress = txtAddress.getText();
+////            String Phone = txtPhone.getText();
+//            
+//            //set upadte value ont table row
+//            tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
+//            tblModel.setValueAt(Name, tblClass.getSelectedRow(), 1);
+//            tblModel.setValueAt(coureID, tblClass.getSelectedRow(), 2);
+//            tblModel.setValueAt(teacherID, tblClass.getSelectedRow(), 3);
+////            tblModel.setValueAt(Adress, tblClass.getSelectedRow(), 5);
+////            tblModel.setValueAt(Phone, tblClass.getSelectedRow(), 6);
+//            //tblModel.setValueAt(ID, tblClass.getSelectedRow(), 0);
+//            JOptionPane.showMessageDialog(this, "Update Successfully");
+//        }else{
+//            if(tblClass.getRowCount()==0){
+//                JOptionPane.showMessageDialog(this, "Table is Empty...");
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+//            }
+//        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
-        //delete row
-        if(tblClass.getSelectedRowCount() == 1){
-            model.removeRow(tblClass.getSelectedRow());
-        }else{
-            if(tblClass.getRowCount() == 0){
-                JOptionPane.showMessageDialog(this, "Table is Empty");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+        try
+        {
+            DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
+            if(tblClass.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select the row to delete!!");
+            }
+            else
+            {
+                int response = JOptionPane.showConfirmDialog (this, "Do you want to delete the class?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(response == JOptionPane.YES_OPTION)
+                {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                    Connection conn = DriverManager.getConnection(url);
+                
+                    String classID = txtClassID.getText();
+                
+                    String query = "DELETE FROM LopHoc WHERE MaLH='"+classID+"'";
+                    PreparedStatement pst = conn.prepareStatement(query);
+                
+                    pst.executeUpdate();
+                
+                    model.setRowCount(0);
+                    showClasses();
+                
+                    JOptionPane.showMessageDialog(null, "Delete successfully!!");
+                }
+                else if (response == JOptionPane.NO_OPTION)
+                {
+                }
+                else if (response == JOptionPane.CLOSED_OPTION)
+                {
+                }
             }
         }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "The class contains students!! Can not delete!!");
+            //ex.printStackTrace();
+        }
+//        DefaultTableModel model = (DefaultTableModel) tblClass.getModel();
+//        //delete row
+//        if(tblClass.getSelectedRowCount() == 1){
+//            model.removeRow(tblClass.getSelectedRow());
+//        }else{
+//            if(tblClass.getRowCount() == 0){
+//                JOptionPane.showMessageDialog(this, "Table is Empty");
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+//            }
+//        }
     }//GEN-LAST:event_btnDelActionPerformed
 
     private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
@@ -343,6 +523,11 @@ public class panelManageClass extends javax.swing.JPanel {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        txtClassID.setText("");
+        txtClassName.setText("");
+        txtCourseName.setText("");
+        txtTotal.setText("");
+        txtFind.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
 
@@ -350,6 +535,8 @@ public class panelManageClass extends javax.swing.JPanel {
     private javax.swing.JButton btnDel;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cmbCourseID;
+    private javax.swing.JComboBox<String> cmbTeacherID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -357,15 +544,15 @@ public class panelManageClass extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblClass;
     private javax.swing.JTextField txtClassID;
     private javax.swing.JTextField txtClassName;
-    private javax.swing.JTextField txtCourseID;
+    private javax.swing.JTextField txtCourseName;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtTeacherID;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

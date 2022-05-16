@@ -32,6 +32,8 @@ public class panelManageTeacher extends javax.swing.JPanel {
     public panelManageTeacher() {
         initComponents();
         showTeacher();
+        radioMale.setSelected(true);
+        txtID.setEditable(false);
     }
 
     public ArrayList<Teacher> TeacherList()
@@ -124,13 +126,11 @@ public class panelManageTeacher extends javax.swing.JPanel {
         txtFirstName = new javax.swing.JTextField();
         txtLastName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnConfirm = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         radioMale = new javax.swing.JRadioButton();
         radioFemale = new javax.swing.JRadioButton();
-
-        jPanel1.setBackground(new java.awt.Color(103, 128, 159));
 
         txtFind.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -138,10 +138,14 @@ public class panelManageTeacher extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(210, 215, 211));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-reset-25_1.png"))); // NOI18N
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-find-50.png"))); // NOI18N
+        jLabel1.setText("Find:");
 
         tblTeacher.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,21 +177,17 @@ public class panelManageTeacher extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name:");
 
-        jButton3.setBackground(new java.awt.Color(210, 215, 211));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-25.png"))); // NOI18N
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(210, 215, 211));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
-        jButton2.setText("Update");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirm.setText("Update");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnConfirmActionPerformed(evt);
             }
         });
 
@@ -237,7 +237,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
                                 .addComponent(radioFemale))))
                     .addComponent(jLabel8)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,9 +249,9 @@ public class panelManageTeacher extends javax.swing.JPanel {
                         .addComponent(jButton1)
                         .addGap(142, 142, 142))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnConfirm)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnDelete)
                         .addGap(267, 267, 267))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -300,9 +300,9 @@ public class panelManageTeacher extends javax.swing.JPanel {
                             .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnConfirm)
+                    .addComponent(btnDelete))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -313,33 +313,61 @@ public class panelManageTeacher extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
-        //delete row
-        if(tblTeacher.getSelectedRowCount() == 1){
-            model.removeRow(tblTeacher.getSelectedRow());
-        }else{
-            if(tblTeacher.getRowCount() == 0){
-                JOptionPane.showMessageDialog(this, "Table is Empty");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete");
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        try
+        {
+            DefaultTableModel model = (DefaultTableModel) tblTeacher.getModel();
+            if(tblTeacher.getSelectedRowCount() == 0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select the row to delete!!");
+            }
+            else
+            {
+                int response = JOptionPane.showConfirmDialog (this, "Do you want to delete the teacher?","Comfirm",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(response == JOptionPane.YES_OPTION)
+                {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                    Connection conn = DriverManager.getConnection(url);
+                
+                    String teacherID = txtID.getText();
+                
+                    String query = "DELETE FROM GiangVien WHERE MaGV='"+teacherID+"'";
+                    PreparedStatement pst = conn.prepareStatement(query);
+                
+                    pst.executeUpdate();
+                
+                    model.setRowCount(0);
+                    showTeacher();
+                
+                    JOptionPane.showMessageDialog(null, "Delete successfully!!");
+                }
+                else if (response == JOptionPane.NO_OPTION)
+                {
+                }
+                else if (response == JOptionPane.CLOSED_OPTION)
+                {
+                }
             }
         }
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "The teacher already exists in a certain class, can not delete!!");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTeacherMouseClicked
         // TODO add your handling code here:
@@ -359,34 +387,87 @@ public class panelManageTeacher extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblTeacherMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel tblModel  = (DefaultTableModel)tblTeacher.getModel();
-        if(tblTeacher.getSelectedRowCount() == 1){
-            String ID = txtID.getText();
-            String First = txtFirstName.getText();
-            String Last = txtLastName.getText();
-            String Age = txtAge.getText();
-            String Adress = txtAddress.getText();
-            String Phone = txtPhone.getText();
-            
-            //set upadte value ont table row
-            tblModel.setValueAt(ID, tblTeacher.getSelectedRow(), 0);
-            tblModel.setValueAt(First, tblTeacher.getSelectedRow(), 1);
-            tblModel.setValueAt(Last, tblTeacher.getSelectedRow(), 2);
-            tblModel.setValueAt(Age, tblTeacher.getSelectedRow(), 3);
-            tblModel.setValueAt(Adress, tblTeacher.getSelectedRow(), 5);
-            tblModel.setValueAt(Phone, tblTeacher.getSelectedRow(), 6);
-            //tblModel.setValueAt(ID, tblTeacher.getSelectedRow(), 0);
-            JOptionPane.showMessageDialog(this, "Update Successfully");
-        }else{
-            if(tblTeacher.getRowCount()==0){
-                JOptionPane.showMessageDialog(this, "Table is Empty...");
-            }else{
-                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        try
+        {
+            if(txtID.getText().isEmpty() || txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty()
+                    || txtAge.getText().isEmpty() || txtAddress.getText().isEmpty() || txtPhone.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                
+                String teacherID = txtID.getText();
+                
+                String query = "UPDATE GiangVien SET TenGV=?, HoGV=?, TuoiGV=?, GioiTinhGV=?, DiaChiGV=?, SDTGV=? WHERE MaGV = '"+teacherID+"'";
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                pst.setString(1, txtFirstName.getText());
+                pst.setString(2, txtLastName.getText());
+                pst.setString(3, txtAge.getText());
+                
+                String gender;
+                if(radioMale.isSelected())
+                {
+                    gender = "Nam";
+                    pst.setString(4, gender);
+                }
+                else if (radioFemale.isSelected())
+                {
+                    gender = "Nữ";
+                    pst.setString(4, gender);
+                }
+                
+                pst.setString(5, txtAddress.getText());
+                pst.setString(6, txtPhone.getText());
+                
+                pst.executeUpdate();
+                //updateTable();
+                
+                // code này là de update lai table khi cap nhat
+                DefaultTableModel model = (DefaultTableModel)tblTeacher.getModel();
+                model.setRowCount(0);
+                showTeacher();
+                
+                JOptionPane.showMessageDialog(null, "Inserted successfully!!");
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
+//        // TODO add your handling code here:
+//        DefaultTableModel tblModel  = (DefaultTableModel)tblTeacher.getModel();
+//        if(tblTeacher.getSelectedRowCount() == 1){
+//            String ID = txtID.getText();
+//            String First = txtFirstName.getText();
+//            String Last = txtLastName.getText();
+//            String Age = txtAge.getText();
+//            String Adress = txtAddress.getText();
+//            String Phone = txtPhone.getText();
+//            
+//            //set upadte value ont table row
+//            tblModel.setValueAt(ID, tblTeacher.getSelectedRow(), 0);
+//            tblModel.setValueAt(First, tblTeacher.getSelectedRow(), 1);
+//            tblModel.setValueAt(Last, tblTeacher.getSelectedRow(), 2);
+//            tblModel.setValueAt(Age, tblTeacher.getSelectedRow(), 3);
+//            tblModel.setValueAt(Adress, tblTeacher.getSelectedRow(), 5);
+//            tblModel.setValueAt(Phone, tblTeacher.getSelectedRow(), 6);
+//            //tblModel.setValueAt(ID, tblTeacher.getSelectedRow(), 0);
+//            JOptionPane.showMessageDialog(this, "Update Successfully");
+//        }else{
+//            if(tblTeacher.getRowCount()==0){
+//                JOptionPane.showMessageDialog(this, "Table is Empty...");
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Please select Single Row for Update...");
+//            }
+//        }
+    }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void txtFindKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFindKeyPressed
         // TODO add your handling code here:
@@ -396,12 +477,24 @@ public class panelManageTeacher extends javax.swing.JPanel {
         tr.setRowFilter(RowFilter.regexFilter(txtFind.getText().trim()));
     }//GEN-LAST:event_txtFindKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        txtID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtAge.setText("");
+        radioMale.setSelected(true);
+        txtAddress.setText("");
+        txtPhone.setText("");
+        txtFind.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton btnDelete;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
