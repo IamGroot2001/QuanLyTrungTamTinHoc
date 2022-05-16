@@ -546,6 +546,7 @@ public class panelManageCourse extends javax.swing.JPanel {
         txtPrice.setText("");
         dcDateStart.setDateFormatString("");
         dcDateEnd.setDateFormatString("");
+        txtFind.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
 
