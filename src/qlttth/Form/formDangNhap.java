@@ -71,7 +71,7 @@ public class formDangNhap extends javax.swing.JFrame {
         lnlPassword.setForeground(new java.awt.Color(255, 255, 255));
         lnlPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-password-40.png"))); // NOI18N
 
-        txtAccount.setText("tk01");
+        txtAccount.setText("TK01");
 
         txtPassword.setText("123456a@");
 
