@@ -177,10 +177,14 @@ public class formDangKy extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Gender:");
 
+        rabtnMale.setBackground(new java.awt.Color(52, 45, 113));
         buttonGroup1.add(rabtnMale);
+        rabtnMale.setForeground(new java.awt.Color(255, 255, 255));
         rabtnMale.setText("Male");
 
+        rabtnFemale.setBackground(new java.awt.Color(52, 45, 113));
         buttonGroup1.add(rabtnFemale);
+        rabtnFemale.setForeground(new java.awt.Color(255, 255, 255));
         rabtnFemale.setText("Female");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -234,8 +238,8 @@ public class formDangKy extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rabtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116))
+                        .addComponent(rabtnMale)
+                        .addGap(165, 165, 165))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
