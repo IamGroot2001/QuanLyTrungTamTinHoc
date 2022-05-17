@@ -136,7 +136,6 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="IDLab" max="32767" attributes="0"/>
                                   <Component id="fnameLab" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lnameLab" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                               </Group>
@@ -155,7 +154,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtStudentID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="IDLab" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -213,19 +211,10 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="fnameLab">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel11"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lnameLab">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel12"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="aLab">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel13"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -356,11 +345,6 @@
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStudentIDKeyReleased"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="IDLab">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel10"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCourse">
             </Component>
