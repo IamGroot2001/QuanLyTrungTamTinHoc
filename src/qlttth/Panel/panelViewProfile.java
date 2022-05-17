@@ -87,7 +87,7 @@ public class panelViewProfile extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         txtPhoneNumber = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         rdoMale = new javax.swing.JRadioButton();
         rdoFemale = new javax.swing.JRadioButton();
@@ -109,9 +109,12 @@ public class panelViewProfile extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("PROFILE");
 
-        jButton1.setBackground(new java.awt.Color(210, 215, 211));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
-        jButton1.setText("Update");
+        btnUpdate.setBackground(new java.awt.Color(210, 215, 211));
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-create-30 (1).png"))); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.setMaximumSize(new java.awt.Dimension(110, 36));
+        btnUpdate.setMinimumSize(new java.awt.Dimension(110, 36));
+        btnUpdate.setPreferredSize(new java.awt.Dimension(110, 36));
 
         jLabel7.setText("Gender:");
 
@@ -157,8 +160,8 @@ public class panelViewProfile extends javax.swing.JPanel {
                             .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(rdoMale)
                                 .addGap(18, 18, 18)
@@ -204,7 +207,7 @@ public class panelViewProfile extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
@@ -231,8 +234,8 @@ public class panelViewProfile extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ID;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
