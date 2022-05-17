@@ -342,9 +342,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtStudentID">
-              <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtStudentIDKeyReleased"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCourse">
             </Component>

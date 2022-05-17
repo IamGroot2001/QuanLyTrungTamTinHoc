@@ -177,12 +177,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
         jLabel9.setText("Student ID:");
 
-        txtStudentID.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtStudentIDKeyReleased(evt);
-            }
-        });
-
         jLabel11.setText("Course:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -419,19 +413,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
-
-    private void txtStudentIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStudentIDKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[0-9]{0,10}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(txtStudentID.getText());
-        if(!match.matches()){
-            IDLab.setText("incorrect!");
-        }
-        else{
-           IDLab.setText(null);
-        }
-    }//GEN-LAST:event_txtStudentIDKeyReleased
 
     private void txtFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameKeyReleased
         // TODO add your handling code here:
