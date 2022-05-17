@@ -153,26 +153,15 @@ public class formDangKy extends javax.swing.JFrame {
             }
         });
 
-        btnReAccount.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnReAccountKeyReleased(evt);
-            }
-        });
-
         pLab.setForeground(new java.awt.Color(255, 255, 0));
-        pLab.setText("jLabel9");
 
         aLab.setForeground(new java.awt.Color(153, 255, 0));
-        aLab.setText("jLabel9");
 
         fnameLab.setForeground(new java.awt.Color(102, 255, 0));
-        fnameLab.setText("jLabel9");
 
         lnameLab.setForeground(new java.awt.Color(204, 255, 0));
-        lnameLab.setText("jLabel10");
 
         mailLab.setForeground(new java.awt.Color(255, 255, 0));
-        mailLab.setText("jLabel9");
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Gender:");
@@ -320,19 +309,6 @@ public class formDangKy extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnReAccountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReAccountKeyReleased
-        // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z0-9]{0,30}[@][a-zA-Z0-9]{0,10}[.][a-zA-Z0-9]{0,10}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(btnReAccount.getText());
-        if(!match.matches()){
-            mailLab.setText("incorrect");
-        }
-        else{
-            mailLab.setText(null);
-        }
-    }//GEN-LAST:event_btnReAccountKeyReleased
-
     private void btnRePhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRePhoneNumberKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[0-9]{0,10}$";
@@ -340,6 +316,7 @@ public class formDangKy extends javax.swing.JFrame {
         Matcher match = patt.matcher(btnRePhoneNumber.getText());
         if(!match.matches()){
             pLab.setText("incorrect");
+            JOptionPane.showConfirmDialog(this, "Phone is number type!!!");
         }
         else{
             pLab.setText(null);
@@ -357,6 +334,7 @@ public class formDangKy extends javax.swing.JFrame {
         Matcher match = patt.matcher(btnReAge.getText());
         if(!match.matches()){
             aLab.setText("incorrect");
+            JOptionPane.showConfirmDialog(this, "Age is number type!!!");
         }
         else{
             aLab.setText(null);
@@ -365,10 +343,10 @@ public class formDangKy extends javax.swing.JFrame {
 
     private void btnReLastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReLastNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(btnReLastName.getText());
-        if(!match.matches()){
+        if(match.matches()){
             lnameLab.setText("incorrect");
         }
         else{
@@ -378,10 +356,10 @@ public class formDangKy extends javax.swing.JFrame {
 
     private void btnReFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnReFirstNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(btnReFirstName.getText());
-        if(!match.matches()){
+        if(match.matches()){
             fnameLab.setText("incorrect");
         }
         else{

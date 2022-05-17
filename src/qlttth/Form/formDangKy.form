@@ -356,9 +356,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="btnReAccount">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnReAccountKeyReleased"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="btnRePassword">
         </Component>
@@ -369,7 +366,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel9"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="aLab">
@@ -377,7 +373,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel9"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="fnameLab">
@@ -385,7 +380,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel9"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lnameLab">
@@ -393,7 +387,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel10"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="mailLab">
@@ -401,7 +394,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel9"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">

@@ -117,12 +117,10 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         jLabel5.setText("Day Study:");
 
         txtCourseName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCourseNameKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCourseNameKeyReleased(evt);
             }
         });
-
-        cnameLab.setText("jLabel4");
 
         btnConfirm.setBackground(new java.awt.Color(210, 215, 211));
         btnConfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-done-25 .png"))); // NOI18N
@@ -155,7 +153,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addContainerGap(212, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -300,18 +298,19 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
-    private void txtCourseNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCourseNameKeyPressed
+    private void txtCourseNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCourseNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(txtCourseName.getText());
-        if(!match.matches()){
+        if(match.matches()){
             cnameLab.setText("incorrect");
+            JOptionPane.showConfirmDialog(this, "Name Course is font type!!!");
         }
         else{
             cnameLab.setText(null);
         }
-    }//GEN-LAST:event_txtCourseNameKeyPressed
+    }//GEN-LAST:event_txtCourseNameKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

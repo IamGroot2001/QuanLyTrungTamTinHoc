@@ -43,21 +43,20 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
         btnConfirm = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        IDLab = new javax.swing.JLabel();
         fnameLab = new javax.swing.JLabel();
         lnameLab = new javax.swing.JLabel();
         aLab = new javax.swing.JLabel();
         pLab = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        firstName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        lastName = new javax.swing.JTextField();
+        age = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        address = new javax.swing.JTextField();
+        phone = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -76,28 +75,12 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
         jLabel8.setText("Teacher ID:");
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
-            }
-        });
-
-        IDLab.setText("jLabel9");
-
-        fnameLab.setText("jLabel10");
-
-        lnameLab.setText("jLabel11");
-
-        aLab.setText("jLabel12");
-
-        pLab.setText("jLabel13");
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Teacher Information");
 
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        firstName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField2KeyReleased(evt);
+                firstNameKeyReleased(evt);
             }
         });
 
@@ -105,15 +88,15 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name:");
 
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+        lastName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField3KeyReleased(evt);
+                lastNameKeyReleased(evt);
             }
         });
 
-        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+        age.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField4KeyReleased(evt);
+                ageKeyReleased(evt);
             }
         });
 
@@ -121,9 +104,9 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
         jLabel5.setText("Address:");
 
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        phone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField6KeyReleased(evt);
+                phoneKeyReleased(evt);
             }
         });
 
@@ -160,27 +143,26 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(firstName, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lastName, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(aLab, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(IDLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(fnameLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lnameLab, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jRadioButton1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jRadioButton2))
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnConfirm)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(pLab)))
                         .addGap(97, 97, 97))))
@@ -193,22 +175,21 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IDLab))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fnameLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lnameLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -218,11 +199,11 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pLab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfirm)
@@ -249,78 +230,69 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
+    private void phoneKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[0-9]{0,10}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField6.getText());
+        Matcher match = patt.matcher(phone.getText());
         if(!match.matches()){
             pLab.setText("incorrect!");
+            JOptionPane.showConfirmDialog(this, "Phone is number type!!!");
         }
         else{
             pLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField6KeyReleased
+    }//GEN-LAST:event_phoneKeyReleased
 
-    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+    private void ageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ageKeyReleased
         // TODO add your handling code here:
         String PATTERN = "^[0-9]{0,2}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField4.getText());
+        Matcher match = patt.matcher(age.getText());
         if(!match.matches()){
             aLab.setText("incorrect!");
+            JOptionPane.showConfirmDialog(this, "Age is number type!!!");
         }
         else{
             aLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField4KeyReleased
+    }//GEN-LAST:event_ageKeyReleased
 
-    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+    private void lastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lastNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField3.getText());
-        if(!match.matches()){
+        Matcher match = patt.matcher(lastName.getText());
+        if(match.matches()){
             lnameLab.setText("incorrect!");
+            JOptionPane.showConfirmDialog(this, "Last Name is font type!!!");
         }
         else{
             lnameLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField3KeyReleased
+    }//GEN-LAST:event_lastNameKeyReleased
 
-    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+    private void firstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField2.getText());
-        if(!match.matches()){
+        Matcher match = patt.matcher(firstName.getText());
+        if(match.matches()){
             fnameLab.setText("incorrect!");
+            JOptionPane.showConfirmDialog(this, "First Name is font type!!!");
         }
         else{
             fnameLab.setText(null);
         }
-    }//GEN-LAST:event_jTextField2KeyReleased
-
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        // TODO add your handling code here:
-        String PATTERN = "^[A-Z]{0,9}[0-9]{0,10}$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(jTextField1.getText());
-        if(!match.matches()){
-            IDLab.setText("incorrect!");
-        }
-        else{
-            IDLab.setText(null);
-        }
-    }//GEN-LAST:event_jTextField1KeyPressed
+    }//GEN-LAST:event_firstNameKeyReleased
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
         String gender;
         try {
-            if(jTextField1.getText().isEmpty()||jTextField2.getText().isEmpty()
-                ||jTextField3.getText().isEmpty()||jTextField4.getText().isEmpty()
-                ||jTextField5.getText().isEmpty()||jTextField6.getText().isEmpty()){
+            if(jTextField1.getText().isEmpty()||firstName.getText().isEmpty()
+                ||lastName.getText().isEmpty()||age.getText().isEmpty()
+                ||address.getText().isEmpty()||phone.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
             }
             else{
@@ -332,9 +304,9 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
                 // insert du lieu vao database o day
                 pst.setString(1, jTextField1.getText());
-                pst.setString(2, jTextField2.getText());
-                pst.setString(3, jTextField3.getText());
-                pst.setString(4, jTextField4.getText());
+                pst.setString(2, firstName.getText());
+                pst.setString(3, lastName.getText());
+                pst.setString(4, age.getText());
                 if(jRadioButton1.isSelected())
                 {
                     gender = "Male";
@@ -345,8 +317,8 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
                     gender = "Female";
                     pst.setString(5, gender);
                 }
-                pst.setString(6, jTextField5.getText());
-                pst.setString(7, jTextField6.getText());
+                pst.setString(6, address.getText());
+                pst.setString(7, phone.getText());
 
                 // o day can co code so sanh xem tai khoan dang nhap co trung voi trong database hay k
                 // neu trung thi bat nhap 1 tai khoan khac
@@ -375,10 +347,12 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IDLab;
     private javax.swing.JLabel aLab;
+    private javax.swing.JTextField address;
+    private javax.swing.JTextField age;
     private javax.swing.JButton btnConfirm;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextField firstName;
     private javax.swing.JLabel fnameLab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -393,13 +367,10 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField lastName;
     private javax.swing.JLabel lnameLab;
     private javax.swing.JLabel pLab;
+    private javax.swing.JTextField phone;
     // End of variables declaration//GEN-END:variables
 
     private Object connected() {
