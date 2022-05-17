@@ -58,8 +58,8 @@ public class panelManageTeacher extends javax.swing.JPanel {
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex);
-            System.out.print(ex);
-            ex.printStackTrace();
+            //System.out.print(ex);
+            //ex.printStackTrace();
         }
         return teacherList;
     }
@@ -374,7 +374,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, "The teacher already exists in a certain class, can not delete!!");
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -447,7 +447,7 @@ public class panelManageTeacher extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
         
 //        // TODO add your handling code here:
