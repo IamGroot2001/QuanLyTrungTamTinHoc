@@ -362,21 +362,21 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 
                 String maHV = txtStudentID.getText();
                 //System.out.println(maHV);
-                String selectQuery = "SELECT COUNT(*) FROM HocVien WHERE MaHV = '"+maHV+"'";
-                Statement stat = conn.createStatement();
-                ResultSet rs = stat.executeQuery(selectQuery);
+                //String selectQuery = "SELECT COUNT(*) FROM HocVien WHERE MaHV = '"+maHV+"'";
+                //Statement stat = conn.createStatement();
+                //ResultSet rs = stat.executeQuery(selectQuery);
                 
                 //System.out.println(rs.next());
                 
-                if(rs.next()==true)
-                {
-                    JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another");
-                }
-                else
-                {
+                //if(rs.next()==true)
+                //{
+                    //JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another");
+                //}
+                //else
+                //{
                     pst1.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Inserted successfully!!");
-                }
+                //}
                 
                 // add du lieu vao hoa don
                 String query2 = "INSERT INTO HoaDon(NgayLapHD,TaiKhoan,MaLH,Tong,MaHV)values(?,?,?,?,?)";
@@ -410,7 +410,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         catch (Exception e) 
         {
             JOptionPane.showMessageDialog(null, "The Student ID existed!! Please try another!!");
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
