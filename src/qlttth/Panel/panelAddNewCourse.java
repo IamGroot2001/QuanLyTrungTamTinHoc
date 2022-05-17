@@ -294,8 +294,8 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            //JOptionPane.showMessageDialog(null, "The account is existed!! Please try another!!");
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "The course is existed!! Please try another!!");
+            //ex.printStackTrace();
             
         }
     }//GEN-LAST:event_btnConfirmActionPerformed

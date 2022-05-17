@@ -4,10 +4,14 @@
  */
 package qlttth.Panel;
 
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -87,12 +91,12 @@ public class panelViewProfile extends javax.swing.JPanel {
         txtAddress = new javax.swing.JTextField();
         txtPhoneNumber = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         rdoMale = new javax.swing.JRadioButton();
         rdoFemale = new javax.swing.JRadioButton();
         ID = new javax.swing.JLabel();
         txtManagementID = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(103, 128, 159));
 
@@ -109,10 +113,6 @@ public class panelViewProfile extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("PROFILE");
 
-        jButton1.setBackground(new java.awt.Color(210, 215, 211));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-available-updates-23.png"))); // NOI18N
-        jButton1.setText("Update");
-
         jLabel7.setText("Gender:");
 
         buttonGroup1.add(rdoMale);
@@ -122,6 +122,13 @@ public class panelViewProfile extends javax.swing.JPanel {
         rdoFemale.setText("Female");
 
         ID.setText("ID");
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,7 +165,7 @@ public class panelViewProfile extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
+                                .addComponent(btnUpdate))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(rdoMale)
                                 .addGap(18, 18, 18)
@@ -204,7 +211,7 @@ public class panelViewProfile extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnUpdate)))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
@@ -228,11 +235,64 @@ public class panelViewProfile extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            if(txtManagementID.getText().isEmpty() || txtFirstName.getText().isEmpty()
+                    || txtLastName.getText().isEmpty() || txtAge.getText().isEmpty() || txtAddress.getText().isEmpty()
+                    || txtPhoneNumber.getText().isEmpty() || txtAddress.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in the blanks!!");
+            }
+            else
+            {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+                Connection conn = DriverManager.getConnection(url);
+                
+                String managerID = txtManagementID.getText();
+                
+                String query = "UPDATE TaiKhoan SET Ten=?, Ho=?, Tuoi=?, GioiTinh=?, DiaChi=?, SoDienThoai=? WHERE TaiKhoan = '"+managerID+"'"; 
+                PreparedStatement pst = conn.prepareStatement(query);
+                
+                pst.setString(1, txtFirstName.getText());
+                pst.setString(2, txtLastName.getText());
+                pst.setString(3, txtAge.getText());
+                
+                String gender;
+                if(rdoMale.isSelected())
+                {
+                    gender = "Nam";
+                    pst.setString(4, gender);
+                }
+                else if (rdoFemale.isSelected())
+                {
+                    gender = "Nữ";
+                    pst.setString(4, gender);
+                }
+                
+                pst.setString(5, txtAddress.getText());
+                pst.setString(6, txtPhoneNumber.getText());
+                
+                pst.executeUpdate();
+                //updateTable();
+                
+                JOptionPane.showMessageDialog(null, "Update successfully!!");
+            }
+
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ID;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

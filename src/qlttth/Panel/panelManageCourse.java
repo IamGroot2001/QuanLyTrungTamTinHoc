@@ -525,7 +525,8 @@ public class panelManageCourse extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "The course has contained class already!! Can not delete!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

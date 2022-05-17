@@ -479,7 +479,8 @@ public class panelManageStudent extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
