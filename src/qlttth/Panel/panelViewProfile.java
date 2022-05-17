@@ -37,7 +37,7 @@ public class panelViewProfile extends javax.swing.JPanel {
             String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
             Connection conn = DriverManager.getConnection(url);
             String query = "SELECT * FROM TaiKhoan WHERE TaiKhoan = '"+account+"'";
-            System.out.println(account);
+            //System.out.println(account);
             Statement st = (Statement) conn.createStatement();
             ResultSet rs = (ResultSet) st.executeQuery(query);
             while(rs.next())
@@ -64,7 +64,8 @@ public class panelViewProfile extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }
 
@@ -284,7 +285,8 @@ public class panelViewProfile extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 

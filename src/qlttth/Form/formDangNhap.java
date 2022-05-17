@@ -193,6 +193,7 @@ public class formDangNhap extends javax.swing.JFrame {
                     formMain mainForm = new formMain(user);
                     mainForm.setLocationRelativeTo(null);
                     mainForm.setVisible(true);
+                    mainForm.setTitle("Main");
                 }
                 else
                 {
@@ -202,7 +203,8 @@ public class formDangNhap extends javax.swing.JFrame {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -212,6 +214,7 @@ public class formDangNhap extends javax.swing.JFrame {
         formDangKy dangKyForm = new formDangKy();
         dangKyForm.setLocationRelativeTo(null);
         dangKyForm.setVisible(true);
+        dangKyForm.setTitle("Register");
     }//GEN-LAST:event_btnRegisterAccountActionPerformed
 
     /**

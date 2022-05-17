@@ -62,7 +62,7 @@ public class panelManageCourse extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -88,7 +88,7 @@ public class panelManageCourse extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -114,8 +114,8 @@ public class panelManageCourse extends javax.swing.JPanel {
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex);
-            System.out.print(ex);
-            ex.printStackTrace();
+            //System.out.print(ex);
+            //ex.printStackTrace();
         }
         return courseList;
     }
@@ -431,7 +431,8 @@ public class panelManageCourse extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
         
     }//GEN-LAST:event_tblCourseMouseClicked
@@ -481,7 +482,8 @@ public class panelManageCourse extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 

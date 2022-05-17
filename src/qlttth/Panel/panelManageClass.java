@@ -107,7 +107,7 @@ public class panelManageClass extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(null, ex);
             System.out.print(ex);
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
         return classesList;
     }
@@ -376,7 +376,7 @@ public class panelManageClass extends javax.swing.JPanel {
             while(rs.next())
             {
                 count = rs.getInt(1);
-                System.out.println(count);
+                //System.out.println(count);
                 String dem = Integer.toString(count);
                 txtTotal.setText(dem);
             }
@@ -394,7 +394,8 @@ public class panelManageClass extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
         
     }//GEN-LAST:event_tblClassMouseClicked
@@ -434,7 +435,8 @@ public class panelManageClass extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
 //        DefaultTableModel tblModel  = (DefaultTableModel)tblClass.getModel();
 //        if(tblClass.getSelectedRowCount() == 1){
@@ -557,6 +559,7 @@ public class panelManageClass extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
+            JOptionPane.showMessageDialog(null, "Error!!");
             //ex.printStackTrace();
         }
     }//GEN-LAST:event_cmbCourseIDActionPerformed

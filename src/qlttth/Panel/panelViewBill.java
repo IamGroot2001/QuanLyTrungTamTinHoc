@@ -49,8 +49,8 @@ public class panelViewBill extends javax.swing.JPanel {
         catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex);
-            System.out.print(ex);
-            ex.printStackTrace();
+            //System.out.print(ex);
+            //ex.printStackTrace();
         }
         return billList;
     }
@@ -287,7 +287,8 @@ public class panelViewBill extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_tblBillMouseClicked
 

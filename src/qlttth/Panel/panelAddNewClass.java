@@ -55,7 +55,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -81,7 +81,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -443,7 +443,8 @@ public class panelAddNewClass extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_cmbChooseCourseActionPerformed
 

@@ -33,6 +33,7 @@ public class QLTTTH {
         formDangNhap dangNhapForm = new formDangNhap();
         dangNhapForm.setLocationRelativeTo(null);
         dangNhapForm.setVisible(true);
+        dangNhapForm.setTitle("Login");
     }
     
 }

@@ -52,7 +52,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -78,7 +78,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     /**
