@@ -361,22 +361,22 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 pst1.setObject(8, cmbChooseClass.getSelectedItem());
                 
                 String maHV = txtStudentID.getText();
-                System.out.println(maHV);
-                String selectQuery = "SELECT COUNT(*) FROM HocVien WHERE MaHV = '"+maHV+"'";
-                Statement stat = conn.createStatement();
-                ResultSet rs = stat.executeQuery(selectQuery);
+                //System.out.println(maHV);
+                //String selectQuery = "SELECT COUNT(*) FROM HocVien WHERE MaHV = '"+maHV+"'";
+                //Statement stat = conn.createStatement();
+                //ResultSet rs = stat.executeQuery(selectQuery);
                 
-                System.out.println(rs.next());
+                //System.out.println(rs.next());
                 
-                if(rs.next()==true)
-                {
-                    JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another");
-                }
-                else
-                {
+                //if(rs.next()==true)
+                //{
+                    //JOptionPane.showMessageDialog(null, "The Student ID is existed!! Please try another");
+                //}
+                //else
+                //{
                     pst1.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Inserted successfully!!");
-                }
+                //}
                 
                 // add du lieu vao hoa don
                 String query2 = "INSERT INTO HoaDon(NgayLapHD,TaiKhoan,MaLH,Tong,MaHV)values(?,?,?,?,?)";
@@ -384,7 +384,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
                 
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
                 LocalDateTime now = LocalDateTime.now();  
-                System.out.println(dtf.format(now));
+                //System.out.println(dtf.format(now));
                 
                 pst2.setString(1, dtf.format(now));
                 pst2.setString(2, taiKhoan);
@@ -498,7 +498,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
         
     }//GEN-LAST:event_cmbChooseClassActionPerformed

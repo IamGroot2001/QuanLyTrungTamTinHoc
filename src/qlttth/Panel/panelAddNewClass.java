@@ -55,7 +55,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -81,7 +81,7 @@ public class panelAddNewClass extends javax.swing.JPanel {
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
     
@@ -146,6 +146,12 @@ public class panelAddNewClass extends javax.swing.JPanel {
         jLabel3.setText("Class Name:");
 
         jLabel9.setText("Choose Teacher:");
+
+        cmbChooseTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbChooseTeacherActionPerformed(evt);
+            }
+        });
 
         nLab.setText("jLabel4");
 
@@ -443,9 +449,49 @@ public class panelAddNewClass extends javax.swing.JPanel {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error!!");
+            //ex.printStackTrace();
         }
     }//GEN-LAST:event_cmbChooseCourseActionPerformed
+
+    private void cmbChooseTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbChooseTeacherActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            
+            String maGiangVien = (String) cmbChooseTeacher.getSelectedItem();
+            // show TeacherFirstName
+            String queryShowTeacherFirstName = "SELECT TenGV FROM GiangVien WHERE MaGV ='"+maGiangVien+"'";
+          
+            Statement stat6 = conn.createStatement();
+            ResultSet rs6 = stat6.executeQuery(queryShowTeacherFirstName);
+            
+            if(rs6.next() == true)
+            {
+                txtTen.setText(rs6.getString("TenGV"));
+            }
+            
+            // show TeacherLastName
+            String queryShowTeacherLastName = "SELECT HoGV FROM GiangVien WHERE MaGV ='"+maGiangVien+"'";
+          
+            Statement stat7 = conn.createStatement();
+            ResultSet rs7 = stat7.executeQuery(queryShowTeacherLastName);
+            
+            if(rs7.next() == true)
+            {
+                txtHo.setText(rs7.getString("HoGV"));
+            }
+            
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+    }//GEN-LAST:event_cmbChooseTeacherActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
