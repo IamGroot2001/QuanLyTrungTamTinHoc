@@ -157,6 +157,8 @@ public class panelManageClass extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         cmbCourseID = new javax.swing.JComboBox<>();
         cmbTeacherID = new javax.swing.JComboBox<>();
+        txtTenGV = new javax.swing.JTextField();
+        txtHoGV = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(103, 128, 159));
 
@@ -238,6 +240,12 @@ public class panelManageClass extends javax.swing.JPanel {
             }
         });
 
+        cmbTeacherID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTeacherIDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -271,11 +279,7 @@ public class panelManageClass extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbCourseID, 0, 143, Short.MAX_VALUE)
-                                    .addComponent(cmbTeacherID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel6)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,7 +289,15 @@ public class panelManageClass extends javax.swing.JPanel {
                                         .addGap(29, 29, 29)
                                         .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(96, 96, 96))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtTenGV, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtHoGV, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                            .addComponent(cmbCourseID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbTeacherID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(80, 80, 80))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -330,7 +342,10 @@ public class panelManageClass extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTenGV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHoGV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -584,6 +599,32 @@ public class panelManageClass extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbCourseIDActionPerformed
 
+    private void cmbTeacherIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTeacherIDActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String maGV = (String) cmbTeacherID.getSelectedItem();
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            
+            String query = "SELECT TenGV, HoGV FROM GiangVien WHERE MaGV ='"+maGV+"'";
+            
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(query);
+            
+            if(rs.next() == true)
+            {
+                txtTenGV.setText(rs.getString("TenGV"));
+                txtHoGV.setText(rs.getString("HoGV"));
+            }
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showConfirmDialog(null, ex);
+        }
+    }//GEN-LAST:event_cmbTeacherIDActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDel;
@@ -607,6 +648,8 @@ public class panelManageClass extends javax.swing.JPanel {
     private javax.swing.JTextField txtClassName;
     private javax.swing.JTextField txtCourseName;
     private javax.swing.JTextField txtFind;
+    private javax.swing.JTextField txtHoGV;
+    private javax.swing.JTextField txtTenGV;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
