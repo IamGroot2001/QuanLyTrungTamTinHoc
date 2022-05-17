@@ -217,6 +217,12 @@ public class panelManageClass extends javax.swing.JPanel {
 
         jLabel8.setText("Course Name:");
 
+        cmbCourseID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCourseIDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -529,6 +535,31 @@ public class panelManageClass extends javax.swing.JPanel {
         txtTotal.setText("");
         txtFind.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void cmbCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseIDActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String maKhoaHoc = (String) cmbCourseID.getSelectedItem();
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String url = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=123456";
+            java.sql.Connection conn = DriverManager.getConnection(url);
+            
+            String query = "SELECT TenKhoaHoc FROM KhoaHoc WHERE MaKhoaHoc ='"+maKhoaHoc+"'";
+            
+            Statement stat = conn.createStatement();
+            ResultSet rs = stat.executeQuery(query);
+            
+            if(rs.next() == true)
+            {
+                txtCourseName.setText(rs.getString("TenKhoaHoc"));
+            }
+        }
+        catch(Exception ex)
+        {
+            //ex.printStackTrace();
+        }
+    }//GEN-LAST:event_cmbCourseIDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
