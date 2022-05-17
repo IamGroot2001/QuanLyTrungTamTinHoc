@@ -115,6 +115,11 @@ public class panelViewProfile extends javax.swing.JPanel {
         btnUpdate.setMaximumSize(new java.awt.Dimension(110, 36));
         btnUpdate.setMinimumSize(new java.awt.Dimension(110, 36));
         btnUpdate.setPreferredSize(new java.awt.Dimension(110, 36));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Gender:");
 
@@ -230,6 +235,10 @@ public class panelViewProfile extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
