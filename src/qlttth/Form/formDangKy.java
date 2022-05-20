@@ -316,7 +316,7 @@ public class formDangKy extends javax.swing.JFrame {
         Matcher match = patt.matcher(btnRePhoneNumber.getText());
         if(!match.matches()){
             pLab.setText("incorrect");
-            JOptionPane.showConfirmDialog(this, "Phone is number type!!!");
+            JOptionPane.showMessageDialog(this, "Phone is number type!!!");
         }
         else{
             pLab.setText(null);
@@ -334,7 +334,7 @@ public class formDangKy extends javax.swing.JFrame {
         Matcher match = patt.matcher(btnReAge.getText());
         if(!match.matches()){
             aLab.setText("incorrect");
-            JOptionPane.showConfirmDialog(this, "Age is number type!!!");
+            JOptionPane.showMessageDialog(this, "Age is number type!!!");
         }
         else{
             aLab.setText(null);
@@ -348,6 +348,7 @@ public class formDangKy extends javax.swing.JFrame {
         Matcher match = patt.matcher(btnReLastName.getText());
         if(match.matches()){
             lnameLab.setText("incorrect");
+            JOptionPane.showMessageDialog(this, "Last Name is font type!!!");
         }
         else{
             lnameLab.setText(null);
@@ -361,6 +362,7 @@ public class formDangKy extends javax.swing.JFrame {
         Matcher match = patt.matcher(btnReFirstName.getText());
         if(match.matches()){
             fnameLab.setText("incorrect");
+            JOptionPane.showMessageDialog(this, "First Name is font type!!!");
         }
         else{
             fnameLab.setText(null);

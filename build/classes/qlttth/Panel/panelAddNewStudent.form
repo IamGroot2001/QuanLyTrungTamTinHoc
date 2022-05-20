@@ -225,9 +225,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="pLab">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel14"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>

@@ -237,7 +237,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
         Matcher match = patt.matcher(phone.getText());
         if(!match.matches()){
             pLab.setText("incorrect!");
-            JOptionPane.showConfirmDialog(this, "Phone is number type!!!");
+            JOptionPane.showMessageDialog(this, "Phone is number type!!!");
         }
         else{
             pLab.setText(null);
@@ -251,7 +251,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
         Matcher match = patt.matcher(age.getText());
         if(!match.matches()){
             aLab.setText("incorrect!");
-            JOptionPane.showConfirmDialog(this, "Age is number type!!!");
+            JOptionPane.showMessageDialog(this, "Age is number type!!!");
         }
         else{
             aLab.setText(null);
@@ -265,7 +265,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
         Matcher match = patt.matcher(lastName.getText());
         if(match.matches()){
             lnameLab.setText("incorrect!");
-            JOptionPane.showConfirmDialog(this, "Last Name is font type!!!");
+            JOptionPane.showMessageDialog(this, "Last Name is font type!!!");
         }
         else{
             lnameLab.setText(null);
@@ -279,7 +279,7 @@ public class panelAddNewTeacher extends javax.swing.JPanel {
         Matcher match = patt.matcher(firstName.getText());
         if(match.matches()){
             fnameLab.setText("incorrect!");
-            JOptionPane.showConfirmDialog(this, "First Name is font type!!!");
+            JOptionPane.showMessageDialog(this, "First Name is font type!!!");
         }
         else{
             fnameLab.setText(null);
