@@ -63,8 +63,8 @@
                               <Component id="btnReset" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -74,52 +74,42 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                              <Component id="btnUpdate" min="-2" pref="110" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                              <Component id="btnDel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="80" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
+                                          <Component id="txtCourseName" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                                      <Component id="btnUpdate" min="-2" pref="110" max="-2" attributes="0"/>
+                                                  </Group>
                                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="txtClassID" pref="125" max="32767" attributes="0"/>
                                                       <Component id="txtClassName" pref="125" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="txtCourseName" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txtTenGV" min="-2" pref="62" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtHoGV" max="32767" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="cmbCourseID" max="32767" attributes="0"/>
+                                                          <Component id="cmbTeacherID" min="-2" pref="143" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
-                                                  <Component id="cmbCourseID" max="32767" attributes="0"/>
-                                                  <Component id="cmbTeacherID" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                                                  <Component id="btnDel" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="516" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="615" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="117" max="32767" attributes="0"/>
+                              <EmptySpace min="96" pref="117" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="615" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -173,10 +163,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtCourseName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtTenGV" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtHoGV" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -373,16 +359,9 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="cmbTeacherID">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTeacherIDActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtTenGV">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtHoGV">
             </Component>
           </SubComponents>
         </Container>
