@@ -305,7 +305,7 @@ public class panelAddNewCourse extends javax.swing.JPanel {
         Matcher match = patt.matcher(txtCourseName.getText());
         if(match.matches()){
             cnameLab.setText("incorrect");
-            JOptionPane.showConfirmDialog(this, "Name Course is font type!!!");
+            JOptionPane.showMessageDialog(this, "Name Course is font type!!!");
         }
         else{
             cnameLab.setText(null);

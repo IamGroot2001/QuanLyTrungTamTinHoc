@@ -153,8 +153,6 @@ public class panelAddNewClass extends javax.swing.JPanel {
             }
         });
 
-        nLab.setText("jLabel4");
-
         jButton1.setBackground(new java.awt.Color(210, 215, 211));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-done-25 .png"))); // NOI18N
         jButton1.setText("Confirm");
@@ -311,11 +309,12 @@ public class panelAddNewClass extends javax.swing.JPanel {
 
     private void txtClassNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClassNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(txtClassName.getText());
-        if(!match.matches()){
+        if(match.matches()){
             nLab.setText("incorrect");
+            JOptionPane.showMessageDialog(this, "Class Name is font type!!!");
         }
         else{
            nLab.setText(null);

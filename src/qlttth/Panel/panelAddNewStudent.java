@@ -112,8 +112,6 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Student Information");
 
-        pLab.setText("jLabel14");
-
         jLabel2.setText("First Name:");
 
         jLabel10.setText("Gender:");
@@ -416,11 +414,12 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void txtFirstNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFirstNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(txtFirstName.getText());
-        if(!match.matches()){
+        if(match.matches()){
             fnameLab.setText("incorrect!");
+            JOptionPane.showMessageDialog(this, "First Name is font type");
         }
         else{
            fnameLab.setText(null);
@@ -429,11 +428,12 @@ public class panelAddNewStudent extends javax.swing.JPanel {
 
     private void txtLastNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyReleased
         // TODO add your handling code here:
-        String PATTERN = "^[a-zA-Z]{0,30}$";
+        String PATTERN = "^[0-9]{0,30}$";
         Pattern patt = Pattern.compile(PATTERN);
         Matcher match = patt.matcher(txtLastName.getText());
-        if(!match.matches()){
+        if(match.matches()){
             lnameLab.setText("incorrect!");
+            JOptionPane.showMessageDialog(this, "Last Name is font type");
         }
         else{
            lnameLab.setText(null);
@@ -447,6 +447,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         Matcher match = patt.matcher(txtAge.getText());
         if(!match.matches()){
             aLab.setText("incorrect!");
+            JOptionPane.showMessageDialog(this, "Age is number type!!!");
         }
         else{
            aLab.setText(null);
@@ -460,6 +461,7 @@ public class panelAddNewStudent extends javax.swing.JPanel {
         Matcher match = patt.matcher(txtPhoneNumber.getText());
         if(!match.matches()){
             pLab.setText("incorrect!");
+            JOptionPane.showMessageDialog(this, "Phone is number type!!!");
         }
         else{
            pLab.setText(null);
